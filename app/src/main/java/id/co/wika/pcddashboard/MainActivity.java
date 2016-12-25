@@ -1,13 +1,16 @@
 package id.co.wika.pcddashboard;
 
+import android.app.DatePickerDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Base64;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.DatePicker;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -37,6 +40,8 @@ public class MainActivity extends AppCompatActivity {
     RecyclerView mRecyclerView;
     private EmployeeAdapter adapter;
 
+    TextView monthSelectLabel;
+
     private ArrayList<DashboardItem> dashboardItemList = new ArrayList<>();
 
     @Override
@@ -46,6 +51,17 @@ public class MainActivity extends AppCompatActivity {
 
         //IMPORTANT!!!
 //        getSupportActionBar().setDisplayShowTitleEnabled(false);
+
+        monthSelectLabel = (TextView) findViewById(R.id.month_select_label);
+
+        monthSelectLabel.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                Log.v("reload dashboard data", "reload dashboard data");
+                getDashboardData();
+            }
+        });
 
         mRecyclerView = (RecyclerView) findViewById(R.id.dashboard_recycler_view);
 
@@ -78,7 +94,7 @@ public class MainActivity extends AppCompatActivity {
 
                     dashboardItem.setOk(new BigDecimal(obj1.getString("ok")));
                     dashboardItem.setOp(new BigDecimal(obj1.getString("op")));
-                    dashboardItem.setLk(new BigDecimal(obj1.getString("lk")));
+//                    dashboardItem.setLk(new BigDecimal(obj1.getString("lk")));
 
                     MainActivity.this.dashboardItemList.add(dashboardItem);
                 } catch (JSONException e) {
@@ -95,6 +111,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onErrorResponse(VolleyError error) {
                 // TODO Auto-generated method stub
+                Log.v("Error", error.getMessage());
             }
 
         };

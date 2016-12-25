@@ -5,6 +5,6 @@ package id.co.wika.pcddashboard;
  */
 public class DashboardConstant {
 
-    public static final String BASE_URL = "http://localhost:8080/";
+    public static final String BASE_URL = "http://10.0.2.2:8080/";
     public static final String[] MONTHS = new String[] { "Jan", "Feb", "Mar", "Apr", "Mei", "Jun", "Jul", "Aug", "Sep", "Okt", "Nov", "Des" };
 }
