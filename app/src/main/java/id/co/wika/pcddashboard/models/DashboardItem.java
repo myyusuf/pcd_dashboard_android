@@ -7,10 +7,19 @@ import java.math.BigDecimal;
  */
 public class DashboardItem {
 
+    private String title;
     private BigDecimal ok;
     private BigDecimal op;
     private BigDecimal lsp;
     private BigDecimal lk;
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
 
     public BigDecimal getOk() {
         return ok;

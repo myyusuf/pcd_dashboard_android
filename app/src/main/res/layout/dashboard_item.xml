@@ -5,9 +5,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="0dp"
-    card_view:cardElevation="0dp"
-    card_view:cardMaxElevation="0dp"
+    android:layout_marginLeft="10dp"
+    android:layout_marginRight="10dp"
+    android:layout_marginBottom="0dp"
+    android:layout_marginTop="0dp"
+    card_view:cardElevation="4dp"
+    card_view:cardMaxElevation="4dp"
+    card_view:cardCornerRadius="5dp"
     android:background="#ECECEC">
     <LinearLayout
         android:layout_width="match_parent"
@@ -34,16 +38,127 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <TextView
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textSize="22sp"
-                android:text="-"
-                android:textColor="#000000"
-                android:minWidth="25dp"
-                tools:text="OK"
-                android:id="@+id/dashboard_item_label1"
-                android:layout_marginLeft="10dp" />
+                android:orientation="horizontal"
+                android:layout_marginBottom="15dp"
+                android:weightSum="2">
+
+                <TextView
+                    android:id="@+id/dashboard_item_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="23sp"
+                    android:textStyle="bold"
+                    android:text="Realisasi"
+                    android:textColor="#000000"
+                    android:minWidth="25dp"
+                    android:layout_marginLeft="10dp"
+                    android:gravity="center"
+                    android:layout_weight="2"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginBottom="10dp"
+                android:weightSum="2">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="22sp"
+                    android:text="OK"
+                    android:textColor="#000000"
+                    android:minWidth="25dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_weight="1.2"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="22sp"
+                    android:text="-"
+                    android:textColor="#000000"
+                    android:minWidth="25dp"
+                    tools:text="118.19"
+                    android:id="@+id/dashboard_item_label1"
+                    android:layout_marginLeft="10dp"
+                    android:layout_weight="0.8"
+                    android:gravity="right"
+                    android:textAlignment="inherit"
+                    />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginBottom="10dp"
+                android:weightSum="2">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="22sp"
+                    android:text="OP"
+                    android:textColor="#000000"
+                    android:minWidth="25dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_weight="1.2"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="22sp"
+                    android:text="-"
+                    android:textColor="#000000"
+                    android:minWidth="25dp"
+                    tools:text="118.19"
+                    android:id="@+id/dashboard_item_label2"
+                    android:layout_marginLeft="10dp"
+                    android:layout_weight="0.8"
+                    android:gravity="right"
+                    android:textAlignment="inherit"
+                    />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="2">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="22sp"
+                    android:text="LSP"
+                    android:textColor="#000000"
+                    android:minWidth="25dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_weight="1.2"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="22sp"
+                    android:text="-"
+                    android:textColor="#000000"
+                    android:minWidth="25dp"
+                    tools:text="118.19"
+                    android:id="@+id/dashboard_item_label3"
+                    android:layout_marginLeft="10dp"
+                    android:layout_weight="0.8"
+                    android:gravity="right"
+                    android:textAlignment="inherit"
+                    />
+            </LinearLayout>
+
+
 
             <!--<TextView-->
                 <!--android:layout_width="wrap_content"-->

@@ -87,18 +87,27 @@ public class MainActivity extends AppCompatActivity {
 
                 MainActivity.this.dashboardItemList.clear();
 
-                JSONObject obj1 = null;
-                try {
-                    obj1 = response.getJSONObject("data1");
-                    DashboardItem dashboardItem = new DashboardItem();
+                JSONObject obj = null;
 
-                    dashboardItem.setOk(new BigDecimal(obj1.getString("ok")));
-                    dashboardItem.setOp(new BigDecimal(obj1.getString("op")));
-//                    dashboardItem.setLk(new BigDecimal(obj1.getString("lk")));
+                for(int i=1; i<=2; i++) {
+                    try {
+                        obj = response.getJSONObject("data" + i);
+                        DashboardItem dashboardItem = new DashboardItem();
 
-                    MainActivity.this.dashboardItemList.add(dashboardItem);
-                } catch (JSONException e) {
-                    e.printStackTrace();
+                        String title = obj.getString("title") != null ? obj.getString("title") : "-";
+                        String ok = obj.getString("ok") != null ? obj.getString("ok") : "0.0";
+                        String op = obj.getString("op") != null ? obj.getString("op") : "0.0";
+                        String lsp = obj.getString("lsp") != null ? obj.getString("lsp") : "0.0";
+
+                        dashboardItem.setTitle(title);
+                        dashboardItem.setOk(new BigDecimal(ok));
+                        dashboardItem.setOp(new BigDecimal(op));
+                        dashboardItem.setLsp(new BigDecimal(lsp));
+
+                        MainActivity.this.dashboardItemList.add(dashboardItem);
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
                 }
 
                 adapter.notifyDataSetChanged();
@@ -166,23 +175,27 @@ public class MainActivity extends AppCompatActivity {
 
     public class ItemViewHolder extends RecyclerView.ViewHolder {
 
+        private TextView dashboardItemTitle;
         private TextView dashboardItemLabel1;
-//        private TextView dashboardItemLabel2;
-//        private TextView dashboardItemLabel3;
+        private TextView dashboardItemLabel2;
+        private TextView dashboardItemLabel3;
 
         public ItemViewHolder(View itemView) {
             super(itemView);
+            dashboardItemTitle = (TextView)itemView.findViewById(R.id.dashboard_item_title);
             dashboardItemLabel1 = (TextView)itemView.findViewById(R.id.dashboard_item_label1);
-//            dashboardItemLabel2 = (TextView)itemView.findViewById(R.id.dashboard_item_label2);
-//            dashboardItemLabel3 = (TextView)itemView.findViewById(R.id.dashboard_item_label3);
+            dashboardItemLabel2 = (TextView)itemView.findViewById(R.id.dashboard_item_label2);
+            dashboardItemLabel3 = (TextView)itemView.findViewById(R.id.dashboard_item_label3);
 
         }
 
         public void updateUI(DashboardItem dashboardItem) {
 
+            dashboardItemTitle.setText(dashboardItem.getTitle());
             dashboardItemLabel1.setText(dashboardItem.getOk().toString());
-//            dashboardItemLabel1.setText(dashboardItem.getBirthDate());
-//            dashboardItemLabel1.setText(dashboardItem.getWorkUnit());
+            dashboardItemLabel2.setText(dashboardItem.getOp().toString());
+            dashboardItemLabel3.setText(dashboardItem.getLsp().toString());
+
         }
     }
 }
