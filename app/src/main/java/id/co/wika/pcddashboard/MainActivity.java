@@ -27,6 +27,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.math.BigDecimal;
+import java.text.DecimalFormat;
 import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Date;
@@ -43,6 +44,8 @@ public class MainActivity extends AppCompatActivity {
     TextView monthSelectLabel;
 
     private ArrayList<DashboardItem> dashboardItemList = new ArrayList<>();
+
+    DecimalFormat decimalFormat = new DecimalFormat("#,###,###.00");
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -89,7 +92,7 @@ public class MainActivity extends AppCompatActivity {
 
                 JSONObject obj = null;
 
-                for(int i=1; i<=2; i++) {
+                for(int i=1; i<=4; i++) {
                     try {
                         obj = response.getJSONObject("data" + i);
                         DashboardItem dashboardItem = new DashboardItem();
@@ -192,9 +195,9 @@ public class MainActivity extends AppCompatActivity {
         public void updateUI(DashboardItem dashboardItem) {
 
             dashboardItemTitle.setText(dashboardItem.getTitle());
-            dashboardItemLabel1.setText(dashboardItem.getOk().toString());
-            dashboardItemLabel2.setText(dashboardItem.getOp().toString());
-            dashboardItemLabel3.setText(dashboardItem.getLsp().toString());
+            dashboardItemLabel1.setText(decimalFormat.format(dashboardItem.getOk().doubleValue()));
+            dashboardItemLabel2.setText(decimalFormat.format(dashboardItem.getOp().doubleValue()));
+            dashboardItemLabel3.setText(decimalFormat.format(dashboardItem.getLsp().doubleValue()));
 
         }
     }
