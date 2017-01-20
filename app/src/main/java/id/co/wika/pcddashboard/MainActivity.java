@@ -1,6 +1,11 @@
 package id.co.wika.pcddashboard;
 
 import android.app.DatePickerDialog;
+import android.net.Uri;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -34,14 +39,27 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
+import id.co.wika.pcddashboard.fragments.ProgFragment;
+import id.co.wika.pcddashboard.fragments.RiFragment;
+import id.co.wika.pcddashboard.fragments.RkapFragment;
 import id.co.wika.pcddashboard.models.DashboardItem;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements
+        RkapFragment.OnRkapFragmentInteractionListener,
+        RiFragment.OnRiFragmentInteractionListener,
+        ProgFragment.OnProgFragmentInteractionListener{
 
     RecyclerView mRecyclerView;
     private EmployeeAdapter adapter;
 
     TextView monthSelectLabel;
+
+    FragmentPagerAdapter dashboardAdapterViewPager;
+    ViewPager dashboardPager;
+
+    private RkapFragment rkapFragment;
+    private RiFragment riFragment;
+    private ProgFragment progFragment;
 
     private ArrayList<DashboardItem> dashboardItemList = new ArrayList<>();
 
@@ -77,6 +95,84 @@ public class MainActivity extends AppCompatActivity {
         mRecyclerView.setLayoutManager(layoutManager);
 
         getDashboardData();
+
+        dashboardPager = (ViewPager) findViewById(R.id.dashboard_pager);
+        dashboardAdapterViewPager = new DashboardPagerAdapter(getSupportFragmentManager());
+        dashboardPager.setAdapter(dashboardAdapterViewPager);
+        dashboardPager.setOffscreenPageLimit(3);
+        dashboardPager.setCurrentItem(1);
+    }
+
+    @Override
+    public void onRkapFragmentInteraction(Uri uri) {
+
+    }
+
+    @Override
+    public void onRiFragmentInteraction(Uri uri) {
+
+    }
+
+    @Override
+    public void onProgFragmentInteraction(Uri uri) {
+
+    }
+
+    public  class DashboardPagerAdapter extends FragmentPagerAdapter {
+        private  int NUM_ITEMS = 3;
+
+
+        public DashboardPagerAdapter(FragmentManager fragmentManager) {
+            super(fragmentManager);
+        }
+
+        // Returns total number of pages
+        @Override
+        public int getCount() {
+            return NUM_ITEMS;
+        }
+
+        // Returns the fragment to display for that page
+        @Override
+        public Fragment getItem(int position) {
+            switch (position) {
+                case 0:
+                    return RkapFragment.newInstance("", "");
+                case 1:
+                    return RiFragment.newInstance("", "");
+                case 2:
+                    return ProgFragment.newInstance("", "");
+                default:
+                    return null;
+            }
+        }
+
+        // Returns the page title for the top indicator
+        @Override
+        public CharSequence getPageTitle(int position) {
+            return "Page " + position;
+        }
+
+        @Override
+        public Object instantiateItem(ViewGroup container, int position) {
+            Fragment createdFragment = (Fragment) super.instantiateItem(container, position);
+            // save the appropriate reference depending on position
+            switch (position) {
+                case 0:
+                    rkapFragment = (RkapFragment) createdFragment;
+                    break;
+                case 1:
+                    riFragment = (RiFragment) createdFragment;
+                    break;
+                case 2:
+                    progFragment = (ProgFragment) createdFragment;
+                    break;
+
+            }
+            return createdFragment;
+        }
+
+
     }
 
     private void getDashboardData(){

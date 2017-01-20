@@ -3,7 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="#3A64BA"
+    android:background="#4A5592"
     android:elevation="4dp"
     android:orientation="horizontal">
 
@@ -12,7 +12,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="PDE Dashboard"
+        android:text="Dashboard"
         android:textColor="#fff"
         android:layout_gravity="center"
         android:id="@+id/tool_bar_title1"
