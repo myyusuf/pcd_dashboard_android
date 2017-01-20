@@ -4,10 +4,27 @@
     android:layout_height="match_parent"
     tools:context=".fragments.RkapFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+
+    <LinearLayout
+        android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="Rkap fragment" />
+        android:weightSum="100">
 
+        <FrameLayout
+            android:layout_width="42dp"
+            android:layout_height="match_parent"
+            android:background="#123456"
+            android:layout_weight="1"></FrameLayout>
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="98"></FrameLayout>
+
+        <FrameLayout
+            android:layout_width="42dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"></FrameLayout>
+    </LinearLayout>
 </FrameLayout>

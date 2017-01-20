@@ -9,23 +9,22 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
-        android:weightSum="3">
+        android:weightSum="100">
 
         <LinearLayout
             android:orientation="vertical"
-            android:layout_width="70dp"
+            android:layout_width="42dp"
             android:layout_height="290dp"
-            android:layout_gravity="center_vertical"
-            >
+            android:layout_weight="1">
 
             <ImageView
-                android:layout_width="70dp"
-                android:layout_height="107dp"
+                android:layout_width="42dp"
+                android:layout_height="60dp"
                 android:id="@+id/imageView1"
-                android:background="@drawable/blue_arrow"
+                android:background="@drawable/green_arrow"
                 android:scaleType="fitXY"
                 android:adjustViewBounds="true"
-                android:layout_marginTop="70dp"
+                android:layout_marginTop="90dp"
                 />
 
         </LinearLayout>
@@ -35,15 +34,33 @@
             android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="290dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="20dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
             android:layout_marginBottom="10dp"
             android:clipChildren="true"
             android:background="@drawable/shape"
-            >
-
+            android:layout_weight="98">
 
         </LinearLayout>
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="42dp"
+            android:layout_height="290dp"
+            android:layout_weight="1">
+
+            <ImageView
+                android:layout_width="32dp"
+                android:layout_height="29dp"
+                android:id="@+id/imageView2"
+                android:background="@drawable/red_arrow_cut"
+                android:scaleType="fitXY"
+                android:adjustViewBounds="true"
+                android:layout_marginTop="105dp"
+                android:layout_gravity="right" />
+
+        </LinearLayout>
+
     </LinearLayout>
 
 
