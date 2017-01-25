@@ -41,6 +41,20 @@
             android:background="@drawable/shape"
             android:layout_weight="98">
 
+            <com.github.mikephil.charting.charts.LineChart
+                android:id="@+id/omzet_chart"
+                android:layout_width="match_parent"
+                android:layout_height="200dp" />
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="90dp"
+                android:background="#7976B0"
+                android:layout_weight="98">
+
+            </LinearLayout>
+
         </LinearLayout>
 
         <LinearLayout

@@ -20,18 +20,18 @@
 <layer-list xmlns:android="http://schemas.android.com/apk/res/android">
     <item>
         <shape android:shape="rectangle">
-            <solid android:color="#414574"/>
+            <solid android:color="#414471"/>
             <corners android:radius="6dp" />
         </shape>
     </item>
 
     <item
-        android:left="0dp"
-        android:right="6dp"
-        android:top="0dp"
-        android:bottom="6dp">
+        android:left="1dp"
+        android:right="1dp"
+        android:top="1dp"
+        android:bottom="1dp">
         <shape android:shape="rectangle">
-            <solid android:color="#7B77AB"/>
+            <solid android:color="#E77D7B"/>
             <corners android:radius="6dp" />
         </shape>
     </item>
