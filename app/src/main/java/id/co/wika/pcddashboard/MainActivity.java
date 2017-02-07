@@ -39,6 +39,7 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
+import id.co.wika.pcddashboard.fragments.MonthSelectFragment;
 import id.co.wika.pcddashboard.fragments.ProgFragment;
 import id.co.wika.pcddashboard.fragments.RiFragment;
 import id.co.wika.pcddashboard.fragments.RkapFragment;
@@ -47,14 +48,18 @@ import id.co.wika.pcddashboard.models.DashboardItem;
 public class MainActivity extends AppCompatActivity implements
         RkapFragment.OnRkapFragmentInteractionListener,
         RiFragment.OnRiFragmentInteractionListener,
-        ProgFragment.OnProgFragmentInteractionListener{
+        ProgFragment.OnProgFragmentInteractionListener,
+        MonthSelectFragment.OnMonthSelectFragmentInteractionListener{
 
     RecyclerView mRecyclerView;
     private EmployeeAdapter adapter;
 
     TextView monthSelectLabel;
 
+    FragmentPagerAdapter monthSelectAdapterViewPager;
     FragmentPagerAdapter dashboardAdapterViewPager;
+
+    ViewPager monthSelectPager;
     ViewPager dashboardPager;
 
     private RkapFragment rkapFragment;
@@ -101,6 +106,11 @@ public class MainActivity extends AppCompatActivity implements
         dashboardPager.setAdapter(dashboardAdapterViewPager);
         dashboardPager.setOffscreenPageLimit(3);
         dashboardPager.setCurrentItem(1);
+
+        monthSelectPager = (ViewPager) findViewById(R.id.month_select_pager);
+        monthSelectAdapterViewPager = new MonthSelectPagerAdapter(getSupportFragmentManager());
+        monthSelectPager.setAdapter(monthSelectAdapterViewPager);
+        monthSelectPager.setCurrentItem(0);
     }
 
     @Override
@@ -296,5 +306,70 @@ public class MainActivity extends AppCompatActivity implements
             dashboardItemLabel3.setText(decimalFormat.format(dashboardItem.getLsp().doubleValue()));
 
         }
+    }
+
+    //------------------------
+
+    private MonthSelectFragment monthSelectFragment1;
+    private MonthSelectFragment monthSelectFragment2;
+    public class MonthSelectPagerAdapter extends FragmentPagerAdapter {
+        private int NUM_ITEMS = 2;
+
+        public MonthSelectPagerAdapter(FragmentManager fragmentManager) {
+            super(fragmentManager);
+        }
+
+        // Returns total number of pages
+        @Override
+        public int getCount() {
+            return NUM_ITEMS;
+        }
+
+        // Returns the fragment to display for that page
+        @Override
+        public Fragment getItem(int position) {
+            switch (position) {
+                case 0: // Fragment # 0 - This will show FirstFragment
+                    return MonthSelectFragment.newInstance(0, "Page # 1");
+                case 1: // Fragment # 0 - This will show FirstFragment different title
+                    return MonthSelectFragment.newInstance(1, "Page # 2");
+                default:
+                    return null;
+            }
+        }
+
+        // Returns the page title for the top indicator
+        @Override
+        public CharSequence getPageTitle(int position) {
+            return "Page " + position;
+        }
+
+        @Override
+        public Object instantiateItem(ViewGroup container, int position) {
+            Fragment createdFragment = (Fragment) super.instantiateItem(container, position);
+            // save the appropriate reference depending on position
+            switch (position) {
+                case 0:
+                    monthSelectFragment1 = (MonthSelectFragment) createdFragment;
+                    break;
+                case 1:
+                    monthSelectFragment2 = (MonthSelectFragment) createdFragment;
+                    break;
+            }
+
+            return createdFragment;
+        }
+
+    }
+
+    @Override
+    public void onMonthSelectFragmentInteraction(Uri uri) {
+//        selectPageOnMonthSelectPager();
+    }
+
+    public void updateDashboardData(int month) {
+
+//        this.selectedMonth = month;
+//        this.updateDashboardData();
     }
 }
