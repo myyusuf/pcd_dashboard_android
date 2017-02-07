@@ -1,6 +1,5 @@
 package id.co.wika.pcddashboard;
 
-import android.app.DatePickerDialog;
 import android.net.Uri;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -15,40 +14,34 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.DatePicker;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
-import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.math.BigDecimal;
 import java.text.DecimalFormat;
-import java.text.ParseException;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
+import id.co.wika.pcddashboard.fragments.LkFragment;
 import id.co.wika.pcddashboard.fragments.MonthSelectFragment;
-import id.co.wika.pcddashboard.fragments.ProgFragment;
-import id.co.wika.pcddashboard.fragments.RiFragment;
-import id.co.wika.pcddashboard.fragments.RkapFragment;
+import id.co.wika.pcddashboard.fragments.OkFragment;
+import id.co.wika.pcddashboard.fragments.OpFragment;
 import id.co.wika.pcddashboard.models.DashboardItem;
 
 public class MainActivity extends AppCompatActivity implements
-        RkapFragment.OnRkapFragmentInteractionListener,
-        RiFragment.OnRiFragmentInteractionListener,
-        ProgFragment.OnProgFragmentInteractionListener,
+        LkFragment.OnLkFragmentInteractionListener,
+        OkFragment.OnOkFragmentInteractionListener,
+        OpFragment.OnOpFragmentInteractionListener,
         MonthSelectFragment.OnMonthSelectFragmentInteractionListener{
 
     RecyclerView mRecyclerView;
@@ -62,9 +55,9 @@ public class MainActivity extends AppCompatActivity implements
     ViewPager monthSelectPager;
     ViewPager dashboardPager;
 
-    private RkapFragment rkapFragment;
-    private RiFragment riFragment;
-    private ProgFragment progFragment;
+    private LkFragment lkFragment;
+    private OkFragment riFragment;
+    private OpFragment opFragment;
 
     private ArrayList<DashboardItem> dashboardItemList = new ArrayList<>();
 
@@ -114,17 +107,17 @@ public class MainActivity extends AppCompatActivity implements
     }
 
     @Override
-    public void onRkapFragmentInteraction(Uri uri) {
+    public void onLkFragmentInteraction(Uri uri) {
 
     }
 
     @Override
-    public void onRiFragmentInteraction(Uri uri) {
+    public void onOkFragmentInteraction(Uri uri) {
 
     }
 
     @Override
-    public void onProgFragmentInteraction(Uri uri) {
+    public void onOpFragmentInteraction(Uri uri) {
 
     }
 
@@ -147,11 +140,11 @@ public class MainActivity extends AppCompatActivity implements
         public Fragment getItem(int position) {
             switch (position) {
                 case 0:
-                    return RkapFragment.newInstance("", "");
+                    return LkFragment.newInstance("", "");
                 case 1:
-                    return RiFragment.newInstance("", "");
+                    return OkFragment.newInstance("", "");
                 case 2:
-                    return ProgFragment.newInstance("", "");
+                    return OpFragment.newInstance("", "");
                 default:
                     return null;
             }
@@ -169,13 +162,13 @@ public class MainActivity extends AppCompatActivity implements
             // save the appropriate reference depending on position
             switch (position) {
                 case 0:
-                    rkapFragment = (RkapFragment) createdFragment;
+                    lkFragment = (LkFragment) createdFragment;
                     break;
                 case 1:
-                    riFragment = (RiFragment) createdFragment;
+                    riFragment = (OkFragment) createdFragment;
                     break;
                 case 2:
-                    progFragment = (ProgFragment) createdFragment;
+                    opFragment = (OpFragment) createdFragment;
                     break;
 
             }

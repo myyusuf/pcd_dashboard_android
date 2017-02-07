@@ -17,9 +17,8 @@ import com.github.mikephil.charting.components.YAxis;
 import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.LineData;
 import com.github.mikephil.charting.data.LineDataSet;
-import com.github.mikephil.charting.interfaces.datasets.ILineDataSet;
 import com.github.mikephil.charting.formatter.DefaultAxisValueFormatter;
-
+import com.github.mikephil.charting.interfaces.datasets.ILineDataSet;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -31,12 +30,12 @@ import id.co.wika.pcddashboard.components.CustomMarkerView;
 /**
  * A simple {@link Fragment} subclass.
  * Activities that contain this fragment must implement the
- * {@link RiFragment.OnRiFragmentInteractionListener} interface
+ * {@link LkFragment.OnLkFragmentInteractionListener} interface
  * to handle interaction events.
- * Use the {@link RiFragment#newInstance} factory method to
+ * Use the {@link LkFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class RiFragment extends Fragment {
+public class LkFragment extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -46,12 +45,12 @@ public class RiFragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    private OnRiFragmentInteractionListener mListener;
+    private OnLkFragmentInteractionListener mListener;
 
     private LineChart mChart;
     private String[] MONTHS;
 
-    public RiFragment() {
+    public LkFragment() {
         // Required empty public constructor
     }
 
@@ -61,11 +60,11 @@ public class RiFragment extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment RiFragment.
+     * @return A new instance of fragment LkFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static RiFragment newInstance(String param1, String param2) {
-        RiFragment fragment = new RiFragment();
+    public static LkFragment newInstance(String param1, String param2) {
+        LkFragment fragment = new LkFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -85,8 +84,6 @@ public class RiFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-
         this.MONTHS = new String[14];
         this.MONTHS[0] = "";
         this.MONTHS[1] = DashboardConstant.MONTHS[0];
@@ -104,9 +101,9 @@ public class RiFragment extends Fragment {
         this.MONTHS[13] = "";
 
 
-        final View view = inflater.inflate(R.layout.fragment_ri, container, false);
+        final View view = inflater.inflate(R.layout.fragment_lk, container, false);
 
-        mChart = (LineChart)view.findViewById(R.id.omzet_chart);
+        mChart = (LineChart)view.findViewById(R.id.lk_chart);
 
         List<Entry> planDataEntries = new ArrayList<Entry>();
         List<Entry> actualDataEntries = new ArrayList<Entry>();
@@ -128,15 +125,15 @@ public class RiFragment extends Fragment {
     // TODO: Rename method, update argument and hook method into UI event
     public void onButtonPressed(Uri uri) {
         if (mListener != null) {
-            mListener.onRiFragmentInteraction(uri);
+            mListener.onLkFragmentInteraction(uri);
         }
     }
 
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        if (context instanceof OnRiFragmentInteractionListener) {
-            mListener = (OnRiFragmentInteractionListener) context;
+        if (context instanceof OnLkFragmentInteractionListener) {
+            mListener = (OnLkFragmentInteractionListener) context;
         } else {
             throw new RuntimeException(context.toString()
                     + " must implement OnFragmentInteractionListener");
@@ -154,14 +151,14 @@ public class RiFragment extends Fragment {
      * fragment to allow an interaction in this fragment to be communicated
      * to the activity and potentially other fragments contained in that
      * activity.
-     * <p/>
+     * <p>
      * See the Android Training lesson <a href=
      * "http://developer.android.com/training/basics/fragments/communicating.html"
      * >Communicating with Other Fragments</a> for more information.
      */
-    public interface OnRiFragmentInteractionListener {
+    public interface OnLkFragmentInteractionListener {
         // TODO: Update argument type and name
-        void onRiFragmentInteraction(Uri uri);
+        void onLkFragmentInteraction(Uri uri);
     }
 
     private void drawChart(List<Entry> planDataEntries, List<Entry> actualDataEntries){
@@ -231,8 +228,8 @@ public class RiFragment extends Fragment {
             @Override
             public String getFormattedValue(float value, AxisBase axis) {
                 int valueInInt = (int) value;
-                if(valueInInt >= 0 && valueInInt < RiFragment.this.MONTHS.length){
-                    return RiFragment.this.MONTHS[(int) value];
+                if(valueInInt >= 0 && valueInInt < LkFragment.this.MONTHS.length){
+                    return LkFragment.this.MONTHS[(int) value];
                 }else{
                     return "";
                 }

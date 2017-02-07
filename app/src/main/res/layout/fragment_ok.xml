@@ -2,7 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragments.RiFragment">
+    tools:context=".fragments.OkFragment">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -26,7 +26,7 @@
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceSmall"
                     android:text="-"
-                    android:id="@+id/omzet_chart_caption"
+                    android:id="@+id/ok_chart_caption"
                     android:textColor="#ffffff"
                     android:textSize="30sp"
                     android:fontFamily="sans-serif-light"
@@ -60,7 +60,7 @@
                     android:layout_width="96dp"
                     android:layout_height="36dp"
                     android:text="Details"
-                    android:id="@+id/omzet_chart_button"
+                    android:id="@+id/ok_chart_button"
                     android:textColor="#3A64BA"
                     android:padding="0dp"
                     android:layout_marginTop="11dp"
@@ -131,7 +131,7 @@
             android:orientation="horizontal">
 
             <com.github.mikephil.charting.charts.LineChart
-                android:id="@+id/omzet_chart"
+                android:id="@+id/ok_chart"
                 android:layout_width="match_parent"
                 android:layout_height="200dp" />
         </LinearLayout>
