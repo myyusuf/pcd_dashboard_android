@@ -1,5 +1,6 @@
 package id.co.wika.pcddashboard;
 
+import android.content.Context;
 import android.net.Uri;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -39,6 +40,7 @@ import id.co.wika.pcddashboard.fragments.MonthSelectFragment;
 import id.co.wika.pcddashboard.fragments.OkFragment;
 import id.co.wika.pcddashboard.fragments.OpFragment;
 import id.co.wika.pcddashboard.models.DashboardItem;
+import id.co.wika.pcddashboard.services.RestRequestService;
 
 public class MainActivity extends AppCompatActivity implements
         LkFragment.OnLkFragmentInteractionListener,
@@ -63,9 +65,13 @@ public class MainActivity extends AppCompatActivity implements
     private OpFragment opFragment;
     private LspFragment lspFragment;
 
-    private DashboardItemView dashboardItemView;
+    private DashboardItemView dashboardItemView1;
+    private DashboardItemView dashboardItemView2;
+    private DashboardItemView dashboardItemView3;
 
     private ArrayList<DashboardItem> dashboardItemList = new ArrayList<>();
+
+    RestRequestService restRequestService = new RestRequestService();
 
     DecimalFormat decimalFormat = new DecimalFormat("#,###,###.00");
 
@@ -111,7 +117,9 @@ public class MainActivity extends AppCompatActivity implements
         monthSelectPager.setAdapter(monthSelectAdapterViewPager);
         monthSelectPager.setCurrentItem(0);
 
-        dashboardItemView = (DashboardItemView) findViewById(R.id.dashboard_item_view_1);
+        dashboardItemView1 = (DashboardItemView) findViewById(R.id.dashboard_item_view_1);
+        dashboardItemView2 = (DashboardItemView) findViewById(R.id.dashboard_item_view_2);
+        dashboardItemView3 = (DashboardItemView) findViewById(R.id.dashboard_item_view_3);
     }
 
     @Override

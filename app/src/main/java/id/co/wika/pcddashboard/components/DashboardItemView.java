@@ -14,6 +14,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import id.co.wika.pcddashboard.R;
+import id.co.wika.pcddashboard.models.DashboardItem;
 
 /**
  * TODO: document your custom view class.
@@ -61,6 +62,10 @@ public class DashboardItemView extends LinearLayout {
 
     public void setTitleText(String text) {
         textView.setText(text);
+    }
+
+    public void setDashboardItem(DashboardItem dashboardItem){
+        setTitleText(dashboardItem.getTitle());
     }
 
 }
