@@ -13,6 +13,8 @@ import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import java.text.DecimalFormat;
+
 import id.co.wika.pcddashboard.R;
 import id.co.wika.pcddashboard.models.DashboardItem;
 
@@ -24,7 +26,12 @@ public class DashboardItemView extends LinearLayout {
     private float mTextWidth;
     private float mTextHeight;
 
-    private TextView textView;
+    private TextView titleTextView;
+    private TextView okTextView;
+    private TextView opTextView;
+    private TextView lspTextView;
+
+    DecimalFormat decimalFormat = new DecimalFormat("#,###,###.00");
 
     public DashboardItemView(Context context) {
         super(context);
@@ -43,7 +50,10 @@ public class DashboardItemView extends LinearLayout {
 
     private void init(Context context, AttributeSet attrs, int defStyle) {
         View.inflate(context, R.layout.dashboard_item_view, this);
-        textView = (TextView) findViewById(R.id.textView);
+        titleTextView = (TextView) findViewById(R.id.title_text_view);
+        okTextView = (TextView) findViewById(R.id.ok_text_view);
+        opTextView = (TextView) findViewById(R.id.op_text_view);
+        lspTextView = (TextView) findViewById(R.id.lsp_text_view);
 
         final TypedArray a = getContext().obtainStyledAttributes(
                 attrs, R.styleable.DashboardItemView, defStyle, 0);
@@ -61,11 +71,26 @@ public class DashboardItemView extends LinearLayout {
     }
 
     public void setTitleText(String text) {
-        textView.setText(text);
+        titleTextView.setText(text);
+    }
+
+    public void setOkText(String text) {
+        okTextView.setText(text);
+    }
+
+    public void setOpText(String text) {
+        opTextView.setText(text);
+    }
+
+    public void setLspText(String text) {
+        lspTextView.setText(text);
     }
 
     public void setDashboardItem(DashboardItem dashboardItem){
         setTitleText(dashboardItem.getTitle());
+        setOkText(decimalFormat.format(dashboardItem.getOk().doubleValue()));
+        setOpText(decimalFormat.format(dashboardItem.getOp().doubleValue()));
+        setLspText(decimalFormat.format(dashboardItem.getLsp().doubleValue()));
     }
 
 }

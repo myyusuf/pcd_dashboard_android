@@ -28,6 +28,7 @@ public class RestRequestService {
             public void onErrorResponse(VolleyError error) {
                 // TODO Auto-generated method stub
                 Log.v("Error", "error");
+                error.printStackTrace();
             }
 
         };

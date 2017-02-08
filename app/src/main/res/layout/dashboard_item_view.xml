@@ -16,14 +16,15 @@
             android:layout_height="wrap_content"
             android:paddingLeft="5dp"
             android:paddingRight="5dp"
-            android:paddingTop="10dp"
-            android:paddingBottom="10dp"
+            android:paddingTop="7dp"
+            android:paddingBottom="7dp"
             android:text="New Text"
             android:textColor="#FFFFFF"
             android:textSize="17sp"
             android:background="@drawable/dashboard_item_title_bg"
+            android:gravity="center"
             android:textAlignment="center"
-            android:id="@+id/textView" />
+            android:id="@+id/title_text_view" />
 
         <TextView
             android:layout_width="match_parent"
@@ -35,7 +36,8 @@
             android:textColor="#FFFFFF"
             android:textSize="17sp"
             android:gravity="center"
-            android:textAlignment="center"/>
+            android:textAlignment="center"
+            android:id="@+id/ok_text_view"/>
 
         <TextView
             android:layout_width="match_parent"
@@ -59,7 +61,8 @@
             android:textColor="#FFFFFF"
             android:textSize="17sp"
             android:gravity="center"
-            android:textAlignment="center"/>
+            android:textAlignment="center"
+            android:id="@+id/op_text_view"/>
 
         <TextView
             android:layout_width="match_parent"
@@ -83,7 +86,8 @@
             android:textColor="#FFFFFF"
             android:textSize="17sp"
             android:gravity="center"
-            android:textAlignment="center"/>
+            android:textAlignment="center"
+            android:id="@+id/lsp_text_view"/>
 
         <TextView
             android:layout_width="match_parent"

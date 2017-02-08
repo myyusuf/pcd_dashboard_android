@@ -206,7 +206,9 @@ public class MainActivity extends AppCompatActivity implements
 
     private void getDashboardData(){
 
-        String baseURL = DashboardConstant.BASE_URL + "dashboard";
+        String url = DashboardConstant.BASE_URL + "dashboard";
+
+        Log.v("URL", "URL : " + url);
 
         Response.Listener<JSONObject> listener = new Response.Listener<JSONObject>(){
 
@@ -239,34 +241,44 @@ public class MainActivity extends AppCompatActivity implements
                 }
 
                 adapter.notifyDataSetChanged();
+                updateDashboardItemView();
 
             }
 
         };
-        Response.ErrorListener errorListener = new Response.ErrorListener(){
+//        Response.ErrorListener errorListener = new Response.ErrorListener(){
+//
+//            @Override
+//            public void onErrorResponse(VolleyError error) {
+//                // TODO Auto-generated method stub
+//                Log.v("Error", "error");
+//                error.printStackTrace();
+//            }
+//
+//        };
+//        JsonObjectRequest jsonRequest = new JsonObjectRequest(Request.Method.GET, url, listener, errorListener){
+//            @Override
+//            public Map<String, String> getHeaders() throws AuthFailureError {
+//                Map<String, String> map = new HashMap<String, String>();
+//                String key = "Authorization";
+//                String encodedString = Base64.encodeToString(String.format("%s:%s", "username", "userpassword").getBytes(), Base64.NO_WRAP);
+//                String value = String.format("Basic %s", encodedString);
+//                map.put(key, value);
+//
+//                return map;
+//            }
+//        };
+//
+//        Volley.newRequestQueue(getApplicationContext()).add(jsonRequest);
 
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                // TODO Auto-generated method stub
-                Log.v("Error", "error");
-            }
+        restRequestService.getRequest(url, listener, getApplicationContext());
 
-        };
-        JsonObjectRequest jsonRequest = new JsonObjectRequest(Request.Method.GET, baseURL, listener, errorListener){
-            @Override
-            public Map<String, String> getHeaders() throws AuthFailureError {
-                Map<String, String> map = new HashMap<String, String>();
-                String key = "Authorization";
-                String encodedString = Base64.encodeToString(String.format("%s:%s", "username", "userpassword").getBytes(), Base64.NO_WRAP);
-                String value = String.format("Basic %s", encodedString);
-                map.put(key, value);
+    }
 
-                return map;
-            }
-        };
-
-        Volley.newRequestQueue(getApplicationContext()).add(jsonRequest);
-
+    private void updateDashboardItemView(){
+        dashboardItemView1.setDashboardItem(this.dashboardItemList.get(1));
+        dashboardItemView2.setDashboardItem(this.dashboardItemList.get(0));
+        dashboardItemView3.setDashboardItem(this.dashboardItemList.get(2));
     }
 
     public class EmployeeAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
