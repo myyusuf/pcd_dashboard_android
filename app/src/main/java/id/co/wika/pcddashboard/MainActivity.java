@@ -33,6 +33,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import id.co.wika.pcddashboard.fragments.LkFragment;
+import id.co.wika.pcddashboard.fragments.LspFragment;
 import id.co.wika.pcddashboard.fragments.MonthSelectFragment;
 import id.co.wika.pcddashboard.fragments.OkFragment;
 import id.co.wika.pcddashboard.fragments.OpFragment;
@@ -42,6 +43,7 @@ public class MainActivity extends AppCompatActivity implements
         LkFragment.OnLkFragmentInteractionListener,
         OkFragment.OnOkFragmentInteractionListener,
         OpFragment.OnOpFragmentInteractionListener,
+        LspFragment.OnLspFragmentInteractionListener,
         MonthSelectFragment.OnMonthSelectFragmentInteractionListener{
 
     RecyclerView mRecyclerView;
@@ -58,6 +60,7 @@ public class MainActivity extends AppCompatActivity implements
     private LkFragment lkFragment;
     private OkFragment riFragment;
     private OpFragment opFragment;
+    private LspFragment lspFragment;
 
     private ArrayList<DashboardItem> dashboardItemList = new ArrayList<>();
 
@@ -121,6 +124,11 @@ public class MainActivity extends AppCompatActivity implements
 
     }
 
+    @Override
+    public void onLspFragmentInteraction(Uri uri) {
+
+    }
+
     public  class DashboardPagerAdapter extends FragmentPagerAdapter {
         private  int NUM_ITEMS = 3;
 
@@ -145,6 +153,8 @@ public class MainActivity extends AppCompatActivity implements
                     return OkFragment.newInstance("", "");
                 case 2:
                     return OpFragment.newInstance("", "");
+                case 3:
+                    return LspFragment.newInstance("", "");
                 default:
                     return null;
             }
@@ -169,6 +179,9 @@ public class MainActivity extends AppCompatActivity implements
                     break;
                 case 2:
                     opFragment = (OpFragment) createdFragment;
+                    break;
+                case 3:
+                    lspFragment = (LspFragment) createdFragment;
                     break;
 
             }

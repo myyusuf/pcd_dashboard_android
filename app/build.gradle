@@ -28,8 +28,8 @@ allprojects {
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     testCompile 'junit:junit:4.12'
-    compile 'com.github.PhilJay:MPAndroidChart:v3.0.1'
     //    compile 'com.github.HotBitmapGG:RingProgressBar:V1.2.2'
+    compile 'com.github.PhilJay:MPAndroidChart:v3.0.1'
     compile 'com.mcxiaoke.volley:library:1.0.19'
     compile 'com.android.support:appcompat-v7:24.2.0'
     compile 'com.android.support:recyclerview-v7:24.2.0'
