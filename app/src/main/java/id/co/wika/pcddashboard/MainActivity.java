@@ -32,6 +32,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
+import id.co.wika.pcddashboard.components.DashboardItemView;
 import id.co.wika.pcddashboard.fragments.LkFragment;
 import id.co.wika.pcddashboard.fragments.LspFragment;
 import id.co.wika.pcddashboard.fragments.MonthSelectFragment;
@@ -61,6 +62,8 @@ public class MainActivity extends AppCompatActivity implements
     private OkFragment riFragment;
     private OpFragment opFragment;
     private LspFragment lspFragment;
+
+    private DashboardItemView dashboardItemView;
 
     private ArrayList<DashboardItem> dashboardItemList = new ArrayList<>();
 
@@ -107,6 +110,8 @@ public class MainActivity extends AppCompatActivity implements
         monthSelectAdapterViewPager = new MonthSelectPagerAdapter(getSupportFragmentManager());
         monthSelectPager.setAdapter(monthSelectAdapterViewPager);
         monthSelectPager.setCurrentItem(0);
+
+        dashboardItemView = (DashboardItemView) findViewById(R.id.dashboard_item_view_1);
     }
 
     @Override
@@ -130,7 +135,7 @@ public class MainActivity extends AppCompatActivity implements
     }
 
     public  class DashboardPagerAdapter extends FragmentPagerAdapter {
-        private  int NUM_ITEMS = 3;
+        private  int NUM_ITEMS = 4;
 
 
         public DashboardPagerAdapter(FragmentManager fragmentManager) {
