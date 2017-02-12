@@ -29,7 +29,7 @@
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceSmall"
-                android:text="Refresh"
+                android:text="Jan, 2017"
                 android:id="@+id/month_select_label"
                 android:textColor="#ffffff"
                 android:textSize="20dp"
@@ -107,6 +107,31 @@
                         android:layout_weight="1"/>
 
                 </LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+
+                android:layout_height="wrap_content"
+                android:gravity="center">
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="200dp"
+                    android:weightSum="1"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:gravity="center">
+
+                    <id.co.wika.pcddashboard.components.DashboardItemView
+                        android:id="@+id/dashboard_item_view_4"
+                        app:title="Sisa"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_gravity="center"/>
+
+                </LinearLayout>
+            </LinearLayout>
 
 
 

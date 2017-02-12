@@ -61,13 +61,14 @@ public class MainActivity extends AppCompatActivity implements
     ViewPager dashboardPager;
 
     private LkFragment lkFragment;
-    private OkFragment riFragment;
+    private OkFragment okFragment;
     private OpFragment opFragment;
     private LspFragment lspFragment;
 
     private DashboardItemView dashboardItemView1;
     private DashboardItemView dashboardItemView2;
     private DashboardItemView dashboardItemView3;
+    private DashboardItemView dashboardItemView4;
 
     private ArrayList<DashboardItem> dashboardItemList = new ArrayList<>();
 
@@ -110,7 +111,7 @@ public class MainActivity extends AppCompatActivity implements
         dashboardAdapterViewPager = new DashboardPagerAdapter(getSupportFragmentManager());
         dashboardPager.setAdapter(dashboardAdapterViewPager);
         dashboardPager.setOffscreenPageLimit(3);
-        dashboardPager.setCurrentItem(1);
+        dashboardPager.setCurrentItem(0);
 
         monthSelectPager = (ViewPager) findViewById(R.id.month_select_pager);
         monthSelectAdapterViewPager = new MonthSelectPagerAdapter(getSupportFragmentManager());
@@ -120,6 +121,7 @@ public class MainActivity extends AppCompatActivity implements
         dashboardItemView1 = (DashboardItemView) findViewById(R.id.dashboard_item_view_1);
         dashboardItemView2 = (DashboardItemView) findViewById(R.id.dashboard_item_view_2);
         dashboardItemView3 = (DashboardItemView) findViewById(R.id.dashboard_item_view_3);
+        dashboardItemView4 = (DashboardItemView) findViewById(R.id.dashboard_item_view_4);
     }
 
     @Override
@@ -161,11 +163,11 @@ public class MainActivity extends AppCompatActivity implements
         public Fragment getItem(int position) {
             switch (position) {
                 case 0:
-                    return LkFragment.newInstance("", "");
-                case 1:
                     return OkFragment.newInstance("", "");
-                case 2:
+                case 1:
                     return OpFragment.newInstance("", "");
+                case 2:
+                    return LkFragment.newInstance("", "");
                 case 3:
                     return LspFragment.newInstance("", "");
                 default:
@@ -185,13 +187,13 @@ public class MainActivity extends AppCompatActivity implements
             // save the appropriate reference depending on position
             switch (position) {
                 case 0:
-                    lkFragment = (LkFragment) createdFragment;
+                    okFragment = (OkFragment) createdFragment;
                     break;
                 case 1:
-                    riFragment = (OkFragment) createdFragment;
+                    opFragment = (OpFragment) createdFragment;
                     break;
                 case 2:
-                    opFragment = (OpFragment) createdFragment;
+                    lkFragment = (LkFragment) createdFragment;
                     break;
                 case 3:
                     lspFragment = (LspFragment) createdFragment;
@@ -279,6 +281,7 @@ public class MainActivity extends AppCompatActivity implements
         dashboardItemView1.setDashboardItem(this.dashboardItemList.get(1));
         dashboardItemView2.setDashboardItem(this.dashboardItemList.get(0));
         dashboardItemView3.setDashboardItem(this.dashboardItemList.get(2));
+        dashboardItemView4.setDashboardItem(this.dashboardItemList.get(3));
     }
 
     public class EmployeeAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
