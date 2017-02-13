@@ -364,4 +364,13 @@ public class OkFragment extends Fragment {
 //        updateSelectedMonth(selectedMonth);
 
     }
+
+    public void reload(int month, int year){
+        try {
+//            selectedMonth = month;
+            getData(year);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 }

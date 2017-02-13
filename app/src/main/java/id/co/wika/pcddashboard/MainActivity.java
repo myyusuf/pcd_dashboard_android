@@ -92,6 +92,8 @@ public class MainActivity extends AppCompatActivity implements
             public void onClick(View v) {
                 Log.v("reload dashboard data", "reload dashboard data");
                 getDashboardData();
+
+                MainActivity.this.okFragment.reload(1, 2017);
             }
         });
 
