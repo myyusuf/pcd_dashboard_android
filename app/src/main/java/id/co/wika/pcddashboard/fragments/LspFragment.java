@@ -5,11 +5,18 @@ import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Base64;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonArrayRequest;
+import com.android.volley.toolbox.Volley;
 import com.github.mikephil.charting.charts.LineChart;
 import com.github.mikephil.charting.components.AxisBase;
 import com.github.mikephil.charting.components.XAxis;
@@ -20,8 +27,14 @@ import com.github.mikephil.charting.data.LineDataSet;
 import com.github.mikephil.charting.formatter.DefaultAxisValueFormatter;
 import com.github.mikephil.charting.interfaces.datasets.ILineDataSet;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import id.co.wika.pcddashboard.DashboardConstant;
 import id.co.wika.pcddashboard.R;
@@ -107,21 +120,89 @@ public class LspFragment extends Fragment {
 
         mChart = (LineChart)view.findViewById(R.id.lsp_chart);
 
-        List<Entry> planDataEntries = new ArrayList<Entry>();
-        List<Entry> actualDataEntries = new ArrayList<Entry>();
+        try {
+            this.getData(2017);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
-        planDataEntries.add(new Entry(1, new Float(1)));
-        planDataEntries.add(new Entry(2, new Float(4)));
-        planDataEntries.add(new Entry(3, new Float(2)));
-        planDataEntries.add(new Entry(4, new Float(7)));
-
-
-        actualDataEntries.add(new Entry(1, new Float(1)));
-        actualDataEntries.add(new Entry(2, new Float(3)));
-
-        drawChart(planDataEntries, actualDataEntries);
+//        List<Entry> planDataEntries = new ArrayList<Entry>();
+//        List<Entry> actualDataEntries = new ArrayList<Entry>();
+//
+//        planDataEntries.add(new Entry(1, new Float(1)));
+//        planDataEntries.add(new Entry(2, new Float(4)));
+//        planDataEntries.add(new Entry(3, new Float(2)));
+//        planDataEntries.add(new Entry(4, new Float(7)));
+//
+//
+//        actualDataEntries.add(new Entry(1, new Float(1)));
+//        actualDataEntries.add(new Entry(2, new Float(3)));
+//
+//        drawChart(planDataEntries, actualDataEntries);
 
         return view;
+    }
+
+    private void getData(int selectedYear) throws Exception{
+
+        String baseURL = DashboardConstant.BASE_URL + "dashboard/lsp/" + selectedYear;
+
+        Response.Listener<JSONArray> listener = new Response.Listener<JSONArray>(){
+
+            @Override
+            public void onResponse(JSONArray response) {
+                // TODO Auto-generated method stub
+
+                List<Entry> planDataEntries = new ArrayList<Entry>();
+                List<Entry> actualDataEntries = new ArrayList<Entry>();
+                for (int i = 0; i < response.length(); i++) {
+                    JSONObject obj = null;
+                    try {
+                        obj = response.getJSONObject(i);
+                        if(!obj.get("plan").toString().equals("null")){
+                            planDataEntries.add(new Entry(i + 1, new Float(obj.getDouble("plan"))));
+                        }
+
+                        if(!obj.get("actual").toString().equals("null")){
+                            actualDataEntries.add(new Entry(i + 1, new Float(obj.getDouble("actual"))));
+                        }
+
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+
+                }
+
+                drawChart(planDataEntries, actualDataEntries);
+
+            }
+
+        };
+        Response.ErrorListener errorListener = new Response.ErrorListener(){
+
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                // TODO Auto-generated method stub
+
+            }
+
+        };
+
+        JsonArrayRequest jsonRequest = new JsonArrayRequest(Request.Method.GET, baseURL, listener, errorListener){
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError {
+//                Log.v("KAT", "MyAuth: authenticating");
+                Map<String, String> map = new HashMap<String, String>();
+                String key = "Authorization";
+                String encodedString = Base64.encodeToString(String.format("%s:%s", LspFragment.this.mParam1, LspFragment.this.mParam2).getBytes(), Base64.NO_WRAP);
+                String value = String.format("Basic %s", encodedString);
+                map.put(key, value);
+
+                return map;
+            }
+        };
+
+        Volley.newRequestQueue(getActivity().getApplicationContext()).add(jsonRequest);
     }
 
     // TODO: Rename method, update argument and hook method into UI event
@@ -281,5 +362,14 @@ public class LspFragment extends Fragment {
 
 //        updateSelectedMonth(selectedMonth);
 
+    }
+
+    public void reload(int month, int year){
+        try {
+//            selectedMonth = month;
+            getData(year);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }

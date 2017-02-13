@@ -94,6 +94,9 @@ public class MainActivity extends AppCompatActivity implements
                 getDashboardData();
 
                 MainActivity.this.okFragment.reload(1, 2017);
+                MainActivity.this.opFragment.reload(1, 2017);
+                MainActivity.this.lkFragment.reload(1, 2017);
+                MainActivity.this.lspFragment.reload(1, 2017);
             }
         });
 
