@@ -1,6 +1,7 @@
 package id.co.wika.pcddashboard;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.net.Uri;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -15,6 +16,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TabHost;
 import android.widget.TextView;
 
 import com.android.volley.AuthFailureError;
@@ -39,8 +41,11 @@ import id.co.wika.pcddashboard.fragments.LspFragment;
 import id.co.wika.pcddashboard.fragments.MonthSelectFragment;
 import id.co.wika.pcddashboard.fragments.OkFragment;
 import id.co.wika.pcddashboard.fragments.OpFragment;
+import id.co.wika.pcddashboard.fragments.RkapTabFragment;
 import id.co.wika.pcddashboard.models.DashboardItem;
 import id.co.wika.pcddashboard.services.RestRequestService;
+
+import android.support.v4.app.FragmentTabHost;
 
 public class MainActivity extends AppCompatActivity implements
         LkFragment.OnLkFragmentInteractionListener,
@@ -75,6 +80,8 @@ public class MainActivity extends AppCompatActivity implements
     RestRequestService restRequestService = new RestRequestService();
 
     DecimalFormat decimalFormat = new DecimalFormat("#,###,###.00");
+
+    private FragmentTabHost mTabHost;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -127,6 +134,49 @@ public class MainActivity extends AppCompatActivity implements
         dashboardItemView2 = (DashboardItemView) findViewById(R.id.dashboard_item_view_2);
         dashboardItemView3 = (DashboardItemView) findViewById(R.id.dashboard_item_view_3);
         dashboardItemView4 = (DashboardItemView) findViewById(R.id.dashboard_item_view_4);
+
+        //-------------
+
+//        mTabHost = (FragmentTabHost) findViewById(android.R.id.tabhost);
+//        mTabHost.setup(this, getSupportFragmentManager(), android.R.id.tabcontent);
+//
+//        mTabHost.addTab(
+//                mTabHost.newTabSpec("tab1").setIndicator("RKAP", null),
+//                RkapTabFragment.class, null);
+//        mTabHost.addTab(
+//                mTabHost.newTabSpec("tab2").setIndicator("Ri", null),
+//                RkapTabFragment.class, null);
+//        mTabHost.addTab(
+//                mTabHost.newTabSpec("tab3").setIndicator("Prog", null),
+//                RkapTabFragment.class, null);
+//
+//        for(int i=0;i<mTabHost.getTabWidget().getChildCount();i++)
+//        {
+//            TextView tv = (TextView) mTabHost.getTabWidget().getChildAt(i).findViewById(android.R.id.title);
+//            tv.setText("Test");
+//            tv.setTextColor(Color.parseColor("#ffffff"));
+//        }
+
+        TabHost host = (TabHost)findViewById(R.id.tabHost);
+        host.setup();
+
+        //Tab 1
+        TabHost.TabSpec spec = host.newTabSpec("Tab One");
+        spec.setContent(R.id.tab1);
+        spec.setIndicator("Tab One");
+        host.addTab(spec);
+
+        //Tab 2
+        spec = host.newTabSpec("Tab Two");
+        spec.setContent(R.id.tab2);
+        spec.setIndicator("Tab Two");
+        host.addTab(spec);
+
+        //Tab 3
+        spec = host.newTabSpec("Tab Three");
+        spec.setContent(R.id.tab3);
+        spec.setIndicator("Tab Three");
+        host.addTab(spec);
     }
 
     @Override
@@ -283,8 +333,8 @@ public class MainActivity extends AppCompatActivity implements
     }
 
     private void updateDashboardItemView(){
-        dashboardItemView1.setDashboardItem(this.dashboardItemList.get(1));
-        dashboardItemView2.setDashboardItem(this.dashboardItemList.get(0));
+        dashboardItemView1.setDashboardItem(this.dashboardItemList.get(0));
+        dashboardItemView2.setDashboardItem(this.dashboardItemList.get(1));
         dashboardItemView3.setDashboardItem(this.dashboardItemList.get(2));
         dashboardItemView4.setDashboardItem(this.dashboardItemList.get(3));
     }

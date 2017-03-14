@@ -16,6 +16,7 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:text="JAN"
+            android:textColor="#fff"
             android:id="@+id/month_button_1"
             android:layout_weight="1"
             android:background="@android:color/transparent" />
@@ -24,6 +25,7 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:text="FEB"
+            android:textColor="#fff"
             android:id="@+id/month_button_2"
             android:layout_weight="1"
             android:background="@android:color/transparent" />
@@ -32,6 +34,7 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:text="MAR"
+            android:textColor="#fff"
             android:id="@+id/month_button_3"
             android:layout_weight="1"
             android:background="@android:color/transparent" />
@@ -40,6 +43,7 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:text="APR"
+            android:textColor="#fff"
             android:id="@+id/month_button_4"
             android:layout_weight="1"
             android:background="@android:color/transparent" />
@@ -48,6 +52,7 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:text="MEI"
+            android:textColor="#fff"
             android:id="@+id/month_button_5"
             android:layout_weight="1"
             android:background="@android:color/transparent" />
@@ -56,6 +61,7 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:text="JUN"
+            android:textColor="#fff"
             android:id="@+id/month_button_6"
             android:layout_weight="1"
             android:background="@android:color/transparent" />

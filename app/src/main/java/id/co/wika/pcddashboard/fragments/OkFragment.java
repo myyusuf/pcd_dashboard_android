@@ -262,9 +262,6 @@ public class OkFragment extends Fragment {
         }
         actualDataEntries.add(0, new Entry(0, 0));
 
-//        this.planDataEntries = planDataEntries;
-//        this.actualDataEntries = actualDataEntries;
-
         mChart.setMinimumHeight(450);
 //        mChart.setDescription("");
 //        mChart.setNoDataTextDescription("No data.");
@@ -272,40 +269,27 @@ public class OkFragment extends Fragment {
 
         LineDataSet dataSet = new LineDataSet(planDataEntries, "Plan");
         dataSet.setMode(LineDataSet.Mode.CUBIC_BEZIER);
-        dataSet.setDrawCircles(true);
-//        dataSet.setDrawFilled(true);
+        dataSet.setDrawCircles(false);
+        dataSet.setDrawFilled(true);
         dataSet.setDrawValues(false);
         dataSet.setColor(Color.parseColor("#8CEAFF"));
         dataSet.setFillColor(Color.parseColor("#8CEAFF"));
-        dataSet.setLineWidth(5f);
-        dataSet.setCircleColorHole(Color.parseColor("#000000"));
-        dataSet.setCircleColor(Color.parseColor("#ffffff"));
-        dataSet.setCircleHoleRadius(4f);
-        dataSet.setCircleRadius(7f);
-
         dataSet.setFillAlpha(70);
 
         LineDataSet dataSet2 = new LineDataSet(actualDataEntries, "Actual");
         dataSet2.setMode(LineDataSet.Mode.CUBIC_BEZIER);
-        dataSet2.setDrawCircles(true);
-//        dataSet2.setDrawFilled(true);
+        dataSet2.setDrawCircles(false);
+        dataSet2.setDrawFilled(true);
         dataSet2.setDrawValues(false);
         dataSet2.setColor(Color.parseColor("#F7E81C"));
         dataSet2.setFillColor(Color.parseColor("#F7E81C"));
         dataSet2.setFillAlpha(200);
-
-        dataSet2.setLineWidth(5f);
-        dataSet2.setCircleColorHole(Color.parseColor("#000000"));
-        dataSet2.setCircleColor(Color.parseColor("#ffffff"));
-        dataSet2.setCircleHoleRadius(4f);
-        dataSet2.setCircleRadius(7f);
 
         ArrayList<ILineDataSet> dataSets = new ArrayList<ILineDataSet>();
         dataSets.add(dataSet2);
         dataSets.add(dataSet);
 
         LineData lineData = new LineData(dataSets);
-
 
         DefaultAxisValueFormatter formatter = new DefaultAxisValueFormatter(0) {
 
@@ -331,18 +315,16 @@ public class OkFragment extends Fragment {
         mChart.getAxisLeft().setSpaceBottom(0);
         mChart.setDrawBorders(false);
         mChart.getAxisRight().setEnabled(false);
-        mChart.getXAxis().setGridColor(Color.WHITE);
-        mChart.getXAxis().enableAxisLineDashedLine(4f, 2f, 1f);
+        mChart.getXAxis().setGridColor(Color.GRAY);
         mChart.getLegend().setEnabled(false);
 
         mChart.getXAxis().setTextColor(Color.WHITE);
         mChart.getXAxis().setPosition(XAxis.XAxisPosition.TOP_INSIDE);
-//        mChart.getXAxis().setTextSize(18f);
         mChart.getXAxis().setDrawAxisLine(false);
 
         mChart.getAxisLeft().setPosition(YAxis.YAxisLabelPosition.INSIDE_CHART);
         mChart.getAxisLeft().setEnabled(false);
-        mChart.setViewPortOffsets(50, 15, 50, 30);
+        mChart.setViewPortOffsets(0, 15, 0, 0);
 
         mChart.setPinchZoom(true);
 
@@ -360,6 +342,8 @@ public class OkFragment extends Fragment {
 
         CustomMarkerView mv = new CustomMarkerView(getActivity().getBaseContext(), R.layout.custom_marker_view);
         mChart.setMarkerView(mv);
+
+
 
 //        updateSelectedMonth(selectedMonth);
 
