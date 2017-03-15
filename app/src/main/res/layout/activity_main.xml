@@ -288,59 +288,22 @@
 
                 </LinearLayout>
 
+
                 <LinearLayout
-                    android:orientation="horizontal"
                     android:layout_width="match_parent"
-                    android:weightSum="3"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:orientation="vertical" >
 
                     <id.co.wika.pcddashboard.components.DashboardItemView
                         android:id="@+id/dashboard_item_view_1"
                         app:title="RKAP"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"/>
-
-                    <id.co.wika.pcddashboard.components.DashboardItemView
-                        android:id="@+id/dashboard_item_view_2"
-                        app:title="Ri s/d Jan 2016"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"/>
-
-                    <id.co.wika.pcddashboard.components.DashboardItemView
-                        android:id="@+id/dashboard_item_view_3"
-                        app:title="Prog 2016"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"/>
 
                 </LinearLayout>
 
-            <LinearLayout
-                android:orientation="horizontal"
-                android:layout_width="match_parent"
-
-                android:layout_height="wrap_content"
-                android:gravity="center">
-                <LinearLayout
-                    android:orientation="horizontal"
-                    android:layout_width="150dp"
-                    android:weightSum="1"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:gravity="center">
-
-                    <id.co.wika.pcddashboard.components.DashboardItemView
-                        android:id="@+id/dashboard_item_view_4"
-                        app:title="Sisa"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:layout_gravity="center"/>
-
-                </LinearLayout>
-            </LinearLayout>
 
 
 

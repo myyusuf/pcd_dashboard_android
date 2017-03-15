@@ -1,17 +1,15 @@
 package id.co.wika.pcddashboard;
 
-import android.content.Context;
-import android.graphics.Color;
 import android.net.Uri;
+import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.app.FragmentTabHost;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Base64;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -19,12 +17,7 @@ import android.view.ViewGroup;
 import android.widget.TabHost;
 import android.widget.TextView;
 
-import com.android.volley.AuthFailureError;
-import com.android.volley.Request;
 import com.android.volley.Response;
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.JsonObjectRequest;
-import com.android.volley.toolbox.Volley;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -32,8 +25,6 @@ import org.json.JSONObject;
 import java.math.BigDecimal;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
 
 import id.co.wika.pcddashboard.components.DashboardItemView;
 import id.co.wika.pcddashboard.fragments.LkFragment;
@@ -41,11 +32,8 @@ import id.co.wika.pcddashboard.fragments.LspFragment;
 import id.co.wika.pcddashboard.fragments.MonthSelectFragment;
 import id.co.wika.pcddashboard.fragments.OkFragment;
 import id.co.wika.pcddashboard.fragments.OpFragment;
-import id.co.wika.pcddashboard.fragments.RkapTabFragment;
 import id.co.wika.pcddashboard.models.DashboardItem;
 import id.co.wika.pcddashboard.services.RestRequestService;
-
-import android.support.v4.app.FragmentTabHost;
 
 public class MainActivity extends AppCompatActivity implements
         LkFragment.OnLkFragmentInteractionListener,
@@ -133,9 +121,9 @@ public class MainActivity extends AppCompatActivity implements
         monthSelectPager.setCurrentItem(0);
 
         dashboardItemView1 = (DashboardItemView) findViewById(R.id.dashboard_item_view_1);
-        dashboardItemView2 = (DashboardItemView) findViewById(R.id.dashboard_item_view_2);
-        dashboardItemView3 = (DashboardItemView) findViewById(R.id.dashboard_item_view_3);
-        dashboardItemView4 = (DashboardItemView) findViewById(R.id.dashboard_item_view_4);
+//        dashboardItemView2 = (DashboardItemView) findViewById(R.id.dashboard_item_view_2);
+//        dashboardItemView3 = (DashboardItemView) findViewById(R.id.dashboard_item_view_3);
+//        dashboardItemView4 = (DashboardItemView) findViewById(R.id.dashboard_item_view_4);
 
         //-------------
 
@@ -336,9 +324,9 @@ public class MainActivity extends AppCompatActivity implements
 
     private void updateDashboardItemView(){
         dashboardItemView1.setDashboardItem(this.dashboardItemList.get(0));
-        dashboardItemView2.setDashboardItem(this.dashboardItemList.get(1));
-        dashboardItemView3.setDashboardItem(this.dashboardItemList.get(2));
-        dashboardItemView4.setDashboardItem(this.dashboardItemList.get(3));
+//        dashboardItemView2.setDashboardItem(this.dashboardItemList.get(1));
+//        dashboardItemView3.setDashboardItem(this.dashboardItemList.get(2));
+//        dashboardItemView4.setDashboardItem(this.dashboardItemList.get(3));
     }
 
     public class EmployeeAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {

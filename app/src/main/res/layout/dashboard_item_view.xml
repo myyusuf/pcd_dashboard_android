@@ -9,7 +9,9 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:layout_gravity="center"
-        android:layout_margin="10dp">
+        android:layout_margin="10dp"
+        android:padding="5dp"
+        android:background="@drawable/dashboard_item_container_bg">
 
         <TextView
             android:layout_width="match_parent"
@@ -26,80 +28,99 @@
             android:textAlignment="center"
             android:id="@+id/title_text_view" />
 
-        <TextView
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingLeft="10dp"
-            android:paddingRight="10dp"
-            android:text="-"
-            tools:text="123.45"
-            android:textColor="#FFFFFF"
-            android:textSize="17sp"
-            android:gravity="center"
-            android:textAlignment="center"
-            android:id="@+id/ok_text_view"/>
+            android:layout_height="40dp"
+            android:orientation="horizontal"
+            android:weightSum="2"
+            android:background="@drawable/dashboard_item_container_sub_bg"
+            android:layout_marginTop="10dp"
+            android:padding="8dp"
+            android:gravity="center_vertical">
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingLeft="10dp"
-            android:paddingRight="10dp"
-            android:text="OK"
-            android:textColor="#FFFFFF"
-            android:textSize="18sp"
-            android:textStyle="bold"
-            android:gravity="center"
-            android:textAlignment="center"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="OP"
+                android:textColor="#fff"
+                android:layout_weight="1"
+                android:gravity="center_vertical"
+                android:textSize="21sp"/>
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingLeft="10dp"
-            android:paddingRight="10dp"
-            android:text="-"
-            tools:text="123.45"
-            android:textColor="#FFFFFF"
-            android:textSize="17sp"
-            android:gravity="center"
-            android:textAlignment="center"
-            android:id="@+id/op_text_view"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="349"
+                android:id="@+id/op_text_view"
+                android:textColor="#fff"
+                android:layout_weight="1"
+                android:textSize="18sp"/>
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingLeft="10dp"
-            android:paddingRight="10dp"
-            android:text="OP"
-            android:textColor="#FFFFFF"
-            android:textSize="18sp"
-            android:textStyle="bold"
-            android:gravity="center"
-            android:textAlignment="center"/>
+        </LinearLayout>
 
-        <TextView
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingLeft="10dp"
-            android:paddingRight="10dp"
-            android:text="-"
-            tools:text="123.45"
-            android:textColor="#FFFFFF"
-            android:textSize="17sp"
-            android:gravity="center"
-            android:textAlignment="center"
-            android:id="@+id/lsp_text_view"/>
+            android:layout_height="40dp"
+            android:orientation="horizontal"
+            android:weightSum="2"
+            android:background="@drawable/dashboard_item_container_sub_bg"
+            android:layout_marginTop="10dp"
+            android:padding="8dp"
+            android:gravity="center_vertical">
 
-        <TextView
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="OK"
+                android:textColor="#fff"
+                android:layout_weight="1"
+                android:gravity="center_vertical"
+                android:textSize="21sp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="349"
+                android:id="@+id/ok_text_view"
+                android:textColor="#fff"
+                android:layout_weight="1"
+                android:textSize="18sp"/>
+
+        </LinearLayout>
+
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingLeft="10dp"
-            android:paddingRight="10dp"
-            android:text="LSP"
-            android:textColor="#FFFFFF"
-            android:textSize="18sp"
-            android:textStyle="bold"
-            android:gravity="center"
-            android:textAlignment="center"/>
+            android:layout_height="40dp"
+            android:orientation="horizontal"
+            android:weightSum="2"
+            android:background="@drawable/dashboard_item_container_sub_bg"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="5dp"
+            android:padding="8dp"
+            android:gravity="center_vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="LSP"
+                android:textColor="#fff"
+                android:layout_weight="1"
+                android:gravity="center_vertical"
+                android:textSize="21sp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="349"
+                android:id="@+id/lsp_text_view"
+                android:textColor="#fff"
+                android:layout_weight="1"
+                android:textSize="18sp"/>
+
+        </LinearLayout>
 
     </LinearLayout>
 
