@@ -47,7 +47,8 @@
             android:layout_centerHorizontal="true"
             android:fillViewport="false"
             android:padding="0dp"
-            android:scrollIndicators="none">
+            android:scrollIndicators="none"
+            android:scrollbars="none">
 
             <LinearLayout
                 android:orientation="vertical"
@@ -285,9 +286,7 @@
 
                     </LinearLayout>
 
-
                 </LinearLayout>
-
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -297,22 +296,64 @@
 
                     <id.co.wika.pcddashboard.components.DashboardItemView
                         android:id="@+id/dashboard_item_view_1"
-                        app:title="RKAP"
+                        app:title="Sisa"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:paddingLeft="5dp"
+                        android:paddingRight="5dp"
+                        android:paddingTop="7dp"
+                        android:paddingBottom="7dp"
+                        android:text="Sisa Hasil Usaha"
+                        android:textColor="#FFFFFF"
+                        android:textSize="20sp"
+                        android:background="@drawable/sisa_hasil_usaha_bg"
+                        android:gravity="center"
+                        android:textAlignment="center"
+                        android:id="@+id/title_text_view" />
+
+                    <id.co.wika.pcddashboard.components.DashboardItemView
+                        android:id="@+id/dashboard_item_view_2"
+                        app:title="OK Lama"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"/>
+
+                    <id.co.wika.pcddashboard.components.DashboardItemView
+                        android:id="@+id/dashboard_item_view_3"
+                        app:title="OK Baru (Sudah didapat)"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"/>
+
+                    <id.co.wika.pcddashboard.components.DashboardItemView
+                        android:id="@+id/dashboard_item_view_4"
+                        app:title="OK Baru (Dalam pengusahaan)"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"/>
+
+                    <id.co.wika.pcddashboard.components.DashboardItemView
+                        android:id="@+id/dashboard_item_view_5"
+                        app:title="Lain - Lain"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"/>
 
                 </LinearLayout>
 
-
-
-
-                <android.support.v7.widget.RecyclerView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginTop="5dp"
-                    android:id="@+id/dashboard_recycler_view">
-                </android.support.v7.widget.RecyclerView>
+                <!--<android.support.v7.widget.RecyclerView-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="match_parent"-->
+                    <!--android:layout_marginTop="5dp"-->
+                    <!--android:id="@+id/dashboard_recycler_view">-->
+                <!--</android.support.v7.widget.RecyclerView>-->
 
             </LinearLayout>
         </ScrollView>

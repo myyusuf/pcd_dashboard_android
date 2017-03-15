@@ -62,6 +62,7 @@ public class MainActivity extends AppCompatActivity implements
     private DashboardItemView dashboardItemView2;
     private DashboardItemView dashboardItemView3;
     private DashboardItemView dashboardItemView4;
+    private DashboardItemView dashboardItemView5;
 
     private ArrayList<DashboardItem> dashboardItemList = new ArrayList<>();
 
@@ -97,15 +98,15 @@ public class MainActivity extends AppCompatActivity implements
             }
         });
 
-        mRecyclerView = (RecyclerView) findViewById(R.id.dashboard_recycler_view);
-
-        adapter = new EmployeeAdapter();
-        mRecyclerView.setAdapter(adapter);
-
-        LinearLayoutManager layoutManager = new LinearLayoutManager(getApplicationContext());
-        layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
-
-        mRecyclerView.setLayoutManager(layoutManager);
+//        mRecyclerView = (RecyclerView) findViewById(R.id.dashboard_recycler_view);
+//
+//        adapter = new EmployeeAdapter();
+//        mRecyclerView.setAdapter(adapter);
+//
+//        LinearLayoutManager layoutManager = new LinearLayoutManager(getApplicationContext());
+//        layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
+//
+//        mRecyclerView.setLayoutManager(layoutManager);
 
         getDashboardData();
 
@@ -121,9 +122,10 @@ public class MainActivity extends AppCompatActivity implements
         monthSelectPager.setCurrentItem(0);
 
         dashboardItemView1 = (DashboardItemView) findViewById(R.id.dashboard_item_view_1);
-//        dashboardItemView2 = (DashboardItemView) findViewById(R.id.dashboard_item_view_2);
-//        dashboardItemView3 = (DashboardItemView) findViewById(R.id.dashboard_item_view_3);
-//        dashboardItemView4 = (DashboardItemView) findViewById(R.id.dashboard_item_view_4);
+        dashboardItemView2 = (DashboardItemView) findViewById(R.id.dashboard_item_view_2);
+        dashboardItemView3 = (DashboardItemView) findViewById(R.id.dashboard_item_view_3);
+        dashboardItemView4 = (DashboardItemView) findViewById(R.id.dashboard_item_view_4);
+        dashboardItemView5 = (DashboardItemView) findViewById(R.id.dashboard_item_view_5);
 
         //-------------
 
@@ -266,7 +268,7 @@ public class MainActivity extends AppCompatActivity implements
 
                 JSONObject obj = null;
 
-                for(int i=1; i<=4; i++) {
+                for(int i=1; i<=8; i++) {
                     try {
                         obj = response.getJSONObject("data" + i);
                         DashboardItem dashboardItem = new DashboardItem();
@@ -287,7 +289,7 @@ public class MainActivity extends AppCompatActivity implements
                     }
                 }
 
-                adapter.notifyDataSetChanged();
+//                adapter.notifyDataSetChanged();
                 updateDashboardItemView();
 
             }
@@ -323,10 +325,11 @@ public class MainActivity extends AppCompatActivity implements
     }
 
     private void updateDashboardItemView(){
-        dashboardItemView1.setDashboardItem(this.dashboardItemList.get(0));
-//        dashboardItemView2.setDashboardItem(this.dashboardItemList.get(1));
-//        dashboardItemView3.setDashboardItem(this.dashboardItemList.get(2));
-//        dashboardItemView4.setDashboardItem(this.dashboardItemList.get(3));
+        dashboardItemView1.setDashboardItem(this.dashboardItemList.get(3));
+        dashboardItemView2.setDashboardItem(this.dashboardItemList.get(4));
+        dashboardItemView3.setDashboardItem(this.dashboardItemList.get(5));
+        dashboardItemView4.setDashboardItem(this.dashboardItemList.get(6));
+        dashboardItemView5.setDashboardItem(this.dashboardItemList.get(7));
     }
 
     public class EmployeeAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
