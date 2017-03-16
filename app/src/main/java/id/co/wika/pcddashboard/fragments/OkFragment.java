@@ -274,7 +274,7 @@ public class OkFragment extends Fragment {
         dataSet.setDrawValues(false);
         dataSet.setColor(Color.parseColor("#8CEAFF"));
         dataSet.setFillColor(Color.parseColor("#8CEAFF"));
-        dataSet.setFillAlpha(70);
+        dataSet.setFillAlpha(200);
 
         LineDataSet dataSet2 = new LineDataSet(actualDataEntries, "Actual");
         dataSet2.setMode(LineDataSet.Mode.CUBIC_BEZIER);
@@ -283,7 +283,7 @@ public class OkFragment extends Fragment {
         dataSet2.setDrawValues(false);
         dataSet2.setColor(Color.parseColor("#F7E81C"));
         dataSet2.setFillColor(Color.parseColor("#F7E81C"));
-        dataSet2.setFillAlpha(200);
+        dataSet2.setFillAlpha(255);
 
         ArrayList<ILineDataSet> dataSets = new ArrayList<ILineDataSet>();
         dataSets.add(dataSet2);

@@ -1,11 +1,13 @@
 package id.co.wika.pcddashboard.components;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.widget.TextView;
 
 import com.github.mikephil.charting.components.MarkerView;
 import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.highlight.Highlight;
+import com.github.mikephil.charting.utils.MPPointF;
 
 import java.text.DecimalFormat;
 
@@ -29,6 +31,7 @@ public class CustomMarkerView extends MarkerView {
     // content (user-interface)
     @Override
     public void refreshContent(Entry e, Highlight highlight) {
+        tvContent.setTextColor(Color.BLACK);
         tvContent.setText(decimalFormat.format(e.getY())); // set the entry-value as the display text
     }
 
@@ -43,5 +46,12 @@ public class CustomMarkerView extends MarkerView {
 //        // this will cause the marker-view to be above the selected value
 //        return -getHeight();
 //    }
+
+    @Override
+    public MPPointF getOffset() {
+        return MPPointF.getInstance(-(getWidth() / 2), -getHeight());
+    }
+
+
 }
 

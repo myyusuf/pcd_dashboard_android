@@ -70,9 +70,17 @@ public class MainActivity extends AppCompatActivity implements
 
     DecimalFormat decimalFormat = new DecimalFormat("#,###,###.00");
 
-    private FragmentTabHost mTabHost;
+    private TextView rkapOkTextView;
+    private TextView rkapOpTextView;
+    private TextView rkapLspTextView;
 
-    private TabHost host;
+    private TextView riOkTextView;
+    private TextView riOpTextView;
+    private TextView riLspTextView;
+
+    private TextView prognosaOkTextView;
+    private TextView prognosaOpTextView;
+    private TextView prognosaLspTextView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -129,46 +137,17 @@ public class MainActivity extends AppCompatActivity implements
 
         //-------------
 
-//        mTabHost = (FragmentTabHost) findViewById(android.R.id.tabhost);
-//        mTabHost.setup(this, getSupportFragmentManager(), android.R.id.tabcontent);
-//
-//        mTabHost.addTab(
-//                mTabHost.newTabSpec("tab1").setIndicator("RKAP", null),
-//                RkapTabFragment.class, null);
-//        mTabHost.addTab(
-//                mTabHost.newTabSpec("tab2").setIndicator("Ri", null),
-//                RkapTabFragment.class, null);
-//        mTabHost.addTab(
-//                mTabHost.newTabSpec("tab3").setIndicator("Prog", null),
-//                RkapTabFragment.class, null);
-//
-//        for(int i=0;i<mTabHost.getTabWidget().getChildCount();i++)
-//        {
-//            TextView tv = (TextView) mTabHost.getTabWidget().getChildAt(i).findViewById(android.R.id.title);
-//            tv.setText("Test");
-//            tv.setTextColor(Color.parseColor("#ffffff"));
-//        }
+        rkapOkTextView = (TextView) findViewById(R.id.dashboard_text11);
+        rkapOpTextView = (TextView) findViewById(R.id.dashboard_text12);
+        rkapLspTextView = (TextView) findViewById(R.id.dashboard_text13);
 
-//        host = (TabHost)findViewById(R.id.tabHost);
-//        host.setup();
-//
-//        //Tab 1
-//        TabHost.TabSpec spec = host.newTabSpec("Tab One");
-//        spec.setContent(R.id.tab1);
-//        spec.setIndicator("Tab One");
-//        host.addTab(spec);
-//
-//        //Tab 2
-//        spec = host.newTabSpec("Tab Two");
-//        spec.setContent(R.id.tab2);
-//        spec.setIndicator("Tab Two");
-//        host.addTab(spec);
-//
-//        //Tab 3
-//        spec = host.newTabSpec("Tab Three");
-//        spec.setContent(R.id.tab3);
-//        spec.setIndicator("Tab Three");
-//        host.addTab(spec);
+        riOkTextView = (TextView) findViewById(R.id.dashboard_text21);
+        riOpTextView = (TextView) findViewById(R.id.dashboard_text22);
+        riLspTextView = (TextView) findViewById(R.id.dashboard_text23);
+
+        prognosaOkTextView = (TextView) findViewById(R.id.dashboard_text31);
+        prognosaOpTextView = (TextView) findViewById(R.id.dashboard_text32);
+        prognosaLspTextView = (TextView) findViewById(R.id.dashboard_text33);
     }
 
     @Override
@@ -330,6 +309,21 @@ public class MainActivity extends AppCompatActivity implements
         dashboardItemView3.setDashboardItem(this.dashboardItemList.get(5));
         dashboardItemView4.setDashboardItem(this.dashboardItemList.get(6));
         dashboardItemView5.setDashboardItem(this.dashboardItemList.get(7));
+
+        DashboardItem rkap = this.dashboardItemList.get(0);
+        rkapOkTextView.setText(decimalFormat.format(rkap.getOk().doubleValue()));
+        rkapOpTextView.setText(decimalFormat.format(rkap.getOp().doubleValue()));
+        rkapLspTextView.setText(decimalFormat.format(rkap.getLsp().doubleValue()));
+
+        DashboardItem ri = this.dashboardItemList.get(1);
+        riOkTextView.setText(decimalFormat.format(ri.getOk().doubleValue()));
+        riOpTextView.setText(decimalFormat.format(ri.getOp().doubleValue()));
+        riLspTextView.setText(decimalFormat.format(ri.getLsp().doubleValue()));
+
+        DashboardItem prognosa = this.dashboardItemList.get(2);
+        prognosaOkTextView.setText(decimalFormat.format(prognosa.getOk().doubleValue()));
+        prognosaOpTextView.setText(decimalFormat.format(prognosa.getOp().doubleValue()));
+        prognosaLspTextView.setText(decimalFormat.format(prognosa.getLsp().doubleValue()));
     }
 
     public class EmployeeAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {

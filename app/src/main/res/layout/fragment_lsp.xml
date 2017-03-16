@@ -61,7 +61,7 @@
                     android:layout_height="36dp"
                     android:text="Details"
                     android:id="@+id/lsp_chart_button"
-                    android:textColor="#3A64BA"
+                    android:textColor="#fff"
                     android:padding="0dp"
                     android:layout_marginTop="11dp"
                     android:textSize="18dp"
