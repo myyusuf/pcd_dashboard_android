@@ -14,6 +14,10 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.Spinner;
 import android.widget.TabHost;
 import android.widget.TextView;
 
@@ -40,7 +44,8 @@ public class MainActivity extends AppCompatActivity implements
         OkFragment.OnOkFragmentInteractionListener,
         OpFragment.OnOpFragmentInteractionListener,
         LspFragment.OnLspFragmentInteractionListener,
-        MonthSelectFragment.OnMonthSelectFragmentInteractionListener{
+        MonthSelectFragment.OnMonthSelectFragmentInteractionListener,
+        AdapterView.OnItemSelectedListener{
 
     RecyclerView mRecyclerView;
     private EmployeeAdapter adapter;
@@ -81,6 +86,9 @@ public class MainActivity extends AppCompatActivity implements
     private TextView prognosaOkTextView;
     private TextView prognosaOpTextView;
     private TextView prognosaLspTextView;
+
+    private int selectedMonth = 1;
+    private int selectedYear = 2008;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -447,5 +455,61 @@ public class MainActivity extends AppCompatActivity implements
 
 //        this.selectedMonth = month;
 //        this.updateDashboardData();
+    }
+
+    private void makeSpinner() {
+        Spinner spinner1 = (Spinner) findViewById(R.id.project_month_spinner);
+
+        ArrayAdapter<CharSequence> adapter1 = ArrayAdapter.createFromResource(
+                this,
+                R.array.project_month_array,
+                R.layout.project_spinner_item
+//                android.R.layout.simple_spinner_item
+        );
+        adapter1.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+        spinner1.setAdapter(adapter1);
+
+        Spinner spinner2 = (Spinner) findViewById(R.id.project_year_spinner);
+
+        ArrayAdapter<CharSequence> adapter2 = ArrayAdapter.createFromResource(
+                this,
+                R.array.project_year_array,
+                R.layout.project_spinner_item
+//                android.R.layout.simple_spinner_item
+        );
+        adapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+        spinner2.setAdapter(adapter2);
+
+        spinner1.setSelection(selectedMonth);
+        spinner2.setSelection(selectedYear);
+
+        spinner1.setOnItemSelectedListener(this);
+        spinner2.setOnItemSelectedListener(this);
+
+    }
+
+    public void onItemSelected(AdapterView<?> parent, View view,
+                               int pos, long id) {
+
+        Spinner spinner = (Spinner) parent;
+        Log.v("Spinner : ", "Pos : " + pos);
+
+//        if(spinner.getId() == R.id.project_filter_spinner){
+//            ProjectActivity.this.selectedFilter = pos;
+//            ProjectActivity.this.filterProjectList();
+//        }else if(spinner.getId() == R.id.project_sort_spinner){
+//            Log.v("spinner", "sort: " + pos);
+//
+//            ProjectActivity.this.selectedSort = pos;
+//            ProjectActivity.this.sortProjectList();
+//        }
+
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> parent) {
+
     }
 }

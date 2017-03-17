@@ -25,17 +25,38 @@
             android:layout_gravity="center_horizontal"
             android:background="#2E3C42">
 
-            <TextView
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceSmall"
-                android:text="Jan, 2017"
-                android:id="@+id/month_select_label"
+            <!--<TextView-->
+                <!--android:layout_width="fill_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:textAppearance="?android:attr/textAppearanceSmall"-->
+                <!--android:text="Jan, 2017"-->
+                <!--android:id="@+id/month_select_label"-->
+                <!--android:textColor="#ffffff"-->
+                <!--android:textSize="20dp"-->
+                <!--android:textAlignment="center"-->
+                <!--android:padding="0dp"-->
+                <!--android:gravity="center_horizontal" />-->
+
+            <Spinner
+                android:id="@+id/project_month_spinner"
+                android:layout_width="0dp"
+                android:layout_weight="0.96"
+                android:layout_height="match_parent"
+                android:textSize="22sp"
+                android:background="#3A64BA"
                 android:textColor="#ffffff"
-                android:textSize="20dp"
-                android:textAlignment="center"
-                android:padding="0dp"
-                android:gravity="center_horizontal" />
+                />
+
+            <Spinner
+                android:id="@+id/project_year_spinner"
+                android:layout_width="0dp"
+                android:layout_weight="0.96"
+                android:layout_height="match_parent"
+                android:textSize="22sp"
+                android:background="#3A64BA"
+                android:textColor="#ffffff"
+                android:layout_marginLeft="6dp"
+                />
 
         </LinearLayout>
 
