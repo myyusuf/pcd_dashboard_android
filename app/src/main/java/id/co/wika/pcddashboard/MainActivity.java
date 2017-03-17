@@ -31,8 +31,11 @@ import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
+import java.util.Locale;
 
 import id.co.wika.pcddashboard.components.DashboardItemView;
+import id.co.wika.pcddashboard.components.SimpleDatePickerDialog;
+import id.co.wika.pcddashboard.components.SimpleDatePickerDialogFragment;
 import id.co.wika.pcddashboard.fragments.LkFragment;
 import id.co.wika.pcddashboard.fragments.LspFragment;
 import id.co.wika.pcddashboard.fragments.MonthSelectFragment;
@@ -40,6 +43,7 @@ import id.co.wika.pcddashboard.fragments.OkFragment;
 import id.co.wika.pcddashboard.fragments.OpFragment;
 import id.co.wika.pcddashboard.models.DashboardItem;
 import id.co.wika.pcddashboard.services.RestRequestService;
+import id.co.wika.pcddashboard.utils.DateDisplayUtils;
 
 public class MainActivity extends AppCompatActivity implements
         LkFragment.OnLkFragmentInteractionListener,
@@ -47,7 +51,8 @@ public class MainActivity extends AppCompatActivity implements
         OpFragment.OnOpFragmentInteractionListener,
         LspFragment.OnLspFragmentInteractionListener,
         MonthSelectFragment.OnMonthSelectFragmentInteractionListener,
-        AdapterView.OnItemSelectedListener{
+        AdapterView.OnItemSelectedListener,
+        SimpleDatePickerDialog.OnDateSetListener{
 
     RecyclerView mRecyclerView;
     private EmployeeAdapter adapter;
@@ -101,21 +106,28 @@ public class MainActivity extends AppCompatActivity implements
         //IMPORTANT!!!
 //        getSupportActionBar().setDisplayShowTitleEnabled(false);
 
-//        monthSelectLabel = (TextView) findViewById(R.id.month_select_label);
-//
-//        monthSelectLabel.setOnClickListener(new View.OnClickListener() {
-//
-//            @Override
-//            public void onClick(View v) {
-//                Log.v("reload dashboard data", "reload dashboard data");
+        monthSelectLabel = (TextView) findViewById(R.id.month_select_label);
+
+        monthSelectLabel.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                Log.v("reload dashboard data", "reload dashboard data");
 //                getDashboardData();
 //
 //                MainActivity.this.okFragment.reload(1, 2017);
 //                MainActivity.this.opFragment.reload(1, 2017);
 //                MainActivity.this.lkFragment.reload(1, 2017);
 //                MainActivity.this.lspFragment.reload(1, 2017);
-//            }
-//        });
+
+                SimpleDatePickerDialogFragment datePickerDialogFragment;
+                Calendar calendar = Calendar.getInstance(Locale.getDefault());
+                datePickerDialogFragment = SimpleDatePickerDialogFragment.getInstance(
+                        calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH));
+                datePickerDialogFragment.setOnDateSetListener(MainActivity.this);
+                datePickerDialogFragment.show(MainActivity.this.getSupportFragmentManager(), null);
+            }
+        });
 
 //        mRecyclerView = (RecyclerView) findViewById(R.id.dashboard_recycler_view);
 //
@@ -173,6 +185,11 @@ public class MainActivity extends AppCompatActivity implements
         prognosaOkTextView = (TextView) findViewById(R.id.dashboard_text31);
         prognosaOpTextView = (TextView) findViewById(R.id.dashboard_text32);
         prognosaLspTextView = (TextView) findViewById(R.id.dashboard_text33);
+    }
+
+    @Override
+    public void onDateSet(int year, int monthOfYear) {
+        monthSelectLabel.setText(DateDisplayUtils.formatMonthYear(year, monthOfYear));
     }
 
     @Override
@@ -523,15 +540,15 @@ public class MainActivity extends AppCompatActivity implements
         Spinner spinner = (Spinner) parent;
         Log.v("Spinner : ", "Pos : " + pos);
 
-//        if(spinner.getId() == R.id.project_filter_spinner){
+        if(spinner.getId() == R.id.project_month_spinner){
 //            ProjectActivity.this.selectedFilter = pos;
 //            ProjectActivity.this.filterProjectList();
-//        }else if(spinner.getId() == R.id.project_sort_spinner){
+        }else if(spinner.getId() == R.id.project_year_spinner){
 //            Log.v("spinner", "sort: " + pos);
 //
 //            ProjectActivity.this.selectedSort = pos;
 //            ProjectActivity.this.sortProjectList();
-//        }
+        }
 
     }
 
