@@ -465,7 +465,7 @@ public class MainActivity extends AppCompatActivity implements
         ArrayAdapter<CharSequence> adapter1 = ArrayAdapter.createFromResource(
                 this,
                 R.array.project_month_array,
-                R.layout.project_spinner_item
+                R.layout.project_spinner_item_right
 //                android.R.layout.simple_spinner_item
         );
         adapter1.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
