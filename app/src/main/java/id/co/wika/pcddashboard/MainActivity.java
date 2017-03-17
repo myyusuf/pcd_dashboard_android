@@ -29,6 +29,8 @@ import org.json.JSONObject;
 import java.math.BigDecimal;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.List;
 
 import id.co.wika.pcddashboard.components.DashboardItemView;
 import id.co.wika.pcddashboard.fragments.LkFragment;
@@ -89,6 +91,7 @@ public class MainActivity extends AppCompatActivity implements
 
     private int selectedMonth = 1;
     private int selectedYear = 2008;
+    private int maxYear = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -123,6 +126,18 @@ public class MainActivity extends AppCompatActivity implements
 //        layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
 //
 //        mRecyclerView.setLayoutManager(layoutManager);
+
+        Calendar calendar = Calendar.getInstance();
+        this.selectedYear = calendar.get(Calendar.YEAR);
+        this.selectedMonth = calendar.get(Calendar.MONTH);
+        if(this.selectedMonth == 0){
+            this.selectedYear = this.selectedYear - 1;
+            this.selectedMonth = 11;
+        }else{
+            this.selectedMonth = this.selectedMonth - 1;
+        }
+
+        this.maxYear = this.selectedYear;
 
         makeSpinner();
 
@@ -466,20 +481,30 @@ public class MainActivity extends AppCompatActivity implements
                 this,
                 R.array.project_month_array,
                 R.layout.project_spinner_item_right
-//                android.R.layout.simple_spinner_item
         );
+
+//        List<String> months = new ArrayList<String>();
+//        months.add("January");
+
+//        ArrayAdapter<CharSequence> adapter1 = new ArrayAdapter(this, R.layout.project_spinner_item_right, 0,  months);
         adapter1.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
         spinner1.setAdapter(adapter1);
 
+        List<Integer> years = new ArrayList<Integer>();
+        for(int i = DashboardConstant.MIN_YEAR; i<= this.maxYear; i++){
+            years.add(i);
+        }
+
         Spinner spinner2 = (Spinner) findViewById(R.id.project_year_spinner);
 
-        ArrayAdapter<CharSequence> adapter2 = ArrayAdapter.createFromResource(
-                this,
-                R.array.project_year_array,
-                R.layout.project_spinner_item
-//                android.R.layout.simple_spinner_item
-        );
+//        ArrayAdapter<CharSequence> adapter2 = ArrayAdapter.createFromResource(
+//                this,
+//                R.array.project_year_array,
+//                R.layout.project_spinner_item
+//        );
+
+        ArrayAdapter<CharSequence> adapter2 = new ArrayAdapter(this, R.layout.project_spinner_item, 0,  years);
         adapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
         spinner2.setAdapter(adapter2);
