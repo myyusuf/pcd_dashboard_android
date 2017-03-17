@@ -42,6 +42,9 @@ public class MonthSelectFragment extends Fragment {
     private Button monthButton5;
     private Button monthButton6;
 
+    private static final int SELECTED_COLOR = Color.parseColor("#2678F6");
+    private static final int NOT_SELECTED_COLOR = Color.WHITE;
+
     public MonthSelectFragment() {
         // Required empty public constructor
     }
@@ -108,6 +111,12 @@ public class MonthSelectFragment extends Fragment {
         monthButton1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                clearButtonColor();
+
+                Button button = (Button)v;
+                button.setTextColor(SELECTED_COLOR);
+
                 if(mParam1 == 0){
                     mainActivity.updateDashboardData(0);
                 }else if(mParam1 == 1){
@@ -119,6 +128,12 @@ public class MonthSelectFragment extends Fragment {
         monthButton2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                clearButtonColor();
+
+                Button button = (Button)v;
+                button.setTextColor(SELECTED_COLOR);
+
                 if(mParam1 == 0){
                     mainActivity.updateDashboardData(1);
                 }else if(mParam1 == 1){
@@ -130,6 +145,12 @@ public class MonthSelectFragment extends Fragment {
         monthButton3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                clearButtonColor();
+
+                Button button = (Button)v;
+                button.setTextColor(SELECTED_COLOR);
+
                 if(mParam1 == 0){
                     mainActivity.updateDashboardData(2);
                 }else if(mParam1 == 1){
@@ -141,6 +162,12 @@ public class MonthSelectFragment extends Fragment {
         monthButton4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                clearButtonColor();
+
+                Button button = (Button)v;
+                button.setTextColor(SELECTED_COLOR);
+
                 if(mParam1 == 0){
                     mainActivity.updateDashboardData(3);
                 }else if(mParam1 == 1){
@@ -152,6 +179,12 @@ public class MonthSelectFragment extends Fragment {
         monthButton5.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                clearButtonColor();
+
+                Button button = (Button)v;
+                button.setTextColor(SELECTED_COLOR);
+
                 if(mParam1 == 0){
                     mainActivity.updateDashboardData(4);
                 }else if(mParam1 == 1){
@@ -163,6 +196,12 @@ public class MonthSelectFragment extends Fragment {
         monthButton6.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                clearButtonColor();
+
+                Button button = (Button)v;
+                button.setTextColor(SELECTED_COLOR);
+
                 if(mParam1 == 0){
                     mainActivity.updateDashboardData(5);
                 }else if(mParam1 == 1){
@@ -185,12 +224,12 @@ public class MonthSelectFragment extends Fragment {
 
         if(monthButton1 == null) return;
 
-        monthButton1.setTextColor(Color.BLACK);
-        monthButton2.setTextColor(Color.BLACK);
-        monthButton3.setTextColor(Color.BLACK);
-        monthButton4.setTextColor(Color.BLACK);
-        monthButton5.setTextColor(Color.BLACK);
-        monthButton6.setTextColor(Color.BLACK);
+        monthButton1.setTextColor(NOT_SELECTED_COLOR);
+        monthButton2.setTextColor(NOT_SELECTED_COLOR);
+        monthButton3.setTextColor(NOT_SELECTED_COLOR);
+        monthButton4.setTextColor(NOT_SELECTED_COLOR);
+        monthButton5.setTextColor(NOT_SELECTED_COLOR);
+        monthButton6.setTextColor(NOT_SELECTED_COLOR);
     }
 
     @Override

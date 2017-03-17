@@ -121,11 +121,11 @@ public class OpFragment extends Fragment {
 
         mChart = (LineChart)view.findViewById(R.id.op_chart);
 
-        try {
-            this.getData(2017);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+//        try {
+//            this.getData(2017);
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
 
 //        List<Entry> planDataEntries = new ArrayList<Entry>();
 //        List<Entry> actualDataEntries = new ArrayList<Entry>();
@@ -243,6 +243,33 @@ public class OpFragment extends Fragment {
     public interface OnOpFragmentInteractionListener {
         // TODO: Update argument type and name
         void onOpFragmentInteraction(Uri uri);
+    }
+
+    public void drawChartFromJSONArray(JSONArray dataArray){
+        List<Entry> planDataEntries = new ArrayList<Entry>();
+        List<Entry> actualDataEntries = new ArrayList<Entry>();
+
+
+        for (int i = 0; i < dataArray.length(); i++) {
+            JSONObject obj = null;
+            try {
+                obj = dataArray.getJSONObject(i);
+                if(!obj.get("plan").toString().equals("null")){
+                    planDataEntries.add(new Entry(i + 1, new Float(obj.getDouble("plan"))));
+                }
+
+                if(!obj.get("actual").toString().equals("null")){
+                    actualDataEntries.add(new Entry(i + 1, new Float(obj.getDouble("actual"))));
+                }
+
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+
+        }
+
+        drawChart(planDataEntries, actualDataEntries);
+
     }
 
     private void drawChart(List<Entry> planDataEntries, List<Entry> actualDataEntries){

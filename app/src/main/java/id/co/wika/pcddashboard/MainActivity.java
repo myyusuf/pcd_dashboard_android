@@ -7,15 +7,21 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.RecyclerView;
+import android.util.Base64;
 import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
 import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonArrayRequest;
+import com.android.volley.toolbox.Volley;
+import com.github.mikephil.charting.data.Entry;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -23,7 +29,10 @@ import java.math.BigDecimal;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.HashMap;
+import java.util.List;
 import java.util.Locale;
+import java.util.Map;
 
 import id.co.wika.pcddashboard.components.DashboardItemView;
 import id.co.wika.pcddashboard.components.SimpleDatePickerDialog;
@@ -128,6 +137,7 @@ public class MainActivity extends AppCompatActivity implements
         monthSelectLabel.setText(DateDisplayUtils.formatMonthYear(this.selectedYear, this.selectedMonth));
 
         getDashboardData();
+        getDashboardChartData();
 
         dashboardPager = (ViewPager) findViewById(R.id.dashboard_pager);
         dashboardAdapterViewPager = new DashboardPagerAdapter(getSupportFragmentManager());
@@ -321,6 +331,31 @@ public class MainActivity extends AppCompatActivity implements
 
     }
 
+    private void getDashboardChartData(){
+
+        String url = DashboardConstant.BASE_URL + "dashboard/charts/" + selectedYear;
+
+        Response.Listener<JSONObject> listener = new Response.Listener<JSONObject>(){
+
+            @Override
+            public void onResponse(JSONObject response) {
+
+                try {
+                    okFragment.drawChartFromJSONArray(response.getJSONArray("okData"));
+                    opFragment.drawChartFromJSONArray(response.getJSONArray("opData"));
+                    lkFragment.drawChartFromJSONArray(response.getJSONArray("lkData"));
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
+
+            }
+
+        };
+
+        restRequestService.getRequest(url, listener, getApplicationContext());
+    }
+
     private void updateDashboardItemView(){
         dashboardItemView1.setDashboardItem(this.dashboardItemList.get(3));
         dashboardItemView2.setDashboardItem(this.dashboardItemList.get(4));
@@ -404,8 +439,9 @@ public class MainActivity extends AppCompatActivity implements
 
     public void updateDashboardData(int month) {
 
-//        this.selectedMonth = month;
+        this.selectedMonth = month;
 //        this.updateDashboardData();
+        this.getDashboardData();
     }
 
 

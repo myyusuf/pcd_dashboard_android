@@ -122,11 +122,11 @@ public class OkFragment extends Fragment {
 
         mChart = (LineChart)view.findViewById(R.id.ok_chart);
 
-        try {
-            this.getData(2017);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+//        try {
+//            this.getData(2017);
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
 
 //        List<Entry> planDataEntries = new ArrayList<Entry>();
 //        List<Entry> actualDataEntries = new ArrayList<Entry>();
@@ -246,7 +246,33 @@ public class OkFragment extends Fragment {
         void onOkFragmentInteraction(Uri uri);
     }
 
-    private void drawChart(List<Entry> planDataEntries, List<Entry> actualDataEntries){
+    public void drawChartFromJSONArray(JSONArray dataArray){
+        List<Entry> planDataEntries = new ArrayList<Entry>();
+        List<Entry> actualDataEntries = new ArrayList<Entry>();
+
+
+        for (int i = 0; i < dataArray.length(); i++) {
+            JSONObject obj = null;
+            try {
+                obj = dataArray.getJSONObject(i);
+                if(!obj.get("plan").toString().equals("null")){
+                    planDataEntries.add(new Entry(i + 1, new Float(obj.getDouble("plan"))));
+                }
+
+                if(!obj.get("actual").toString().equals("null")){
+                    actualDataEntries.add(new Entry(i + 1, new Float(obj.getDouble("actual"))));
+                }
+
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+
+        }
+
+        drawChart(planDataEntries, actualDataEntries);
+
+    }
+    public void drawChart(List<Entry> planDataEntries, List<Entry> actualDataEntries){
 
         if(planDataEntries.size() > 11) {
             int lastIndex = planDataEntries.size() - 1;

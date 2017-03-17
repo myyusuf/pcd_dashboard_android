@@ -245,6 +245,33 @@ public class LspFragment extends Fragment {
         void onLspFragmentInteraction(Uri uri);
     }
 
+    public void drawChartFromJSONArray(JSONArray dataArray){
+        List<Entry> planDataEntries = new ArrayList<Entry>();
+        List<Entry> actualDataEntries = new ArrayList<Entry>();
+
+
+        for (int i = 0; i < dataArray.length(); i++) {
+            JSONObject obj = null;
+            try {
+                obj = dataArray.getJSONObject(i);
+                if(!obj.get("plan").toString().equals("null")){
+                    planDataEntries.add(new Entry(i + 1, new Float(obj.getDouble("plan"))));
+                }
+
+                if(!obj.get("actual").toString().equals("null")){
+                    actualDataEntries.add(new Entry(i + 1, new Float(obj.getDouble("actual"))));
+                }
+
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+
+        }
+
+        drawChart(planDataEntries, actualDataEntries);
+
+    }
+
     private void drawChart(List<Entry> planDataEntries, List<Entry> actualDataEntries){
 
         if(planDataEntries.size() > 11) {
