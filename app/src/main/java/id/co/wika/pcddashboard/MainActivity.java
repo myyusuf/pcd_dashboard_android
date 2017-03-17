@@ -98,21 +98,21 @@ public class MainActivity extends AppCompatActivity implements
         //IMPORTANT!!!
 //        getSupportActionBar().setDisplayShowTitleEnabled(false);
 
-        monthSelectLabel = (TextView) findViewById(R.id.month_select_label);
-
-        monthSelectLabel.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View v) {
-                Log.v("reload dashboard data", "reload dashboard data");
-                getDashboardData();
-
-                MainActivity.this.okFragment.reload(1, 2017);
-                MainActivity.this.opFragment.reload(1, 2017);
-                MainActivity.this.lkFragment.reload(1, 2017);
-                MainActivity.this.lspFragment.reload(1, 2017);
-            }
-        });
+//        monthSelectLabel = (TextView) findViewById(R.id.month_select_label);
+//
+//        monthSelectLabel.setOnClickListener(new View.OnClickListener() {
+//
+//            @Override
+//            public void onClick(View v) {
+//                Log.v("reload dashboard data", "reload dashboard data");
+//                getDashboardData();
+//
+//                MainActivity.this.okFragment.reload(1, 2017);
+//                MainActivity.this.opFragment.reload(1, 2017);
+//                MainActivity.this.lkFragment.reload(1, 2017);
+//                MainActivity.this.lspFragment.reload(1, 2017);
+//            }
+//        });
 
 //        mRecyclerView = (RecyclerView) findViewById(R.id.dashboard_recycler_view);
 //
@@ -123,6 +123,8 @@ public class MainActivity extends AppCompatActivity implements
 //        layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
 //
 //        mRecyclerView.setLayoutManager(layoutManager);
+
+        makeSpinner();
 
         getDashboardData();
 
@@ -482,8 +484,8 @@ public class MainActivity extends AppCompatActivity implements
 
         spinner2.setAdapter(adapter2);
 
-        spinner1.setSelection(selectedMonth);
-        spinner2.setSelection(selectedYear);
+//        spinner1.setSelection(selectedMonth);
+//        spinner2.setSelection(selectedYear);
 
         spinner1.setOnItemSelectedListener(this);
         spinner2.setOnItemSelectedListener(this);
