@@ -11,7 +11,7 @@ import java.util.Locale;
  */
 public final class DateDisplayUtils {
 
-    private static final String MONTH_YEAR_DISPLAY_PATTERN = "MM/yyyy";
+    private static final String MONTH_YEAR_DISPLAY_PATTERN = "MMM, yyyy";
 
     private DateDisplayUtils() {
         // hide constructor

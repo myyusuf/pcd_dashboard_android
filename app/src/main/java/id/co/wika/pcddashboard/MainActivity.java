@@ -5,20 +5,13 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
-import android.support.v4.app.FragmentTabHost;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.Button;
-import android.widget.Spinner;
-import android.widget.TabHost;
 import android.widget.TextView;
 
 import com.android.volley.Response;
@@ -30,7 +23,6 @@ import java.math.BigDecimal;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.List;
 import java.util.Locale;
 
 import id.co.wika.pcddashboard.components.DashboardItemView;
@@ -51,11 +43,7 @@ public class MainActivity extends AppCompatActivity implements
         OpFragment.OnOpFragmentInteractionListener,
         LspFragment.OnLspFragmentInteractionListener,
         MonthSelectFragment.OnMonthSelectFragmentInteractionListener,
-        AdapterView.OnItemSelectedListener,
         SimpleDatePickerDialog.OnDateSetListener{
-
-    RecyclerView mRecyclerView;
-    private EmployeeAdapter adapter;
 
     TextView monthSelectLabel;
 
@@ -96,7 +84,6 @@ public class MainActivity extends AppCompatActivity implements
 
     private int selectedMonth = 1;
     private int selectedYear = 2008;
-    private int maxYear = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -112,32 +99,21 @@ public class MainActivity extends AppCompatActivity implements
 
             @Override
             public void onClick(View v) {
-                Log.v("reload dashboard data", "reload dashboard data");
-//                getDashboardData();
-//
-//                MainActivity.this.okFragment.reload(1, 2017);
-//                MainActivity.this.opFragment.reload(1, 2017);
-//                MainActivity.this.lkFragment.reload(1, 2017);
-//                MainActivity.this.lspFragment.reload(1, 2017);
 
                 SimpleDatePickerDialogFragment datePickerDialogFragment;
                 Calendar calendar = Calendar.getInstance(Locale.getDefault());
-                datePickerDialogFragment = SimpleDatePickerDialogFragment.getInstance(
-                        calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH));
+
+//                datePickerDialogFragment = SimpleDatePickerDialogFragment.getInstance(
+//                        calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH));
+
+                datePickerDialogFragment = SimpleDatePickerDialogFragment.getInstance(MainActivity.this.selectedYear,
+                        MainActivity.this.selectedMonth);
+
                 datePickerDialogFragment.setOnDateSetListener(MainActivity.this);
                 datePickerDialogFragment.show(MainActivity.this.getSupportFragmentManager(), null);
             }
         });
 
-//        mRecyclerView = (RecyclerView) findViewById(R.id.dashboard_recycler_view);
-//
-//        adapter = new EmployeeAdapter();
-//        mRecyclerView.setAdapter(adapter);
-//
-//        LinearLayoutManager layoutManager = new LinearLayoutManager(getApplicationContext());
-//        layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
-//
-//        mRecyclerView.setLayoutManager(layoutManager);
 
         Calendar calendar = Calendar.getInstance();
         this.selectedYear = calendar.get(Calendar.YEAR);
@@ -149,9 +125,7 @@ public class MainActivity extends AppCompatActivity implements
             this.selectedMonth = this.selectedMonth - 1;
         }
 
-        this.maxYear = this.selectedYear;
-
-        makeSpinner();
+        monthSelectLabel.setText(DateDisplayUtils.formatMonthYear(this.selectedYear, this.selectedMonth));
 
         getDashboardData();
 
@@ -190,6 +164,8 @@ public class MainActivity extends AppCompatActivity implements
     @Override
     public void onDateSet(int year, int monthOfYear) {
         monthSelectLabel.setText(DateDisplayUtils.formatMonthYear(year, monthOfYear));
+        this.selectedYear = year;
+        this.selectedMonth = monthOfYear;
     }
 
     @Override
@@ -368,65 +344,6 @@ public class MainActivity extends AppCompatActivity implements
         prognosaLspTextView.setText(decimalFormat.format(prognosa.getLsp().doubleValue()));
     }
 
-    public class EmployeeAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
-
-        public EmployeeAdapter() {
-        }
-
-        @Override
-        public int getItemViewType(int position) {
-            return 0;
-        }
-
-        @Override
-        public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
-
-            ItemViewHolder itemViewHolder = (ItemViewHolder) holder;
-            itemViewHolder.updateUI(MainActivity.this.dashboardItemList.get(position));
-        }
-
-        @Override
-        public int getItemCount() {
-            return MainActivity.this.dashboardItemList.size();
-        }
-
-        @Override
-        public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-
-            View card = LayoutInflater.from(parent.getContext()).inflate(R.layout.dashboard_item, parent, false);
-
-            return new ItemViewHolder(card);
-
-        }
-    }
-
-    public class ItemViewHolder extends RecyclerView.ViewHolder {
-
-        private TextView dashboardItemTitle;
-        private TextView dashboardItemLabel1;
-        private TextView dashboardItemLabel2;
-        private TextView dashboardItemLabel3;
-
-        public ItemViewHolder(View itemView) {
-            super(itemView);
-            dashboardItemTitle = (TextView)itemView.findViewById(R.id.dashboard_item_title);
-            dashboardItemLabel1 = (TextView)itemView.findViewById(R.id.dashboard_item_label1);
-            dashboardItemLabel2 = (TextView)itemView.findViewById(R.id.dashboard_item_label2);
-            dashboardItemLabel3 = (TextView)itemView.findViewById(R.id.dashboard_item_label3);
-
-        }
-
-        public void updateUI(DashboardItem dashboardItem) {
-
-            dashboardItemTitle.setText(dashboardItem.getTitle());
-            dashboardItemLabel1.setText(decimalFormat.format(dashboardItem.getOk().doubleValue()));
-            dashboardItemLabel2.setText(decimalFormat.format(dashboardItem.getOp().doubleValue()));
-            dashboardItemLabel3.setText(decimalFormat.format(dashboardItem.getLsp().doubleValue()));
-
-        }
-    }
-
-    //------------------------
 
     private MonthSelectFragment monthSelectFragment1;
     private MonthSelectFragment monthSelectFragment2;
@@ -491,69 +408,5 @@ public class MainActivity extends AppCompatActivity implements
 //        this.updateDashboardData();
     }
 
-    private void makeSpinner() {
-        Spinner spinner1 = (Spinner) findViewById(R.id.project_month_spinner);
 
-        ArrayAdapter<CharSequence> adapter1 = ArrayAdapter.createFromResource(
-                this,
-                R.array.project_month_array,
-                R.layout.project_spinner_item_right
-        );
-
-//        List<String> months = new ArrayList<String>();
-//        months.add("January");
-
-//        ArrayAdapter<CharSequence> adapter1 = new ArrayAdapter(this, R.layout.project_spinner_item_right, 0,  months);
-        adapter1.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-
-        spinner1.setAdapter(adapter1);
-
-        List<Integer> years = new ArrayList<Integer>();
-        for(int i = DashboardConstant.MIN_YEAR; i<= this.maxYear; i++){
-            years.add(i);
-        }
-
-        Spinner spinner2 = (Spinner) findViewById(R.id.project_year_spinner);
-
-//        ArrayAdapter<CharSequence> adapter2 = ArrayAdapter.createFromResource(
-//                this,
-//                R.array.project_year_array,
-//                R.layout.project_spinner_item
-//        );
-
-        ArrayAdapter<CharSequence> adapter2 = new ArrayAdapter(this, R.layout.project_spinner_item, 0,  years);
-        adapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-
-        spinner2.setAdapter(adapter2);
-
-//        spinner1.setSelection(selectedMonth);
-//        spinner2.setSelection(selectedYear);
-
-        spinner1.setOnItemSelectedListener(this);
-        spinner2.setOnItemSelectedListener(this);
-
-    }
-
-    public void onItemSelected(AdapterView<?> parent, View view,
-                               int pos, long id) {
-
-        Spinner spinner = (Spinner) parent;
-        Log.v("Spinner : ", "Pos : " + pos);
-
-        if(spinner.getId() == R.id.project_month_spinner){
-//            ProjectActivity.this.selectedFilter = pos;
-//            ProjectActivity.this.filterProjectList();
-        }else if(spinner.getId() == R.id.project_year_spinner){
-//            Log.v("spinner", "sort: " + pos);
-//
-//            ProjectActivity.this.selectedSort = pos;
-//            ProjectActivity.this.sortProjectList();
-        }
-
-    }
-
-    @Override
-    public void onNothingSelected(AdapterView<?> parent) {
-
-    }
 }
