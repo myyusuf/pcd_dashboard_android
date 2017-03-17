@@ -19,6 +19,7 @@ import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.Volley;
 import com.github.mikephil.charting.charts.LineChart;
 import com.github.mikephil.charting.components.AxisBase;
+import com.github.mikephil.charting.components.Description;
 import com.github.mikephil.charting.components.XAxis;
 import com.github.mikephil.charting.components.YAxis;
 import com.github.mikephil.charting.data.Entry;
@@ -260,8 +261,11 @@ public class LkFragment extends Fragment {
         actualDataEntries.add(0, new Entry(0, 0));
 
         mChart.setMinimumHeight(450);
-//        mChart.setDescription("");
-//        mChart.setNoDataTextDescription("No data.");
+        Description description = new Description();
+        description.setText("");
+        mChart.setDescription(description);
+        mChart.setNoDataText("No Data.");
+
 
 
         LineDataSet dataSet = new LineDataSet(planDataEntries, "Plan");
@@ -321,7 +325,7 @@ public class LkFragment extends Fragment {
 
         mChart.getAxisLeft().setPosition(YAxis.YAxisLabelPosition.INSIDE_CHART);
         mChart.getAxisLeft().setEnabled(false);
-        mChart.setViewPortOffsets(0, 15, 0, 0);
+        mChart.setViewPortOffsets(0, 15, 0, 11);
 
         mChart.setPinchZoom(true);
 
