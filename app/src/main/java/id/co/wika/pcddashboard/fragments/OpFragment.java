@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
@@ -32,6 +33,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -63,6 +65,10 @@ public class OpFragment extends Fragment {
 
     private LineChart mChart;
     private String[] MONTHS;
+
+    DecimalFormat decimalFormat = new DecimalFormat("#,###,###.00");
+
+    private TextView chartCaption;
 
     public OpFragment() {
         // Required empty public constructor
@@ -120,6 +126,8 @@ public class OpFragment extends Fragment {
         final View view = inflater.inflate(R.layout.fragment_op, container, false);
 
         mChart = (LineChart)view.findViewById(R.id.op_chart);
+
+        chartCaption = (TextView) view.findViewById(R.id.op_chart_caption);
 
 //        try {
 //            this.getData(2017);
@@ -245,7 +253,7 @@ public class OpFragment extends Fragment {
         void onOpFragmentInteraction(Uri uri);
     }
 
-    public void drawChartFromJSONArray(JSONArray dataArray){
+    public void drawChartFromJSONArray(JSONArray dataArray, int month, int year){
         List<Entry> planDataEntries = new ArrayList<Entry>();
         List<Entry> actualDataEntries = new ArrayList<Entry>();
 
@@ -269,6 +277,7 @@ public class OpFragment extends Fragment {
         }
 
         drawChart(planDataEntries, actualDataEntries);
+        updateSelectedMonth(month, actualDataEntries);
 
     }
 
@@ -374,6 +383,31 @@ public class OpFragment extends Fragment {
         mChart.setMarkerView(mv);
 
 //        updateSelectedMonth(selectedMonth);
+
+    }
+
+    private void updateSelectedMonth(int value, List<Entry> actualDataEntries){
+
+//        Log.v("Month","Month : " + value);
+
+        if(value + 1 < actualDataEntries.size()){
+            chartCaption.setText(this.decimalFormat.format(actualDataEntries.get(value + 1).getY()));
+        }else{
+            chartCaption.setText("0.00");
+        }
+
+        zoomToValue(value, actualDataEntries);
+    }
+
+    private void zoomToValue(int value, List<Entry> actualDataEntries){
+
+        if((value+1) < actualDataEntries.size()){
+            float yValue = actualDataEntries.get(value + 1).getY();
+            float xValue = actualDataEntries.get(value + 1).getX();
+
+            mChart.fitScreen();
+            mChart.zoom(2.0f, 3.0f, xValue, yValue, YAxis.AxisDependency.LEFT);
+        }
 
     }
 

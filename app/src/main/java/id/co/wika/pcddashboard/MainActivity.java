@@ -336,7 +336,8 @@ public class MainActivity extends AppCompatActivity implements
                 try {
                     okFragment.drawChartFromJSONArray(response.getJSONArray("okData"),
                             MainActivity.this.selectedMonth, MainActivity.this.selectedYear);
-                    opFragment.drawChartFromJSONArray(response.getJSONArray("opData"));
+                    opFragment.drawChartFromJSONArray(response.getJSONArray("opData"),
+                            MainActivity.this.selectedMonth, MainActivity.this.selectedYear);
                     lkFragment.drawChartFromJSONArray(response.getJSONArray("lkData"));
                 } catch (JSONException e) {
                     e.printStackTrace();
