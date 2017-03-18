@@ -292,7 +292,7 @@ public class MainActivity extends AppCompatActivity implements
 
     private void getDashboardData(){
 
-        String url = DashboardConstant.BASE_URL + "dashboard";
+        String url = DashboardConstant.BASE_URL + "dashboard/" + selectedYear + "/" + selectedMonth;
 
         Log.v("URL", "URL : " + url);
 
@@ -376,7 +376,8 @@ public class MainActivity extends AppCompatActivity implements
                             MainActivity.this.selectedMonth, MainActivity.this.selectedYear);
                     opFragment.drawChartFromJSONArray(response.getJSONArray("opData"),
                             MainActivity.this.selectedMonth, MainActivity.this.selectedYear);
-                    lkFragment.drawChartFromJSONArray(response.getJSONArray("lkData"));
+                    lkFragment.drawChartFromJSONArray(response.getJSONArray("lkData"),
+                            MainActivity.this.selectedMonth, MainActivity.this.selectedYear);
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }

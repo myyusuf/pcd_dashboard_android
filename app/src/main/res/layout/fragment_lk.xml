@@ -26,7 +26,7 @@
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceSmall"
                     android:text="-"
-                    android:id="@+id/lk_caption"
+                    android:id="@+id/lk_chart_caption"
                     android:textColor="#ffffff"
                     android:textSize="30sp"
                     android:fontFamily="sans-serif-light"
