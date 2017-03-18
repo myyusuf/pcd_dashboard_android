@@ -7,21 +7,13 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Base64;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.android.volley.AuthFailureError;
-import com.android.volley.Request;
 import com.android.volley.Response;
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.JsonArrayRequest;
-import com.android.volley.toolbox.Volley;
-import com.github.mikephil.charting.data.Entry;
 
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -29,10 +21,7 @@ import java.math.BigDecimal;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.HashMap;
-import java.util.List;
 import java.util.Locale;
-import java.util.Map;
 
 import id.co.wika.pcddashboard.components.DashboardItemView;
 import id.co.wika.pcddashboard.components.SimpleDatePickerDialog;
@@ -169,13 +158,16 @@ public class MainActivity extends AppCompatActivity implements
         prognosaOkTextView = (TextView) findViewById(R.id.dashboard_text31);
         prognosaOpTextView = (TextView) findViewById(R.id.dashboard_text32);
         prognosaLspTextView = (TextView) findViewById(R.id.dashboard_text33);
+
     }
 
     @Override
     public void onDateSet(int year, int monthOfYear) {
-        monthSelectLabel.setText(DateDisplayUtils.formatMonthYear(year, monthOfYear));
         this.selectedYear = year;
         this.selectedMonth = monthOfYear;
+
+        updateDashboardData();
+
     }
 
     @Override
@@ -297,6 +289,7 @@ public class MainActivity extends AppCompatActivity implements
                 }
 
 //                adapter.notifyDataSetChanged();
+                selectPageOnMonthSelectPager();
                 updateDashboardItemView();
 
             }
@@ -341,7 +334,8 @@ public class MainActivity extends AppCompatActivity implements
             public void onResponse(JSONObject response) {
 
                 try {
-                    okFragment.drawChartFromJSONArray(response.getJSONArray("okData"));
+                    okFragment.drawChartFromJSONArray(response.getJSONArray("okData"),
+                            MainActivity.this.selectedMonth, MainActivity.this.selectedYear);
                     opFragment.drawChartFromJSONArray(response.getJSONArray("opData"));
                     lkFragment.drawChartFromJSONArray(response.getJSONArray("lkData"));
                 } catch (JSONException e) {
@@ -437,11 +431,33 @@ public class MainActivity extends AppCompatActivity implements
 //        selectPageOnMonthSelectPager();
     }
 
-    public void updateDashboardData(int month) {
+    private void selectPageOnMonthSelectPager(){
 
+        if(this.monthSelectFragment1 != null && this.monthSelectFragment2 != null){
+            this.monthSelectFragment1.clearButtonColor();
+            this.monthSelectFragment2.clearButtonColor();
+
+            if(this.selectedMonth < 6){
+                this.monthSelectFragment1.setActiveButtonColor(this.selectedMonth);
+                monthSelectPager.setCurrentItem(0, true);
+            }else{
+                this.monthSelectFragment2.setActiveButtonColor(this.selectedMonth-6);
+                monthSelectPager.setCurrentItem(1, true);
+            }
+        }
+
+    }
+
+
+    public void updateDashboardData(int month) {
         this.selectedMonth = month;
-//        this.updateDashboardData();
+        this.updateDashboardData();
+    }
+
+    public void updateDashboardData(){
         this.getDashboardData();
+        this.getDashboardChartData();
+        monthSelectLabel.setText(DateDisplayUtils.formatMonthYear(this.selectedYear, this.selectedMonth));
     }
 
 

@@ -253,26 +253,24 @@ public class MonthSelectFragment extends Fragment {
 
         if(monthButton1 == null) return;
 
-        int selectedButtonColor = Color.RED;
-
         switch(buttonIndex){
             case 0:
-                monthButton1.setTextColor(selectedButtonColor);
+                monthButton1.setTextColor(SELECTED_COLOR);
                 break;
             case 1:
-                monthButton2.setTextColor(selectedButtonColor);
+                monthButton2.setTextColor(SELECTED_COLOR);
                 break;
             case 2:
-                monthButton3.setTextColor(selectedButtonColor);
+                monthButton3.setTextColor(SELECTED_COLOR);
                 break;
             case 3:
-                monthButton4.setTextColor(selectedButtonColor);
+                monthButton4.setTextColor(SELECTED_COLOR);
                 break;
             case 4:
-                monthButton5.setTextColor(selectedButtonColor);
+                monthButton5.setTextColor(SELECTED_COLOR);
                 break;
             case 5:
-                monthButton6.setTextColor(selectedButtonColor);
+                monthButton6.setTextColor(SELECTED_COLOR);
                 break;
         }
 

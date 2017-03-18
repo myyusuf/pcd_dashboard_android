@@ -6,10 +6,12 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.util.Base64;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
@@ -33,6 +35,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -64,6 +67,10 @@ public class OkFragment extends Fragment {
 
     private LineChart mChart;
     private String[] MONTHS;
+
+    DecimalFormat decimalFormat = new DecimalFormat("#,###,###.00");
+
+    private TextView chartCaption;
 
     public OkFragment() {
         // Required empty public constructor
@@ -121,6 +128,8 @@ public class OkFragment extends Fragment {
         final View view = inflater.inflate(R.layout.fragment_ok, container, false);
 
         mChart = (LineChart)view.findViewById(R.id.ok_chart);
+
+        chartCaption = (TextView) view.findViewById(R.id.ok_chart_caption);
 
 //        try {
 //            this.getData(2017);
@@ -246,7 +255,7 @@ public class OkFragment extends Fragment {
         void onOkFragmentInteraction(Uri uri);
     }
 
-    public void drawChartFromJSONArray(JSONArray dataArray){
+    public void drawChartFromJSONArray(JSONArray dataArray, int month, int year){
         List<Entry> planDataEntries = new ArrayList<Entry>();
         List<Entry> actualDataEntries = new ArrayList<Entry>();
 
@@ -270,6 +279,7 @@ public class OkFragment extends Fragment {
         }
 
         drawChart(planDataEntries, actualDataEntries);
+        updateSelectedMonth(month, actualDataEntries);
 
     }
     public void drawChart(List<Entry> planDataEntries, List<Entry> actualDataEntries){
@@ -372,9 +382,30 @@ public class OkFragment extends Fragment {
         CustomMarkerView mv = new CustomMarkerView(getActivity().getBaseContext(), R.layout.custom_marker_view);
         mChart.setMarkerView(mv);
 
+    }
 
+    private void updateSelectedMonth(int value, List<Entry> actualDataEntries){
 
-//        updateSelectedMonth(selectedMonth);
+//        Log.v("Month","Month : " + value);
+
+        if(value + 1 < actualDataEntries.size()){
+            chartCaption.setText(this.decimalFormat.format(actualDataEntries.get(value + 1).getY()));
+        }else{
+            chartCaption.setText("0.00");
+        }
+
+        zoomToValue(value, actualDataEntries);
+    }
+
+    private void zoomToValue(int value, List<Entry> actualDataEntries){
+
+        if((value+1) < actualDataEntries.size()){
+            float yValue = actualDataEntries.get(value + 1).getY();
+            float xValue = actualDataEntries.get(value + 1).getX();
+
+            mChart.fitScreen();
+            mChart.zoom(2.0f, 3.0f, xValue, yValue, YAxis.AxisDependency.LEFT);
+        }
 
     }
 
