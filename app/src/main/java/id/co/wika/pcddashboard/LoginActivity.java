@@ -102,13 +102,12 @@ public class LoginActivity extends AppCompatActivity {
             public void onResponse(String response) {
 
                 try {
-
-                    String status = response;//.getString("loggedIn");
-                    if(status != null){
+                    JSONObject loginObject = new JSONObject(response);
+                    String token = loginObject.getString("token");
+//                    Log.v("Token", token);
+                    if(token != null){
                         Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-
-                        intent.putExtra("username", LoginActivity.this.username);
-                        intent.putExtra("password", LoginActivity.this.password);
+                        intent.putExtra("token", token);
                         startActivity(intent);
                     }else{
                         showDialogWindow("Login Error", "Wrong Username or Password");
