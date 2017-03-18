@@ -21,7 +21,7 @@ import java.util.Map;
  */
 public class RestRequestService {
 
-    public void getRequest(String url, Response.Listener<JSONObject> listener, Context context){
+    public void getRequest(String url, final String token, Response.Listener<JSONObject> listener, Context context){
         Response.ErrorListener errorListener = new Response.ErrorListener(){
 
             @Override
@@ -37,8 +37,9 @@ public class RestRequestService {
             public Map<String, String> getHeaders() throws AuthFailureError {
                 Map<String, String> map = new HashMap<String, String>();
                 String key = "Authorization";
-                String encodedString = Base64.encodeToString(String.format("%s:%s", "username", "userpassword").getBytes(), Base64.NO_WRAP);
-                String value = String.format("Basic %s", encodedString);
+//                String encodedString = Base64.encodeToString(String.format("%s:%s", "username", "userpassword").getBytes(), Base64.NO_WRAP);
+//                String value = String.format("Bearer %s", encodedString);
+                String value = String.format("Bearer %s", token);
                 map.put(key, value);
 
                 return map;

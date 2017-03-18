@@ -1,5 +1,6 @@
 package id.co.wika.pcddashboard;
 
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -7,7 +8,10 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
@@ -83,13 +87,21 @@ public class MainActivity extends AppCompatActivity implements
     private int selectedMonth = 1;
     private int selectedYear = 2008;
 
+    private String token;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        Toolbar toolbar = (Toolbar) findViewById(R.id.tool_bar); // Attaching the layout to the toolbar object
+        setSupportActionBar(toolbar);
+
         //IMPORTANT!!!
-//        getSupportActionBar().setDisplayShowTitleEnabled(false);
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
+
+        Intent intent = getIntent();
+        token = intent.getStringExtra("token");
 
         monthSelectLabel = (TextView) findViewById(R.id.month_select_label);
 
@@ -168,6 +180,32 @@ public class MainActivity extends AppCompatActivity implements
 
         updateDashboardData();
 
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu_main, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+        int id = item.getItemId();
+
+        //noinspection SimplifiableIfStatement
+        if (id == R.id.action_logout) {
+            this.token = "";
+            finish();
+            Intent intent = new Intent(MainActivity.this, LoginActivity.class);
+            startActivity(intent);
+            return true;
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 
     @Override
@@ -320,7 +358,7 @@ public class MainActivity extends AppCompatActivity implements
 //
 //        Volley.newRequestQueue(getApplicationContext()).add(jsonRequest);
 
-        restRequestService.getRequest(url, listener, getApplicationContext());
+        restRequestService.getRequest(url, MainActivity.this.token, listener, getApplicationContext());
 
     }
 
@@ -348,7 +386,7 @@ public class MainActivity extends AppCompatActivity implements
 
         };
 
-        restRequestService.getRequest(url, listener, getApplicationContext());
+        restRequestService.getRequest(url, MainActivity.this.token, listener, getApplicationContext());
     }
 
     private void updateDashboardItemView(){

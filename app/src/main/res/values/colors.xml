@@ -4,4 +4,5 @@
     <color name="colorPrimaryDark">#2E3C42</color>
     <color name="colorAccent">#FF4081</color>
     <color name="dashboardSilver">#34444B</color>
+    <color name="white">#FFF</color>
 </resources>
