@@ -8,7 +8,7 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="id.co.wika.pcddashboard.LoginActivity"
-    android:background="@drawable/login_bg">
+    android:background="@drawable/login_bg_1b">
 
     <LinearLayout
         android:orientation="vertical"
@@ -32,7 +32,7 @@
                 android:layout_height="111dp"
                 android:id="@+id/imageView"
                 android:layout_gravity="center_horizontal"
-                android:background="@drawable/wg_icon_big_transparent"
+
                 android:layout_marginTop="111dp" />
 
             <TextView
@@ -65,7 +65,7 @@
                 android:layout_gravity="center_horizontal"
                 android:layout_marginLeft="22dp"
                 android:layout_marginRight="22dp"
-                android:background="@drawable/textbox_background_15"
+                android:background="@drawable/textbox_background_45"
                 android:layout_marginTop="11dp"
                 android:paddingLeft="11dp"
                 android:hint="Username"
@@ -87,7 +87,7 @@
                 android:id="@+id/password_text"
                 android:layout_gravity="center_horizontal"
                 android:paddingLeft="11dp"
-                android:background="@drawable/textbox_background_15"
+                android:background="@drawable/textbox_background_45"
                 android:hint="Password"
                 android:drawableStart="@drawable/password_icon"
                 android:drawableLeft="@drawable/password_icon"

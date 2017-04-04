@@ -327,6 +327,13 @@
                     android:layout_marginTop="10dp"
                     android:orientation="vertical" >
 
+                    <id.co.wika.pcddashboard.components.DashboardRkap
+                        android:id="@+id/dashboard_rkap_1"
+                        app:title="RKAP"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"/>
+
                     <id.co.wika.pcddashboard.components.DashboardItemView
                         android:id="@+id/dashboard_item_view_1"
                         app:title="Sisa"

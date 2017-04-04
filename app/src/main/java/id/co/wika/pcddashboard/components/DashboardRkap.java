@@ -14,9 +14,9 @@ import id.co.wika.pcddashboard.R;
 import id.co.wika.pcddashboard.models.DashboardItem;
 
 /**
- * TODO: document your custom view class.
+ * Created by myyusuf on 4/3/17.
  */
-public class DashboardItemView extends LinearLayout {
+public class DashboardRkap extends LinearLayout {
     private String title;
     private float mTextWidth;
     private float mTextHeight;
@@ -28,17 +28,17 @@ public class DashboardItemView extends LinearLayout {
 
     DecimalFormat decimalFormat = new DecimalFormat("#,###,###.00");
 
-    public DashboardItemView(Context context) {
+    public DashboardRkap(Context context) {
         super(context);
         init(context, null, 0);
     }
 
-    public DashboardItemView(Context context, AttributeSet attrs) {
+    public DashboardRkap(Context context, AttributeSet attrs) {
         super(context, attrs);
         init(context, attrs, 0);
     }
 
-    public DashboardItemView(Context context, AttributeSet attrs, int defStyle) {
+    public DashboardRkap(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
         init(context, attrs, defStyle);
     }
@@ -87,5 +87,4 @@ public class DashboardItemView extends LinearLayout {
         setOpText(decimalFormat.format(dashboardItem.getOp().doubleValue()));
         setLspText(decimalFormat.format(dashboardItem.getLsp().doubleValue()));
     }
-
 }
