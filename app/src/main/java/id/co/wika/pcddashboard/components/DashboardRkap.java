@@ -1,9 +1,7 @@
 package id.co.wika.pcddashboard.components;
 
 import android.content.Context;
-import android.content.res.TypedArray;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -22,9 +20,17 @@ public class DashboardRkap extends LinearLayout {
     private float mTextHeight;
 
     private TextView titleTextView;
-    private TextView okTextView;
-    private TextView opTextView;
-    private TextView lspTextView;
+    private TextView okTextView1;
+    private TextView okTextView2;
+    private TextView okTextView3;
+
+    private TextView opTextView1;
+    private TextView opTextView2;
+    private TextView opTextView3;
+
+    private TextView lspTextView1;
+    private TextView lspTextView2;
+    private TextView lspTextView3;
 
     DecimalFormat decimalFormat = new DecimalFormat("#,###,###.00");
 
@@ -44,47 +50,50 @@ public class DashboardRkap extends LinearLayout {
     }
 
     private void init(Context context, AttributeSet attrs, int defStyle) {
-        View.inflate(context, R.layout.dashboard_item_view, this);
-        titleTextView = (TextView) findViewById(R.id.title_text_view);
-        okTextView = (TextView) findViewById(R.id.ok_text_view);
-        opTextView = (TextView) findViewById(R.id.op_text_view);
-        lspTextView = (TextView) findViewById(R.id.lsp_text_view);
+        View.inflate(context, R.layout.dashboard_rkap, this);
+//        titleTextView = (TextView) findViewById(R.id.title_text_view);
+        okTextView1 = (TextView) findViewById(R.id.ok_text_view1);
+        okTextView2 = (TextView) findViewById(R.id.ok_text_view2);
+        okTextView3 = (TextView) findViewById(R.id.ok_text_view3);
 
-        final TypedArray a = getContext().obtainStyledAttributes(
-                attrs, R.styleable.DashboardItemView, defStyle, 0);
+        opTextView1 = (TextView) findViewById(R.id.op_text_view1);
+        opTextView2 = (TextView) findViewById(R.id.op_text_view2);
+        opTextView3 = (TextView) findViewById(R.id.op_text_view3);
 
-        try {
-            title = a.getString(R.styleable.DashboardItemView_title);
-        } catch (Exception e) {
-            Log.e("DashboardItemView", "There was an error loading attributes.");
-        } finally {
-            a.recycle();
-        }
-
-        setTitleText(title);
+        lspTextView1 = (TextView) findViewById(R.id.lsp_text_view1);
+        lspTextView2 = (TextView) findViewById(R.id.lsp_text_view2);
+        lspTextView3 = (TextView) findViewById(R.id.lsp_text_view3);
+//
+//        final TypedArray a = getContext().obtainStyledAttributes(
+//                attrs, R.styleable.DashboardItemView, defStyle, 0);
+//
+//        try {
+//            title = a.getString(R.styleable.DashboardItemView_title);
+//        } catch (Exception e) {
+//            Log.e("DashboardItemView", "There was an error loading attributes.");
+//        } finally {
+//            a.recycle();
+//        }
+//
+//        setTitleText(title);
 
     }
 
-    public void setTitleText(String text) {
-        titleTextView.setText(text);
-    }
 
-    public void setOkText(String text) {
-        okTextView.setText(text);
-    }
+    public void setDashboardItem(DashboardItem rkap, DashboardItem ri, DashboardItem prognosa){
 
-    public void setOpText(String text) {
-        opTextView.setText(text);
-    }
+        okTextView1.setText(decimalFormat.format(rkap.getOk().doubleValue()));
+        okTextView2.setText(decimalFormat.format(ri.getOk().doubleValue()));
+        okTextView3.setText(decimalFormat.format(prognosa.getOk().doubleValue()));
 
-    public void setLspText(String text) {
-        lspTextView.setText(text);
-    }
+        opTextView1.setText(decimalFormat.format(rkap.getOp().doubleValue()));
+        opTextView2.setText(decimalFormat.format(ri.getOp().doubleValue()));
+        opTextView3.setText(decimalFormat.format(prognosa.getOp().doubleValue()));
 
-    public void setDashboardItem(DashboardItem dashboardItem){
-        setTitleText(dashboardItem.getTitle());
-        setOkText(decimalFormat.format(dashboardItem.getOk().doubleValue()));
-        setOpText(decimalFormat.format(dashboardItem.getOp().doubleValue()));
-        setLspText(decimalFormat.format(dashboardItem.getLsp().doubleValue()));
+        lspTextView1.setText(decimalFormat.format(rkap.getLsp().doubleValue()));
+        lspTextView2.setText(decimalFormat.format(ri.getLsp().doubleValue()));
+        lspTextView3.setText(decimalFormat.format(prognosa.getLsp().doubleValue()));
+
+
     }
 }

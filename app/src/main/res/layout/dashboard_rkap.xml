@@ -30,7 +30,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="30dp"
+            android:layout_height="40dp"
             android:orientation="horizontal"
             android:layout_margin="0dp"
             android:background="@drawable/dashboard_rkap_bg"
@@ -91,7 +91,7 @@
             <TextView
                 android:layout_width="50dp"
                 android:layout_height="match_parent"
-                android:text="OP"
+                android:text="OK"
                 android:paddingLeft="8dp"
                 android:layout_marginRight="10dp"
                 android:background="@drawable/dashboard_item_container_sub_bg_black"
@@ -106,17 +106,18 @@
                 android:textAppearance="?android:attr/textAppearanceSmall"
                 android:text="-"
                 tools:text="349"
-                android:id="@+id/dashboard_text4"
+                android:id="@+id/ok_text_view1"
                 android:textColor="#fff"
                 android:layout_weight="3"
                 android:textSize="18sp"/>
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceSmall"
                 android:text="-"
                 tools:text="247"
-                android:id="@+id/dashboard_text5"
+                android:id="@+id/ok_text_view2"
                 android:textColor="#fff"
                 android:layout_weight="3"
                 android:textSize="18sp"/>
@@ -127,7 +128,7 @@
                 android:textAppearance="?android:attr/textAppearanceSmall"
                 android:text="-"
                 tools:text="350"
-                android:id="@+id/dashboard_text6"
+                android:id="@+id/ok_text_view3"
                 android:textColor="#fff"
                 android:layout_weight="3"
                 android:textSize="18sp"/>
@@ -147,7 +148,7 @@
             <TextView
                 android:layout_width="50dp"
                 android:layout_height="match_parent"
-                android:text="OK"
+                android:text="OP"
                 android:paddingLeft="8dp"
                 android:layout_marginRight="10dp"
                 android:background="@drawable/dashboard_item_container_sub_bg_black"
@@ -162,7 +163,7 @@
                 android:textAppearance="?android:attr/textAppearanceSmall"
                 android:text="-"
                 tools:text="349"
-                android:id="@+id/dashboard_text7"
+                android:id="@+id/op_text_view1"
                 android:textColor="#fff"
                 android:layout_weight="3"
                 android:textSize="18sp"/>
@@ -172,7 +173,7 @@
                 android:textAppearance="?android:attr/textAppearanceSmall"
                 android:text="-"
                 tools:text="247"
-                android:id="@+id/dashboard_text8"
+                android:id="@+id/op_text_view2"
                 android:textColor="#fff"
                 android:layout_weight="3"
                 android:textSize="18sp"/>
@@ -183,7 +184,7 @@
                 android:textAppearance="?android:attr/textAppearanceSmall"
                 android:text="-"
                 tools:text="350"
-                android:id="@+id/dashboard_text9"
+                android:id="@+id/op_text_view3"
                 android:textColor="#fff"
                 android:layout_weight="3"
                 android:textSize="18sp"/>
@@ -218,7 +219,7 @@
                 android:textAppearance="?android:attr/textAppearanceSmall"
                 android:text="-"
                 tools:text="349"
-                android:id="@+id/dashboard_text10"
+                android:id="@+id/lsp_text_view1"
                 android:textColor="#fff"
                 android:layout_weight="3"
                 android:textSize="18sp"/>
@@ -228,7 +229,7 @@
                 android:textAppearance="?android:attr/textAppearanceSmall"
                 android:text="-"
                 tools:text="247"
-                android:id="@+id/dashboard_text11"
+                android:id="@+id/lsp_text_view2"
                 android:textColor="#fff"
                 android:layout_weight="3"
                 android:textSize="18sp"/>
@@ -239,7 +240,7 @@
                 android:textAppearance="?android:attr/textAppearanceSmall"
                 android:text="-"
                 tools:text="350"
-                android:id="@+id/dashboard_text12"
+                android:id="@+id/lsp_text_view3"
                 android:textColor="#fff"
                 android:layout_weight="3"
                 android:textSize="18sp"/>

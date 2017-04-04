@@ -28,6 +28,7 @@ import java.util.Calendar;
 import java.util.Locale;
 
 import id.co.wika.pcddashboard.components.DashboardItemView;
+import id.co.wika.pcddashboard.components.DashboardRkap;
 import id.co.wika.pcddashboard.components.SimpleDatePickerDialog;
 import id.co.wika.pcddashboard.components.SimpleDatePickerDialogFragment;
 import id.co.wika.pcddashboard.fragments.LkFragment;
@@ -60,6 +61,7 @@ public class MainActivity extends AppCompatActivity implements
     private OpFragment opFragment;
     private LspFragment lspFragment;
 
+    private DashboardRkap dashboardRkap1;
     private DashboardItemView dashboardItemView1;
     private DashboardItemView dashboardItemView2;
     private DashboardItemView dashboardItemView3;
@@ -151,6 +153,7 @@ public class MainActivity extends AppCompatActivity implements
         monthSelectPager.setAdapter(monthSelectAdapterViewPager);
         monthSelectPager.setCurrentItem(0);
 
+        dashboardRkap1 = (DashboardRkap) findViewById(R.id.dashboard_rkap_1);
         dashboardItemView1 = (DashboardItemView) findViewById(R.id.dashboard_item_view_1);
         dashboardItemView2 = (DashboardItemView) findViewById(R.id.dashboard_item_view_2);
         dashboardItemView3 = (DashboardItemView) findViewById(R.id.dashboard_item_view_3);
@@ -158,18 +161,18 @@ public class MainActivity extends AppCompatActivity implements
         dashboardItemView5 = (DashboardItemView) findViewById(R.id.dashboard_item_view_5);
 
         //-------------
-
-        rkapOkTextView = (TextView) findViewById(R.id.dashboard_text11);
-        rkapOpTextView = (TextView) findViewById(R.id.dashboard_text12);
-        rkapLspTextView = (TextView) findViewById(R.id.dashboard_text13);
-
-        riOkTextView = (TextView) findViewById(R.id.dashboard_text21);
-        riOpTextView = (TextView) findViewById(R.id.dashboard_text22);
-        riLspTextView = (TextView) findViewById(R.id.dashboard_text23);
-
-        prognosaOkTextView = (TextView) findViewById(R.id.dashboard_text31);
-        prognosaOpTextView = (TextView) findViewById(R.id.dashboard_text32);
-        prognosaLspTextView = (TextView) findViewById(R.id.dashboard_text33);
+//
+//        rkapOkTextView = (TextView) findViewById(R.id.dashboard_text11);
+//        rkapOpTextView = (TextView) findViewById(R.id.dashboard_text12);
+//        rkapLspTextView = (TextView) findViewById(R.id.dashboard_text13);
+//
+//        riOkTextView = (TextView) findViewById(R.id.dashboard_text21);
+//        riOpTextView = (TextView) findViewById(R.id.dashboard_text22);
+//        riLspTextView = (TextView) findViewById(R.id.dashboard_text23);
+//
+//        prognosaOkTextView = (TextView) findViewById(R.id.dashboard_text31);
+//        prognosaOpTextView = (TextView) findViewById(R.id.dashboard_text32);
+//        prognosaLspTextView = (TextView) findViewById(R.id.dashboard_text33);
 
     }
 
@@ -398,19 +401,21 @@ public class MainActivity extends AppCompatActivity implements
         dashboardItemView5.setDashboardItem(this.dashboardItemList.get(7));
 
         DashboardItem rkap = this.dashboardItemList.get(0);
-        rkapOkTextView.setText(decimalFormat.format(rkap.getOk().doubleValue()));
-        rkapOpTextView.setText(decimalFormat.format(rkap.getOp().doubleValue()));
-        rkapLspTextView.setText(decimalFormat.format(rkap.getLsp().doubleValue()));
+//        rkapOkTextView.setText(decimalFormat.format(rkap.getOk().doubleValue()));
+//        rkapOpTextView.setText(decimalFormat.format(rkap.getOp().doubleValue()));
+//        rkapLspTextView.setText(decimalFormat.format(rkap.getLsp().doubleValue()));
 
         DashboardItem ri = this.dashboardItemList.get(1);
-        riOkTextView.setText(decimalFormat.format(ri.getOk().doubleValue()));
-        riOpTextView.setText(decimalFormat.format(ri.getOp().doubleValue()));
-        riLspTextView.setText(decimalFormat.format(ri.getLsp().doubleValue()));
+//        riOkTextView.setText(decimalFormat.format(ri.getOk().doubleValue()));
+//        riOpTextView.setText(decimalFormat.format(ri.getOp().doubleValue()));
+//        riLspTextView.setText(decimalFormat.format(ri.getLsp().doubleValue()));
 
         DashboardItem prognosa = this.dashboardItemList.get(2);
-        prognosaOkTextView.setText(decimalFormat.format(prognosa.getOk().doubleValue()));
-        prognosaOpTextView.setText(decimalFormat.format(prognosa.getOp().doubleValue()));
-        prognosaLspTextView.setText(decimalFormat.format(prognosa.getLsp().doubleValue()));
+//        prognosaOkTextView.setText(decimalFormat.format(prognosa.getOk().doubleValue()));
+//        prognosaOpTextView.setText(decimalFormat.format(prognosa.getOp().doubleValue()));
+//        prognosaLspTextView.setText(decimalFormat.format(prognosa.getLsp().doubleValue()));
+
+        dashboardRkap1.setDashboardItem(rkap, ri, prognosa);
     }
 
 
