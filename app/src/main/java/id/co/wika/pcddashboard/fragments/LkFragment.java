@@ -261,11 +261,11 @@ public class LkFragment extends Fragment {
             try {
                 obj = dataArray.getJSONObject(i);
                 if(!obj.get("plan").toString().equals("null")){
-                    planDataEntries.add(new Entry(i + 1, new Float(obj.getDouble("plan"))));
+                    planDataEntries.add(new Entry(i + 1, new Float(obj.getDouble("plan") / 1000)));
                 }
 
                 if(!obj.get("actual").toString().equals("null")){
-                    actualDataEntries.add(new Entry(i + 1, new Float(obj.getDouble("actual"))));
+                    actualDataEntries.add(new Entry(i + 1, new Float(obj.getDouble("actual") / 1000)));
                 }
 
             } catch (JSONException e) {

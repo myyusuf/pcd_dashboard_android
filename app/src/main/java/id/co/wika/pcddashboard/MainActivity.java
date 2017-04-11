@@ -381,6 +381,8 @@ public class MainActivity extends AppCompatActivity implements
                             MainActivity.this.selectedMonth, MainActivity.this.selectedYear);
                     lkFragment.drawChartFromJSONArray(response.getJSONArray("lkData"),
                             MainActivity.this.selectedMonth, MainActivity.this.selectedYear);
+                    lspFragment.drawChartFromJSONArray(response.getJSONArray("lspData"),
+                            MainActivity.this.selectedMonth, MainActivity.this.selectedYear);
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
