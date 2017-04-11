@@ -82,10 +82,29 @@ public class DashboardItemView extends LinearLayout {
     }
 
     public void setDashboardItem(DashboardItem dashboardItem){
+        double okValue = dashboardItem.getOk().doubleValue() / 1000;
+        double opValue = dashboardItem.getOp().doubleValue() / 1000;
+        double lspValue = dashboardItem.getLsp().doubleValue() / 1000;
+
         setTitleText(dashboardItem.getTitle());
-        setOkText(decimalFormat.format(dashboardItem.getOk().doubleValue()));
-        setOpText(decimalFormat.format(dashboardItem.getOp().doubleValue()));
-        setLspText(decimalFormat.format(dashboardItem.getLsp().doubleValue()));
+
+        if(okValue < 0){
+            setOkText("(" + decimalFormat.format(Math.abs(okValue)) + ")");
+        }else{
+            setOkText(decimalFormat.format(Math.abs(okValue)));
+        }
+
+        if(opValue < 0){
+            setOpText("(" + decimalFormat.format(Math.abs(opValue)) + ")");
+        }else{
+            setOpText(decimalFormat.format(Math.abs(opValue)));
+        }
+
+        if(lspValue < 0){
+            setLspText("(" + decimalFormat.format(Math.abs(lspValue)) + ")");
+        }else{
+            setLspText(decimalFormat.format(Math.abs(lspValue)));
+        }
     }
 
 }

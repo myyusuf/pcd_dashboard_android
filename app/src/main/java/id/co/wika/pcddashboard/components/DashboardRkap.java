@@ -82,17 +82,17 @@ public class DashboardRkap extends LinearLayout {
 
     public void setDashboardItem(DashboardItem rkap, DashboardItem ri, DashboardItem prognosa){
 
-        okTextView1.setText(decimalFormat.format(rkap.getOk().doubleValue()));
-        okTextView2.setText(decimalFormat.format(ri.getOk().doubleValue()));
-        okTextView3.setText(decimalFormat.format(prognosa.getOk().doubleValue()));
+        okTextView1.setText(decimalFormat.format(rkap.getOk().doubleValue() / 1000));
+        okTextView2.setText(decimalFormat.format(ri.getOk().doubleValue() / 1000));
+        okTextView3.setText(decimalFormat.format(prognosa.getOk().doubleValue() / 1000));
 
-        opTextView1.setText(decimalFormat.format(rkap.getOp().doubleValue()));
-        opTextView2.setText(decimalFormat.format(ri.getOp().doubleValue()));
-        opTextView3.setText(decimalFormat.format(prognosa.getOp().doubleValue()));
+        opTextView1.setText(decimalFormat.format(rkap.getOp().doubleValue() / 1000));
+        opTextView2.setText(decimalFormat.format(ri.getOp().doubleValue() / 1000));
+        opTextView3.setText(decimalFormat.format(prognosa.getOp().doubleValue() / 1000));
 
-        lspTextView1.setText(decimalFormat.format(rkap.getLsp().doubleValue()));
-        lspTextView2.setText(decimalFormat.format(ri.getLsp().doubleValue()));
-        lspTextView3.setText(decimalFormat.format(prognosa.getLsp().doubleValue()));
+        lspTextView1.setText(decimalFormat.format(rkap.getLsp().doubleValue() / 1000));
+        lspTextView2.setText(decimalFormat.format(ri.getLsp().doubleValue() / 1000));
+        lspTextView3.setText(decimalFormat.format(prognosa.getLsp().doubleValue() / 1000));
 
 
     }

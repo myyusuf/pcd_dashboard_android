@@ -295,7 +295,7 @@ public class MainActivity extends AppCompatActivity implements
 
     private void getDashboardData(){
 
-        String url = DashboardConstant.BASE_URL + "dashboard/" + selectedYear + "/" + selectedMonth;
+        String url = DashboardConstant.BASE_URL + "dashboard/" + selectedYear + "/" + (selectedMonth + 1);
 
         Log.v("URL", "URL : " + url);
 
