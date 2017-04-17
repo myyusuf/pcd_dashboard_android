@@ -16,7 +16,7 @@ import id.co.wika.pcddashboard.models.DashboardItem;
 /**
  * TODO: document your custom view class.
  */
-public class DashboardItemView extends LinearLayout {
+public class DashboardSisa extends LinearLayout {
     private String title;
     private float mTextWidth;
     private float mTextHeight;
@@ -28,23 +28,23 @@ public class DashboardItemView extends LinearLayout {
 
     DecimalFormat decimalFormat = new DecimalFormat("#,###,###.00");
 
-    public DashboardItemView(Context context) {
+    public DashboardSisa(Context context) {
         super(context);
         init(context, null, 0);
     }
 
-    public DashboardItemView(Context context, AttributeSet attrs) {
+    public DashboardSisa(Context context, AttributeSet attrs) {
         super(context, attrs);
         init(context, attrs, 0);
     }
 
-    public DashboardItemView(Context context, AttributeSet attrs, int defStyle) {
+    public DashboardSisa(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
         init(context, attrs, defStyle);
     }
 
     private void init(Context context, AttributeSet attrs, int defStyle) {
-        View.inflate(context, R.layout.dashboard_item_view, this);
+        View.inflate(context, R.layout.dashboard_sisa, this);
         titleTextView = (TextView) findViewById(R.id.title_text_view);
         okTextView = (TextView) findViewById(R.id.ok_text_view);
         opTextView = (TextView) findViewById(R.id.op_text_view);
@@ -56,7 +56,7 @@ public class DashboardItemView extends LinearLayout {
         try {
             title = a.getString(R.styleable.DashboardItemView_title);
         } catch (Exception e) {
-            Log.e("DashboardItemView", "There was an error loading attributes.");
+            Log.e("DashboardSisa", "There was an error loading attributes.");
         } finally {
             a.recycle();
         }
@@ -84,7 +84,7 @@ public class DashboardItemView extends LinearLayout {
     public void setDashboardItem(DashboardItem dashboardItem){
         double okValue = dashboardItem.getOk().doubleValue() / 1000;
         double opValue = dashboardItem.getOp().doubleValue() / 1000;
-        double lkValue = dashboardItem.getLk().doubleValue() / 1000;
+        double lspValue = dashboardItem.getLsp().doubleValue() / 1000;
 
         setTitleText(dashboardItem.getTitle());
 
@@ -100,10 +100,10 @@ public class DashboardItemView extends LinearLayout {
             setOpText(decimalFormat.format(Math.abs(opValue)));
         }
 
-        if(lkValue < 0){
-            setLspText("(" + decimalFormat.format(Math.abs(lkValue)) + ")");
+        if(lspValue < 0){
+            setLspText("(" + decimalFormat.format(Math.abs(lspValue)) + ")");
         }else{
-            setLspText(decimalFormat.format(Math.abs(lkValue)));
+            setLspText(decimalFormat.format(Math.abs(lspValue)));
         }
     }
 

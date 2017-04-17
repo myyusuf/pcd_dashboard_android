@@ -29,6 +29,7 @@ import java.util.Locale;
 
 import id.co.wika.pcddashboard.components.DashboardItemView;
 import id.co.wika.pcddashboard.components.DashboardRkap;
+import id.co.wika.pcddashboard.components.DashboardSisa;
 import id.co.wika.pcddashboard.components.SimpleDatePickerDialog;
 import id.co.wika.pcddashboard.components.SimpleDatePickerDialogFragment;
 import id.co.wika.pcddashboard.fragments.LkFragment;
@@ -62,7 +63,7 @@ public class MainActivity extends AppCompatActivity implements
     private LspFragment lspFragment;
 
     private DashboardRkap dashboardRkap1;
-    private DashboardItemView dashboardItemView1;
+    private DashboardSisa dashboardSisa;
     private DashboardItemView dashboardItemView2;
     private DashboardItemView dashboardItemView3;
     private DashboardItemView dashboardItemView4;
@@ -154,7 +155,7 @@ public class MainActivity extends AppCompatActivity implements
         monthSelectPager.setCurrentItem(0);
 
         dashboardRkap1 = (DashboardRkap) findViewById(R.id.dashboard_rkap_1);
-        dashboardItemView1 = (DashboardItemView) findViewById(R.id.dashboard_item_view_1);
+        dashboardSisa = (DashboardSisa) findViewById(R.id.dashboard_sisa);
         dashboardItemView2 = (DashboardItemView) findViewById(R.id.dashboard_item_view_2);
         dashboardItemView3 = (DashboardItemView) findViewById(R.id.dashboard_item_view_3);
         dashboardItemView4 = (DashboardItemView) findViewById(R.id.dashboard_item_view_4);
@@ -317,11 +318,13 @@ public class MainActivity extends AppCompatActivity implements
                         String ok = obj.getString("ok") != null ? obj.getString("ok") : "0.0";
                         String op = obj.getString("op") != null ? obj.getString("op") : "0.0";
                         String lsp = obj.getString("lsp") != null ? obj.getString("lsp") : "0.0";
+                        String lk = obj.getString("lk") != null ? obj.getString("lk") : "0.0";
 
                         dashboardItem.setTitle(title);
                         dashboardItem.setOk(new BigDecimal(ok));
                         dashboardItem.setOp(new BigDecimal(op));
                         dashboardItem.setLsp(new BigDecimal(lsp));
+                        dashboardItem.setLk(new BigDecimal(lk));
 
                         MainActivity.this.dashboardItemList.add(dashboardItem);
                     } catch (JSONException e) {
@@ -396,7 +399,7 @@ public class MainActivity extends AppCompatActivity implements
     }
 
     private void updateDashboardItemView(){
-        dashboardItemView1.setDashboardItem(this.dashboardItemList.get(3));
+        dashboardSisa.setDashboardItem(this.dashboardItemList.get(3));
         dashboardItemView2.setDashboardItem(this.dashboardItemList.get(4));
         dashboardItemView3.setDashboardItem(this.dashboardItemList.get(5));
         dashboardItemView4.setDashboardItem(this.dashboardItemList.get(6));

@@ -109,7 +109,8 @@
                 android:id="@+id/ok_text_view1"
                 android:textColor="#fff"
                 android:layout_weight="3"
-                android:textSize="18sp"/>
+                android:textSize="18sp"
+                android:textAlignment="textEnd" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -120,7 +121,8 @@
                 android:id="@+id/ok_text_view2"
                 android:textColor="#fff"
                 android:layout_weight="3"
-                android:textSize="18sp"/>
+                android:textSize="18sp"
+                android:textAlignment="viewEnd" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -131,7 +133,8 @@
                 android:id="@+id/ok_text_view3"
                 android:textColor="#fff"
                 android:layout_weight="3"
-                android:textSize="18sp"/>
+                android:textSize="18sp"
+                android:textAlignment="viewEnd" />
 
         </LinearLayout>
 
@@ -166,7 +169,8 @@
                 android:id="@+id/op_text_view1"
                 android:textColor="#fff"
                 android:layout_weight="3"
-                android:textSize="18sp"/>
+                android:textSize="18sp"
+                android:textAlignment="viewEnd" />
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -176,7 +180,8 @@
                 android:id="@+id/op_text_view2"
                 android:textColor="#fff"
                 android:layout_weight="3"
-                android:textSize="18sp"/>
+                android:textSize="18sp"
+                android:textAlignment="viewEnd" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -187,7 +192,8 @@
                 android:id="@+id/op_text_view3"
                 android:textColor="#fff"
                 android:layout_weight="3"
-                android:textSize="18sp"/>
+                android:textSize="18sp"
+                android:textAlignment="viewEnd" />
 
         </LinearLayout>
 
@@ -222,7 +228,8 @@
                 android:id="@+id/lsp_text_view1"
                 android:textColor="#fff"
                 android:layout_weight="3"
-                android:textSize="18sp"/>
+                android:textSize="18sp"
+                android:textAlignment="viewEnd" />
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -232,7 +239,8 @@
                 android:id="@+id/lsp_text_view2"
                 android:textColor="#fff"
                 android:layout_weight="3"
-                android:textSize="18sp"/>
+                android:textSize="18sp"
+                android:textAlignment="viewEnd" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -243,7 +251,8 @@
                 android:id="@+id/lsp_text_view3"
                 android:textColor="#fff"
                 android:layout_weight="3"
-                android:textSize="18sp"/>
+                android:textSize="18sp"
+                android:textAlignment="viewEnd" />
 
         </LinearLayout>
 

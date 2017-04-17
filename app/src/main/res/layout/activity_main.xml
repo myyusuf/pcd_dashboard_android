@@ -334,8 +334,8 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"/>
 
-                    <id.co.wika.pcddashboard.components.DashboardItemView
-                        android:id="@+id/dashboard_item_view_1"
+                    <id.co.wika.pcddashboard.components.DashboardSisa
+                        android:id="@+id/dashboard_sisa"
                         app:title="Sisa"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
