@@ -255,24 +255,52 @@ public class LkFragment extends Fragment {
         List<Entry> planDataEntries = new ArrayList<Entry>();
         List<Entry> actualDataEntries = new ArrayList<Entry>();
 
+        double planCumulative = 0;
+        double plan = 0;
+
+        double actualCumulative = 0;
+        double actual = 0;
 
         for (int i = 0; i < dataArray.length(); i++) {
             JSONObject obj = null;
             try {
                 obj = dataArray.getJSONObject(i);
                 if(!obj.get("plan").toString().equals("null")){
-                    planDataEntries.add(new Entry(i + 1, new Float(obj.getDouble("plan") / 1000)));
+                    plan = obj.getDouble("plan") / 1000;
+                    planDataEntries.add(new Entry(i + 1, new Float(plan + planCumulative)));
+
+                    planCumulative +=  plan;
                 }
 
                 if(!obj.get("actual").toString().equals("null")){
-                    actualDataEntries.add(new Entry(i + 1, new Float(obj.getDouble("actual") / 1000)));
+                    actual = obj.getDouble("actual") / 1000;
+                    actualDataEntries.add(new Entry(i + 1, new Float(actual + actualCumulative)));
+
+                    actualCumulative += actual;
                 }
 
             } catch (JSONException e) {
                 e.printStackTrace();
             }
-
         }
+
+//        for (int i = 0; i < dataArray.length(); i++) {
+//            JSONObject obj = null;
+//            try {
+//                obj = dataArray.getJSONObject(i);
+//                if(!obj.get("plan").toString().equals("null")){
+//                    planDataEntries.add(new Entry(i + 1, new Float(obj.getDouble("plan") / 1000)));
+//                }
+//
+//                if(!obj.get("actual").toString().equals("null")){
+//                    actualDataEntries.add(new Entry(i + 1, new Float(obj.getDouble("actual") / 1000)));
+//                }
+//
+//            } catch (JSONException e) {
+//                e.printStackTrace();
+//            }
+//
+//        }
 
         drawChart(planDataEntries, actualDataEntries);
         updateSelectedMonth(month, actualDataEntries);
