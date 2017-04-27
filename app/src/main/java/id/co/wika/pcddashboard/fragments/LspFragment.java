@@ -263,22 +263,45 @@ public class LspFragment extends Fragment {
         double actualCumulative = 0;
         double actual = 0;
 
+//        for (int i = 0; i < dataArray.length(); i++) {
+//            JSONObject obj = null;
+//            try {
+//                obj = dataArray.getJSONObject(i);
+//                if(!obj.get("plan").toString().equals("null")){
+//                    plan = obj.getDouble("plan") / 1000;
+//                    planDataEntries.add(new Entry(i + 1, new Float(plan + planCumulative)));
+//
+//                    planCumulative +=  plan;
+//                }
+//
+//                if(!obj.get("actual").toString().equals("null")){
+//                    actual = obj.getDouble("actual") / 1000;
+//                    actualDataEntries.add(new Entry(i + 1, new Float(actual + actualCumulative)));
+//
+//                    actualCumulative += actual;
+//                }
+//
+//            } catch (JSONException e) {
+//                e.printStackTrace();
+//            }
+//        }
+
         for (int i = 0; i < dataArray.length(); i++) {
             JSONObject obj = null;
             try {
                 obj = dataArray.getJSONObject(i);
                 if(!obj.get("plan").toString().equals("null")){
                     plan = obj.getDouble("plan") / 1000;
-                    planDataEntries.add(new Entry(i + 1, new Float(plan + planCumulative)));
+                    planDataEntries.add(new Entry(i + 1, new Float(plan)));
 
-                    planCumulative +=  plan;
+//                    planCumulative +=  plan;
                 }
 
                 if(!obj.get("actual").toString().equals("null")){
                     actual = obj.getDouble("actual") / 1000;
-                    actualDataEntries.add(new Entry(i + 1, new Float(actual + actualCumulative)));
+                    actualDataEntries.add(new Entry(i + 1, new Float(actual)));
 
-                    actualCumulative += actual;
+//                    actualCumulative += actual;
                 }
 
             } catch (JSONException e) {
