@@ -4,6 +4,31 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".MainActivity">
+
+    <item
+        android:id="@+id/piutang"
+        android:orderInCategory="100"
+        android:title="Piutang &amp; BAD Department"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/umur_piutang"
+        android:orderInCategory="100"
+        android:title="Umur Piutang"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/cashflow"
+        android:orderInCategory="100"
+        android:title="Cash Flow"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/prognosa_piutang"
+        android:orderInCategory="100"
+        android:title="Prognosa Piutang"
+        app:showAsAction="never" />
+
     <item
         android:id="@+id/action_logout"
         android:orderInCategory="100"

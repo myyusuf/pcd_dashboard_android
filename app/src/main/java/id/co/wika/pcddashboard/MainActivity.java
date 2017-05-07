@@ -106,6 +106,12 @@ public class MainActivity extends AppCompatActivity implements
         Intent intent = getIntent();
         token = intent.getStringExtra("token");
 
+        if(token == null){
+//            finish();
+            Intent intentToGo = new Intent(MainActivity.this, LoginActivity.class);
+            startActivity(intentToGo);
+        }
+
         monthSelectLabel = (TextView) findViewById(R.id.month_select_label);
 
         monthSelectLabel.setOnClickListener(new View.OnClickListener() {
@@ -205,6 +211,11 @@ public class MainActivity extends AppCompatActivity implements
             this.token = "";
             finish();
             Intent intent = new Intent(MainActivity.this, LoginActivity.class);
+            startActivity(intent);
+            return true;
+        }else if (id == R.id.piutang) {
+            this.token = "";
+            Intent intent = new Intent(MainActivity.this, Piutang1Activity.class);
             startActivity(intent);
             return true;
         }

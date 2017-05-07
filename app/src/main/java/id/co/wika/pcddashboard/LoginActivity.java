@@ -106,6 +106,7 @@ public class LoginActivity extends AppCompatActivity {
                     String token = loginObject.getString("token");
 //                    Log.v("Token", token);
                     if(token != null){
+                        finish();
                         Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                         intent.putExtra("token", token);
                         startActivity(intent);
