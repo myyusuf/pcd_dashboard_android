@@ -11,4 +11,60 @@
         android:id="@+id/tool_bar"
         layout="@layout/tool_bar"></include>
 
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="56dp">
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="Jan, 2017"
+            android:id="@+id/month_select_label"
+            android:textColor="#ffffff"
+            android:textSize="20dp"
+            android:textAlignment="center"
+            android:padding="0dp"
+            android:gravity="center_horizontal" />
+
+        <ScrollView
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:id="@+id/dashboard_scroll_view"
+            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true"
+            android:fillViewport="false"
+            android:padding="0dp"
+            android:scrollIndicators="none"
+            android:scrollbars="none">
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:minHeight="1333dp"
+                android:descendantFocusability="blocksDescendants">
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="16dp"
+                    android:id="@+id/dots"
+                    android:paddingRight="11dp"
+                    android:layout_gravity="right"
+                    android:gravity="right">
+                </LinearLayout>
+
+                <com.github.mikephil.charting.charts.BarChart
+                    android:id="@+id/piutang1_chart"
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp" />
+
+            </LinearLayout>
+        </ScrollView>
+
+    </LinearLayout>
+
 </RelativeLayout>
