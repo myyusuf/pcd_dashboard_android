@@ -2,9 +2,9 @@ package id.co.wika.pcddashboard;
 
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
-import android.os.Bundle;
 import android.support.v4.app.NavUtils;
 import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -28,7 +28,7 @@ import java.util.List;
 
 import id.co.wika.pcddashboard.components.CustomMarkerView;
 
-public class Piutang1Activity extends AppCompatActivity {
+public class Piutang2Activity extends AppCompatActivity {
 
     List<BarEntry> firstDataEntries = new ArrayList<BarEntry>();
     List<BarEntry> secondDataEntries = new ArrayList<BarEntry>();
@@ -43,7 +43,7 @@ public class Piutang1Activity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_piutang1);
+        setContentView(R.layout.activity_piutang2);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.tool_bar); // Attaching the layout to the toolbar object
         setSupportActionBar(toolbar);
@@ -56,9 +56,9 @@ public class Piutang1Activity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         TextView toolbarTitle1 = (TextView) findViewById(R.id.tool_bar_title1);
-        toolbarTitle1.setText("Piutang & BAD Department");
+        toolbarTitle1.setText("Umur Piutang");
 
-        mChart = (BarChart) findViewById(R.id.piutang1_chart);
+        mChart = (BarChart) findViewById(R.id.piutang2_chart);
 
         generateChart();
     }
@@ -107,7 +107,7 @@ public class Piutang1Activity extends AppCompatActivity {
             List<BarEntry> thirdDataEntries,
             List<BarEntry> fourthDataEntries,
             List<BarEntry> fifthDataEntries
-            ){
+    ){
 
         if(firstDataEntries.size() > 11) {
             int lastIndex = firstDataEntries.size() - 1;
@@ -186,7 +186,7 @@ public class Piutang1Activity extends AppCompatActivity {
             @Override
             public String getFormattedValue(float value, AxisBase axis) {
                 int valueInInt = (int) value;
-                if(valueInInt >= 0 && valueInInt < Piutang1Activity.this.XAXIS_TITLE.length){
+                if(valueInInt >= 0 && valueInInt < Piutang2Activity.this.XAXIS_TITLE.length){
                     return XAXIS_TITLE[valueInInt] + "";
                 }else{
                     return "";

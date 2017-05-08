@@ -218,6 +218,11 @@ public class MainActivity extends AppCompatActivity implements
             Intent intent = new Intent(MainActivity.this, Piutang1Activity.class);
             startActivity(intent);
             return true;
+        }else if (id == R.id.umur_piutang) {
+            this.token = "";
+            Intent intent = new Intent(MainActivity.this, Piutang2Activity.class);
+            startActivity(intent);
+            return true;
         }
 
         return super.onOptionsItemSelected(item);

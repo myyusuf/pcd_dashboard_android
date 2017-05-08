@@ -6,6 +6,12 @@
     tools:context=".MainActivity">
 
     <item
+        android:id="@+id/dashboard"
+        android:orderInCategory="100"
+        android:title="Dashboard"
+        app:showAsAction="never" />
+
+    <item
         android:id="@+id/piutang"
         android:orderInCategory="100"
         android:title="Piutang &amp; BAD Department"
