@@ -223,6 +223,16 @@ public class MainActivity extends AppCompatActivity implements
             Intent intent = new Intent(MainActivity.this, Piutang2Activity.class);
             startActivity(intent);
             return true;
+        }else if (id == R.id.cashflow) {
+            this.token = "";
+            Intent intent = new Intent(MainActivity.this, Piutang3Activity.class);
+            startActivity(intent);
+            return true;
+        }else if (id == R.id.prognosa_piutang) {
+            this.token = "";
+            Intent intent = new Intent(MainActivity.this, Piutang4Activity.class);
+            startActivity(intent);
+            return true;
         }
 
         return super.onOptionsItemSelected(item);

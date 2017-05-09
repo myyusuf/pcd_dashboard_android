@@ -38,7 +38,7 @@ public class Piutang2Activity extends AppCompatActivity {
 
     private BarChart mChart;
 
-    private static final String[] XAXIS_TITLE = new String[]{"", "CLCP", "ARUN", "ADRO", "JNPTO", "JETTY", "DOC", "SLT", "KSL", "TJBT", "MK", ""};
+    private static final String[] XAXIS_TITLE = new String[]{"", "PDP", "TAG BRUTO", "PIUTANG USAHA", "PIUTANG RETENSI", ""};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
