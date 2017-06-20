@@ -15,6 +15,7 @@ import android.widget.TextView;
 import com.github.mikephil.charting.charts.BarChart;
 import com.github.mikephil.charting.components.AxisBase;
 import com.github.mikephil.charting.components.Description;
+import com.github.mikephil.charting.components.Legend;
 import com.github.mikephil.charting.components.XAxis;
 import com.github.mikephil.charting.components.YAxis;
 import com.github.mikephil.charting.data.BarData;
@@ -38,7 +39,7 @@ public class Piutang1Activity extends AppCompatActivity {
 
     private BarChart mChart;
 
-    private static final String[] XAXIS_TITLE = new String[]{"", "CLCP", "ARUN", "ADRO", "JNPTO", "JETTY", "DOC", "SLT", "KSL", "TJBT", "MK", ""};
+    private static final String[] XAXIS_TITLE = new String[]{""};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,7 +57,7 @@ public class Piutang1Activity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         TextView toolbarTitle1 = (TextView) findViewById(R.id.tool_bar_title1);
-        toolbarTitle1.setText("Piutang & BAD Department");
+        toolbarTitle1.setText("Piutang & BAD");
 
         mChart = (BarChart) findViewById(R.id.piutang1_chart);
 
@@ -64,11 +65,11 @@ public class Piutang1Activity extends AppCompatActivity {
     }
 
     private void generateChart() {
-        List<BarEntry> firstDataEntries = new ArrayList<BarEntry>();
-        List<BarEntry> secondDataEntries = new ArrayList<BarEntry>();
-        List<BarEntry> thirdDataEntries = new ArrayList<BarEntry>();
-        List<BarEntry> fourthDataEntries = new ArrayList<BarEntry>();
-        List<BarEntry> fifthDataEntries = new ArrayList<BarEntry>();
+        List<BarEntry> firstDataEntries = new ArrayList<BarEntry>(1);
+        List<BarEntry> secondDataEntries = new ArrayList<BarEntry>(1);
+        List<BarEntry> thirdDataEntries = new ArrayList<BarEntry>(1);
+        List<BarEntry> fourthDataEntries = new ArrayList<BarEntry>(1);
+        List<BarEntry> fifthDataEntries = new ArrayList<BarEntry>(1);
 
         firstDataEntries.add(new BarEntry(1, new Float(1.2)));
         secondDataEntries.add(new BarEntry(1, new Float(2.2)));
@@ -109,42 +110,6 @@ public class Piutang1Activity extends AppCompatActivity {
             List<BarEntry> fifthDataEntries
             ){
 
-        if(firstDataEntries.size() > 11) {
-            int lastIndex = firstDataEntries.size() - 1;
-            float lastValue = firstDataEntries.get(lastIndex).getY();
-            firstDataEntries.add(new BarEntry(13, lastValue));
-
-        }
-        firstDataEntries.add(0, new BarEntry(0f, 0f));
-
-        if(secondDataEntries.size() > 11) {
-            int lastIndex = secondDataEntries.size() - 1;
-            float lastValue = secondDataEntries.get(lastIndex).getY();
-            secondDataEntries.add(new BarEntry(13, lastValue));
-        }
-        secondDataEntries.add(0, new BarEntry(0f, 0f));
-
-        if(thirdDataEntries.size() > 11) {
-            int lastIndex = thirdDataEntries.size() - 1;
-            float lastValue = thirdDataEntries.get(lastIndex).getY();
-            thirdDataEntries.add(new BarEntry(13, lastValue));
-        }
-        thirdDataEntries.add(0, new BarEntry(0f, 0f));
-
-        if(fourthDataEntries.size() > 11) {
-            int lastIndex = fourthDataEntries.size() - 1;
-            float lastValue = fourthDataEntries.get(lastIndex).getY();
-            fourthDataEntries.add(new BarEntry(13, lastValue));
-        }
-        fourthDataEntries.add(0, new BarEntry(0f, 0f));
-
-        if(fifthDataEntries.size() > 11) {
-            int lastIndex = fifthDataEntries.size() - 1;
-            float lastValue = fifthDataEntries.get(lastIndex).getY();
-            fifthDataEntries.add(new BarEntry(13, lastValue));
-        }
-        fifthDataEntries.add(0, new BarEntry(0f, 0f));
-
         this.firstDataEntries = firstDataEntries;
         this.secondDataEntries = secondDataEntries;
         this.thirdDataEntries = thirdDataEntries;
@@ -156,9 +121,11 @@ public class Piutang1Activity extends AppCompatActivity {
         mChart.setMinimumHeight(450);
         mChart.getAxisLeft().setSpaceBottom(0);
         mChart.setDrawBorders(false);
-        mChart.getAxisRight().setEnabled(false);
+        mChart.getAxisRight().setEnabled(true);
         mChart.getXAxis().setGridColor(Color.GRAY);
-        mChart.getLegend().setEnabled(false);
+        mChart.getLegend().setEnabled(true);
+        mChart.getLegend().setTextColor(Color.WHITE);
+        mChart.getLegend().setXEntrySpace(20);
 
         mChart.getXAxis().setTextColor(Color.WHITE);
         mChart.getXAxis().setPosition(XAxis.XAxisPosition.TOP_INSIDE);
@@ -166,14 +133,14 @@ public class Piutang1Activity extends AppCompatActivity {
 
         mChart.getAxisLeft().setPosition(YAxis.YAxisLabelPosition.INSIDE_CHART);
         mChart.getAxisLeft().setEnabled(false);
-        mChart.setViewPortOffsets(0, 15, 0, 0);
+        mChart.setViewPortOffsets(0, 15, 0, 100);
 
         Description description = new Description();
         description.setText("");
         mChart.setDescription(description);
 
         barChart.setDrawBarShadow(false);
-        barChart.setMaxVisibleValueCount(50);
+//        barChart.setMaxVisibleValueCount(1);
         barChart.setPinchZoom(true);
         barChart.setDrawGridBackground(false);
 
@@ -218,9 +185,9 @@ public class Piutang1Activity extends AppCompatActivity {
         //IMPORTANT!!!!
         //data
         float groupSpace = 0.05f;
-        float barSpace = 0.02f; // x2 dataset
-        float barWidth = 0.17f; // x2 dataset
-        // (0.18 + 0.02) * 5 + 0.05 = 1.00 -> interval per "group"
+        float barSpace = 0.05f; // x2 dataset
+        float barWidth = 0.14f; // x2 dataset
+        // (0.17 + 0.02) * 5 + 0.05 = 1.00 -> interval per "group"
 
 
         List<BarEntry> yVals1 = firstDataEntries;
@@ -246,17 +213,17 @@ public class Piutang1Activity extends AppCompatActivity {
             barChart.notifyDataSetChanged();
         } else {
             // create 2 datasets with different types
-            set1 = new BarDataSet(yVals1, "Company A");
+            set1 = new BarDataSet(yVals1, "Piutang Usaha");
             set1.setColor(Color.parseColor("#7ED321"));
-            set2 = new BarDataSet(yVals2, "Company B");
+            set2 = new BarDataSet(yVals2, "Tagihan Bruto");
             set2.setColor(Color.parseColor("#92E9FF"));
-            set3 = new BarDataSet(yVals3, "Company C");
+            set3 = new BarDataSet(yVals3, "Piutang Retensi");
             set3.setColor(Color.parseColor("#9339FF"));
 
-            set4 = new BarDataSet(yVals4, "Company D");
+            set4 = new BarDataSet(yVals4, "PDP");
             set4.setColor(Color.parseColor("#7337FF"));
 
-            set5 = new BarDataSet(yVals5, "Company E");
+            set5 = new BarDataSet(yVals5, "BAD");
             set5.setColor(Color.parseColor("#2119FF"));
 
             ArrayList<IBarDataSet> dataSets = new ArrayList<IBarDataSet>();
@@ -267,18 +234,33 @@ public class Piutang1Activity extends AppCompatActivity {
             dataSets.add(set5);
 
             BarData data = new BarData(dataSets);
+
             barChart.setData(data);
         }
 
-        set1.setDrawValues(false);
-        set2.setDrawValues(false);
-        set3.setDrawValues(false);
-        set4.setDrawValues(false);
-        set5.setDrawValues(false);
+//        set1.setDrawValues(false);
+//        set2.setDrawValues(false);
+//        set3.setDrawValues(false);
+//        set4.setDrawValues(false);
+//        set5.setDrawValues(false);
+        set1.setValueTextColor(Color.WHITE);
+        set1.setValueTextSize(12);
+
+        set2.setValueTextColor(Color.WHITE);
+        set2.setValueTextSize(12);
+
+        set3.setValueTextColor(Color.WHITE);
+        set3.setValueTextSize(12);
+
+        set4.setValueTextColor(Color.WHITE);
+        set4.setValueTextSize(12);
+
+        set5.setValueTextColor(Color.WHITE);
+        set5.setValueTextSize(12);
 
         barChart.getBarData().setBarWidth(barWidth);
         barChart.getXAxis().setAxisMinValue(0);
-        mChart.getXAxis().setAxisMaxValue(14);
+        mChart.getXAxis().setAxisMaxValue(1);
         barChart.groupBars(0, groupSpace, barSpace);
         barChart.invalidate();
 

@@ -213,7 +213,9 @@ public class MainActivity extends AppCompatActivity implements
             Intent intent = new Intent(MainActivity.this, LoginActivity.class);
             startActivity(intent);
             return true;
-        }else if (id == R.id.piutang) {
+        }
+
+        /* else if (id == R.id.piutang) {
             this.token = "";
             Intent intent = new Intent(MainActivity.this, Piutang1Activity.class);
             startActivity(intent);
@@ -233,7 +235,7 @@ public class MainActivity extends AppCompatActivity implements
             Intent intent = new Intent(MainActivity.this, Piutang4Activity.class);
             startActivity(intent);
             return true;
-        }
+        } */
 
         return super.onOptionsItemSelected(item);
     }
