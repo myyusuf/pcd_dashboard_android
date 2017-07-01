@@ -57,6 +57,7 @@
                 android:textColor="#fff"
                 android:layout_weight="3"
                 android:textSize="19sp"
+                android:layout_marginRight="8dp"
                 android:gravity="center_horizontal" />
             <TextView
                 android:layout_width="wrap_content"
@@ -94,7 +95,7 @@
             android:gravity="center_vertical">
 
             <TextView
-                android:layout_width="50dp"
+                android:layout_width="62dp"
                 android:layout_height="match_parent"
                 android:text="OK"
                 android:paddingLeft="8dp"
@@ -105,21 +106,34 @@
                 android:gravity="center"
                 android:textSize="17sp"/>
 
+            <!--<TextView-->
+                <!--android:layout_width="50dp"-->
+                <!--android:layout_height="match_parent"-->
+                <!--android:textAppearance="?android:attr/textAppearanceSmall"-->
+                <!--android:text="-"-->
+                <!--tools:text="349"-->
+                <!--android:id="@+id/ok_text_view1"-->
+                <!--android:textColor="#fff"-->
+                <!--android:layout_weight="3"-->
+                <!--android:textSize="18sp"-->
+                <!--android:textAlignment="center"-->
+                <!--android:background="@drawable/dashboard_item_container_sub_bg_black"-->
+                <!--android:paddingRight="8dp"-->
+                <!--android:layout_marginRight="8dp"-->
+                <!--android:gravity="center_vertical" />-->
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:id="@+id/ok_text_view1"
                 android:text="-"
                 tools:text="349"
-                android:id="@+id/ok_text_view1"
+                android:paddingLeft="8dp"
+                android:layout_marginRight="10dp"
+                android:background="@drawable/dashboard_item_container_sub_bg_black"
                 android:textColor="#fff"
                 android:layout_weight="3"
-                android:textSize="18sp"
-                android:textAlignment="textEnd"
-                android:background="@drawable/dashboard_item_container_sub_bg_black"
-                android:paddingRight="8dp"
-                android:layout_marginRight="8dp"
-                android:gravity="center_vertical" />
+                android:gravity="center"
+                android:textSize="17sp"/>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -131,11 +145,9 @@
                 android:background="@drawable/dashboard_item_container_sub_bg_black"
                 android:textColor="#fff"
                 android:layout_weight="3"
-                android:textSize="18sp"
-                android:paddingRight="8dp"
+                android:textSize="17sp"
                 android:layout_marginRight="8dp"
-                android:textAlignment="viewEnd"
-                android:gravity="center_vertical" />
+                android:gravity="center" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -147,10 +159,8 @@
                 android:background="@drawable/dashboard_item_container_sub_bg_black"
                 android:textColor="#fff"
                 android:layout_weight="3"
-                android:textSize="18sp"
-                android:paddingRight="8dp"
-                android:textAlignment="viewEnd"
-                android:gravity="center_vertical" />
+                android:textSize="17sp"
+                android:gravity="center" />
 
         </LinearLayout>
 
@@ -165,7 +175,7 @@
             android:gravity="center_vertical">
 
             <TextView
-                android:layout_width="50dp"
+                android:layout_width="62dp"
                 android:layout_height="match_parent"
                 android:text="OP"
                 android:paddingLeft="8dp"
@@ -179,18 +189,17 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:id="@+id/op_text_view1"
                 android:text="-"
                 tools:text="349"
-                android:id="@+id/op_text_view1"
+                android:paddingLeft="8dp"
+                android:layout_marginRight="10dp"
+                android:background="@drawable/dashboard_item_container_sub_bg_black"
                 android:textColor="#fff"
                 android:layout_weight="3"
-                android:textSize="18sp"
-                android:textAlignment="viewEnd"
-                android:background="@drawable/dashboard_item_container_sub_bg_black"
-                android:paddingRight="8dp"
-                android:layout_marginRight="8dp"
-                android:gravity="center_vertical" />
+                android:gravity="center"
+                android:textSize="17sp"/>
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
@@ -198,14 +207,12 @@
                 android:text="-"
                 tools:text="247"
                 android:id="@+id/op_text_view2"
+                android:background="@drawable/dashboard_item_container_sub_bg_black"
                 android:textColor="#fff"
                 android:layout_weight="3"
-                android:textSize="18sp"
-                android:textAlignment="viewEnd"
-                android:background="@drawable/dashboard_item_container_sub_bg_black"
-                android:paddingRight="8dp"
+                android:textSize="17sp"
                 android:layout_marginRight="8dp"
-                android:gravity="center_vertical" />
+                android:gravity="center" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -214,13 +221,11 @@
                 android:text="-"
                 tools:text="350"
                 android:id="@+id/op_text_view3"
+                android:background="@drawable/dashboard_item_container_sub_bg_black"
                 android:textColor="#fff"
                 android:layout_weight="3"
-                android:textSize="18sp"
-                android:textAlignment="viewEnd"
-                android:background="@drawable/dashboard_item_container_sub_bg_black"
-                android:paddingRight="8dp"
-                android:gravity="center_vertical" />
+                android:textSize="17sp"
+                android:gravity="center" />
 
         </LinearLayout>
 
@@ -249,18 +254,17 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:id="@+id/lsp_text_view1"
                 android:text="-"
                 tools:text="349"
-                android:id="@+id/lsp_text_view1"
+                android:paddingLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:background="@drawable/dashboard_item_container_sub_bg_black"
                 android:textColor="#fff"
                 android:layout_weight="3"
-                android:textSize="18sp"
-                android:textAlignment="viewEnd"
-                android:background="@drawable/dashboard_item_container_sub_bg_black"
-                android:paddingRight="8dp"
-                android:layout_marginRight="8dp"
-                android:gravity="center_vertical" />
+                android:gravity="center"
+                android:textSize="17sp"/>
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
@@ -268,14 +272,12 @@
                 android:text="-"
                 tools:text="247"
                 android:id="@+id/lsp_text_view2"
+                android:background="@drawable/dashboard_item_container_sub_bg_black"
                 android:textColor="#fff"
                 android:layout_weight="3"
-                android:textSize="18sp"
-                android:textAlignment="viewEnd"
-                android:background="@drawable/dashboard_item_container_sub_bg_black"
-                android:paddingRight="8dp"
+                android:textSize="17sp"
                 android:layout_marginRight="8dp"
-                android:gravity="center_vertical" />
+                android:gravity="center" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -284,13 +286,11 @@
                 android:text="-"
                 tools:text="350"
                 android:id="@+id/lsp_text_view3"
+                android:background="@drawable/dashboard_item_container_sub_bg_black"
                 android:textColor="#fff"
                 android:layout_weight="3"
-                android:textSize="18sp"
-                android:textAlignment="viewEnd"
-                android:background="@drawable/dashboard_item_container_sub_bg_black"
-                android:paddingRight="8dp"
-                android:gravity="center_vertical" />
+                android:textSize="17sp"
+                android:gravity="center" />
 
         </LinearLayout>
 

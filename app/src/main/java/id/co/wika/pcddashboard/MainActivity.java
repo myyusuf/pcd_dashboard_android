@@ -343,10 +343,10 @@ public class MainActivity extends AppCompatActivity implements
                         DashboardItem dashboardItem = new DashboardItem();
 
                         String title = obj.getString("title") != null ? obj.getString("title") : "-";
-                        String ok = obj.getString("ok") != null ? obj.getString("ok") : "0.0";
-                        String op = obj.getString("op") != null ? obj.getString("op") : "0.0";
-                        String lsp = obj.getString("lsp") != null ? obj.getString("lsp") : "0.0";
-                        String lk = obj.getString("lk") != null ? obj.getString("lk") : "0.0";
+                        String ok = obj.getString("ok") != null && obj.getString("ok") != "null" ? obj.getString("ok") : "0.0";
+                        String op = obj.getString("op") != null && obj.getString("op") != "null" ? obj.getString("op") : "0.0";
+                        String lsp = obj.getString("lsp") != null && obj.getString("lsp") != "null" ? obj.getString("lsp") : "0.0";
+                        String lk = obj.getString("lk") != null && obj.getString("lk") != "null" ? obj.getString("lk") : "0.0";
 
                         dashboardItem.setTitle(title);
                         dashboardItem.setOk(new BigDecimal(ok));
