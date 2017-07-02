@@ -335,7 +335,7 @@ public class OpFragment extends Fragment {
 
 
         LineDataSet dataSet = new LineDataSet(planDataEntries, "Plan");
-        dataSet.setMode(LineDataSet.Mode.CUBIC_BEZIER);
+        dataSet.setMode(LineDataSet.Mode.LINEAR);
         dataSet.setDrawCircles(false);
         dataSet.setDrawFilled(true);
         dataSet.setDrawValues(false);
@@ -344,7 +344,7 @@ public class OpFragment extends Fragment {
         dataSet.setFillAlpha(200);
 
         LineDataSet dataSet2 = new LineDataSet(actualDataEntries, "Actual");
-        dataSet2.setMode(LineDataSet.Mode.CUBIC_BEZIER);
+        dataSet2.setMode(LineDataSet.Mode.LINEAR);
         dataSet2.setDrawCircles(false);
         dataSet2.setDrawFilled(true);
         dataSet2.setDrawValues(false);
