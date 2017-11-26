@@ -24,13 +24,20 @@ import com.github.mikephil.charting.formatter.DefaultAxisValueFormatter;
 import com.github.mikephil.charting.interfaces.datasets.IBarDataSet;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
+import java.util.Locale;
 
+import id.co.wika.pcddashboard.MainActivity;
 import id.co.wika.pcddashboard.Piutang2Activity;
 import id.co.wika.pcddashboard.R;
 import id.co.wika.pcddashboard.components.CustomMarkerView;
+import id.co.wika.pcddashboard.components.SimpleDatePickerDialog;
+import id.co.wika.pcddashboard.components.SimpleDatePickerDialogFragment;
+import id.co.wika.pcddashboard.utils.DateDisplayUtils;
 
-public class UmurPiutangActivity extends AppCompatActivity {
+public class UmurPiutangActivity extends AppCompatActivity implements
+        SimpleDatePickerDialog.OnDateSetListener {
 
     List<BarEntry> firstDataEntries = new ArrayList<BarEntry>();
     List<BarEntry> secondDataEntries = new ArrayList<BarEntry>();
@@ -39,6 +46,10 @@ public class UmurPiutangActivity extends AppCompatActivity {
     List<BarEntry> fifthDataEntries = new ArrayList<BarEntry>();
 
     private BarChart mChart;
+
+    private TextView monthSelectLabel;
+    private int selectedMonth = 1;
+    private int selectedYear = 2008;
 
     private static final String[] XAXIS_TITLE = new String[]{"PDP", "TAG BRUTO", "PIUTANG USAHA", "PIUTANG RETENSI"};
 
@@ -59,6 +70,23 @@ public class UmurPiutangActivity extends AppCompatActivity {
 
         TextView toolbarTitle1 = (TextView) findViewById(R.id.tool_bar_title1);
         toolbarTitle1.setText("Umur Piutang");
+
+        monthSelectLabel = (TextView) findViewById(R.id.month_select_label);
+        monthSelectLabel.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+
+                SimpleDatePickerDialogFragment datePickerDialogFragment;
+                Calendar calendar = Calendar.getInstance(Locale.getDefault());
+
+                datePickerDialogFragment = SimpleDatePickerDialogFragment.getInstance(UmurPiutangActivity.this.selectedYear,
+                        UmurPiutangActivity.this.selectedMonth);
+
+                datePickerDialogFragment.setOnDateSetListener(UmurPiutangActivity.this);
+                datePickerDialogFragment.show(UmurPiutangActivity.this.getSupportFragmentManager(), null);
+            }
+        });
 
         mChart = (BarChart) findViewById(R.id.piutang2_chart);
 
@@ -296,5 +324,20 @@ public class UmurPiutangActivity extends AppCompatActivity {
         CustomMarkerView mv = new CustomMarkerView(this.getBaseContext(), R.layout.custom_marker_view);
         mChart.setMarkerView(mv);
 
+    }
+
+    @Override
+    public void onDateSet(int year, int monthOfYear) {
+        this.selectedYear = year;
+        this.selectedMonth = monthOfYear;
+
+        updateData();
+
+    }
+
+    public void updateData(){
+//        this.getDashboardData();
+//        this.getDashboardChartData();
+        monthSelectLabel.setText(DateDisplayUtils.formatMonthYear(this.selectedYear, this.selectedMonth));
     }
 }

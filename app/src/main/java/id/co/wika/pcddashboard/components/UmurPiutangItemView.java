@@ -51,10 +51,10 @@ public class UmurPiutangItemView extends LinearLayout {
         lspTextView = (TextView) findViewById(R.id.lsp_text_view);
 
         final TypedArray a = getContext().obtainStyledAttributes(
-                attrs, R.styleable.UmurPiutangItemView, defStyle, 0);
+                attrs, R.styleable.DashboardItemView, defStyle, 0);
 
         try {
-            title = a.getString(R.styleable.UmurPiutangItemView_titlex);
+            title = a.getString(R.styleable.DashboardItemView_title);
         } catch (Exception e) {
             Log.e("UmurPiutangItemView", "There was an error loading attributes.");
         } finally {
