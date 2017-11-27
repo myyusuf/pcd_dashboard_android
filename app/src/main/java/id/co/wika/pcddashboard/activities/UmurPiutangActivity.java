@@ -18,6 +18,7 @@ import com.android.volley.Response;
 import com.github.mikephil.charting.charts.BarChart;
 import com.github.mikephil.charting.components.AxisBase;
 import com.github.mikephil.charting.components.Description;
+import com.github.mikephil.charting.components.Legend;
 import com.github.mikephil.charting.components.XAxis;
 import com.github.mikephil.charting.components.YAxis;
 import com.github.mikephil.charting.data.BarData;
@@ -112,25 +113,8 @@ public class UmurPiutangActivity extends AppCompatActivity implements
 
         mChart = (BarChart) findViewById(R.id.piutang2_chart);
 
-        generateChart();
+        fetchData();
     }
-
-    private void generateChart() {
-        List<BarEntry> firstDataEntries = new ArrayList<BarEntry>();
-        List<BarEntry> secondDataEntries = new ArrayList<BarEntry>();
-        List<BarEntry> thirdDataEntries = new ArrayList<BarEntry>();
-        List<BarEntry> fourthDataEntries = new ArrayList<BarEntry>();
-        List<BarEntry> fifthDataEntries = new ArrayList<BarEntry>();
-
-        firstDataEntries.add(new BarEntry(1, new Float(1.2)));
-        secondDataEntries.add(new BarEntry(1, new Float(2.2)));
-        thirdDataEntries.add(new BarEntry(1, new Float(1.7)));
-        fourthDataEntries.add(new BarEntry(1, new Float(0.7)));
-        fifthDataEntries.add(new BarEntry(1, new Float(3.0)));
-
-        drawChart(firstDataEntries, secondDataEntries, thirdDataEntries, fourthDataEntries, fifthDataEntries);
-    }
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -357,6 +341,18 @@ public class UmurPiutangActivity extends AppCompatActivity implements
                 double totalTagihanBruto3 = 0d;
                 double totalTagihanBruto4 = 0d;
                 double totalTagihanBruto5 = 0d;
+
+                double totalPiutangUsaha1 = 0d;
+                double totalPiutangUsaha2 = 0d;
+                double totalPiutangUsaha3 = 0d;
+                double totalPiutangUsaha4 = 0d;
+                double totalPiutangUsaha5 = 0d;
+
+                double totalPiutangRetensi1 = 0d;
+                double totalPiutangRetensi2 = 0d;
+                double totalPiutangRetensi3 = 0d;
+                double totalPiutangRetensi4 = 0d;
+                double totalPiutangRetensi5 = 0d;
                 try {
                     for (int i = 0; i < response.length(); i++) {
                         JSONObject jsonObject = response.getJSONObject(i);
@@ -372,6 +368,18 @@ public class UmurPiutangActivity extends AppCompatActivity implements
                         totalTagihanBruto4 += jsonObject.getDouble("tagihan_bruto_4");
                         totalTagihanBruto5 += jsonObject.getDouble("tagihan_bruto_5");
 
+                        totalPiutangUsaha1 += jsonObject.getDouble("piutang_usaha_1");
+                        totalPiutangUsaha2 += jsonObject.getDouble("piutang_usaha_2");
+                        totalPiutangUsaha3 += jsonObject.getDouble("piutang_usaha_3");
+                        totalPiutangUsaha4 += jsonObject.getDouble("piutang_usaha_4");
+                        totalPiutangUsaha5 += jsonObject.getDouble("piutang_usaha_5");
+
+                        totalPiutangRetensi1 += jsonObject.getDouble("piutang_retensi_1");
+                        totalPiutangRetensi2 += jsonObject.getDouble("piutang_retensi_2");
+                        totalPiutangRetensi3 += jsonObject.getDouble("piutang_retensi_3");
+                        totalPiutangRetensi4 += jsonObject.getDouble("piutang_retensi_4");
+                        totalPiutangRetensi5 += jsonObject.getDouble("piutang_retensi_5");
+
                     }
                     firstDataEntries.add(new BarEntry(1, new Float(totalPdp1)));
                     secondDataEntries.add(new BarEntry(1, new Float(totalPdp2)));
@@ -384,6 +392,18 @@ public class UmurPiutangActivity extends AppCompatActivity implements
                     thirdDataEntries.add(new BarEntry(2, new Float(totalTagihanBruto3)));
                     fourthDataEntries.add(new BarEntry(2, new Float(totalTagihanBruto4)));
                     fifthDataEntries.add(new BarEntry(2, new Float(totalTagihanBruto5)));
+
+                    firstDataEntries.add(new BarEntry(3, new Float(totalPiutangUsaha1)));
+                    secondDataEntries.add(new BarEntry(3, new Float(totalPiutangUsaha2)));
+                    thirdDataEntries.add(new BarEntry(3, new Float(totalPiutangUsaha3)));
+                    fourthDataEntries.add(new BarEntry(3, new Float(totalPiutangUsaha4)));
+                    fifthDataEntries.add(new BarEntry(3, new Float(totalPiutangUsaha5)));
+
+                    firstDataEntries.add(new BarEntry(4, new Float(totalPiutangRetensi1)));
+                    secondDataEntries.add(new BarEntry(4, new Float(totalPiutangRetensi2)));
+                    thirdDataEntries.add(new BarEntry(4, new Float(totalPiutangRetensi3)));
+                    fourthDataEntries.add(new BarEntry(4, new Float(totalPiutangRetensi4)));
+                    fifthDataEntries.add(new BarEntry(4, new Float(totalPiutangRetensi5)));
                     drawChart(firstDataEntries, secondDataEntries, thirdDataEntries, fourthDataEntries, fifthDataEntries);
                 } catch (JSONException e) {
                     e.printStackTrace();
