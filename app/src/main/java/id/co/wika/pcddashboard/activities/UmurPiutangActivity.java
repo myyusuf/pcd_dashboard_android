@@ -1,17 +1,20 @@
 package id.co.wika.pcddashboard.activities;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.support.v4.app.NavUtils;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.TextView;
 
+import com.android.volley.Response;
 import com.github.mikephil.charting.charts.BarChart;
 import com.github.mikephil.charting.components.AxisBase;
 import com.github.mikephil.charting.components.Description;
@@ -23,21 +26,31 @@ import com.github.mikephil.charting.data.BarEntry;
 import com.github.mikephil.charting.formatter.DefaultAxisValueFormatter;
 import com.github.mikephil.charting.interfaces.datasets.IBarDataSet;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 import java.util.Locale;
 
+import id.co.wika.pcddashboard.DashboardConstant;
 import id.co.wika.pcddashboard.MainActivity;
 import id.co.wika.pcddashboard.Piutang2Activity;
 import id.co.wika.pcddashboard.R;
 import id.co.wika.pcddashboard.components.CustomMarkerView;
 import id.co.wika.pcddashboard.components.SimpleDatePickerDialog;
 import id.co.wika.pcddashboard.components.SimpleDatePickerDialogFragment;
+import id.co.wika.pcddashboard.models.DashboardItem;
+import id.co.wika.pcddashboard.services.RestRequestService;
 import id.co.wika.pcddashboard.utils.DateDisplayUtils;
 
 public class UmurPiutangActivity extends AppCompatActivity implements
         SimpleDatePickerDialog.OnDateSetListener {
+
+    RestRequestService restRequestService = new RestRequestService();
 
     List<BarEntry> firstDataEntries = new ArrayList<BarEntry>();
     List<BarEntry> secondDataEntries = new ArrayList<BarEntry>();
@@ -52,6 +65,8 @@ public class UmurPiutangActivity extends AppCompatActivity implements
     private int selectedYear = 2008;
 
     private static final String[] XAXIS_TITLE = new String[]{"PDP", "TAG BRUTO", "PIUTANG USAHA", "PIUTANG RETENSI"};
+
+    private String token;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -71,6 +86,11 @@ public class UmurPiutangActivity extends AppCompatActivity implements
         TextView toolbarTitle1 = (TextView) findViewById(R.id.tool_bar_title1);
         toolbarTitle1.setText("Umur Piutang");
 
+        Intent intent = getIntent();
+        this.token = intent.getStringExtra("token");
+        this.selectedYear = intent.getIntExtra("selectedYear", this.selectedYear);
+        this.selectedMonth = intent.getIntExtra("selectedMonth", this.selectedMonth);
+
         monthSelectLabel = (TextView) findViewById(R.id.month_select_label);
         monthSelectLabel.setOnClickListener(new View.OnClickListener() {
 
@@ -87,6 +107,8 @@ public class UmurPiutangActivity extends AppCompatActivity implements
                 datePickerDialogFragment.show(UmurPiutangActivity.this.getSupportFragmentManager(), null);
             }
         });
+
+        this.updateMonthLabel();
 
         mChart = (BarChart) findViewById(R.id.piutang2_chart);
 
@@ -138,43 +160,6 @@ public class UmurPiutangActivity extends AppCompatActivity implements
             List<BarEntry> fourthDataEntries,
             List<BarEntry> fifthDataEntries
     ){
-
-//        if(firstDataEntries.size() > 11) {
-//            int lastIndex = firstDataEntries.size() - 1;
-//            float lastValue = firstDataEntries.get(lastIndex).getY();
-//            firstDataEntries.add(new BarEntry(13, lastValue));
-//
-//        }
-//        firstDataEntries.add(0, new BarEntry(0f, 0f));
-//
-//        if(secondDataEntries.size() > 11) {
-//            int lastIndex = secondDataEntries.size() - 1;
-//            float lastValue = secondDataEntries.get(lastIndex).getY();
-//            secondDataEntries.add(new BarEntry(13, lastValue));
-//        }
-//        secondDataEntries.add(0, new BarEntry(0f, 0f));
-//
-//        if(thirdDataEntries.size() > 11) {
-//            int lastIndex = thirdDataEntries.size() - 1;
-//            float lastValue = thirdDataEntries.get(lastIndex).getY();
-//            thirdDataEntries.add(new BarEntry(13, lastValue));
-//        }
-//        thirdDataEntries.add(0, new BarEntry(0f, 0f));
-//
-//        if(fourthDataEntries.size() > 11) {
-//            int lastIndex = fourthDataEntries.size() - 1;
-//            float lastValue = fourthDataEntries.get(lastIndex).getY();
-//            fourthDataEntries.add(new BarEntry(13, lastValue));
-//        }
-//        fourthDataEntries.add(0, new BarEntry(0f, 0f));
-//
-//        if(fifthDataEntries.size() > 11) {
-//            int lastIndex = fifthDataEntries.size() - 1;
-//            float lastValue = fifthDataEntries.get(lastIndex).getY();
-//            fifthDataEntries.add(new BarEntry(13, lastValue));
-//        }
-//        fifthDataEntries.add(0, new BarEntry(0f, 0f));
-
         this.firstDataEntries = firstDataEntries;
         this.secondDataEntries = secondDataEntries;
         this.thirdDataEntries = thirdDataEntries;
@@ -233,7 +218,7 @@ public class UmurPiutangActivity extends AppCompatActivity implements
         leftAxis.setValueFormatter(formatter);
         leftAxis.setDrawGridLines(false);
         leftAxis.setSpaceTop(30f);
-        leftAxis.setAxisMinimum(0f); // this replaces setStartAtZero(true
+        leftAxis.setAxisMinimum(-0.01f); // this replaces setStartAtZero(true
         barChart.getAxisRight().setEnabled(false);
 
         /*
@@ -335,9 +320,78 @@ public class UmurPiutangActivity extends AppCompatActivity implements
 
     }
 
-    public void updateData(){
+    private void updateData(){
 //        this.getDashboardData();
 //        this.getDashboardChartData();
+        this.fetchData();
+        this.updateMonthLabel();
+    }
+
+    private void updateMonthLabel(){
         monthSelectLabel.setText(DateDisplayUtils.formatMonthYear(this.selectedYear, this.selectedMonth));
+    }
+
+    private void fetchData() {
+        String url = DashboardConstant.BASE_URL + "piutang/piutang/" + selectedYear + "/" + (selectedMonth + 1);
+
+        Log.v("URL", "URL : " + url);
+
+        Response.Listener<JSONArray> listener = new Response.Listener<JSONArray>(){
+
+            @Override
+            public void onResponse(JSONArray response) {
+                Log.v("Response", response.toString());
+                firstDataEntries.clear();
+                secondDataEntries.clear();
+                thirdDataEntries.clear();
+                fourthDataEntries.clear();
+                fifthDataEntries.clear();
+                double totalPdp1 = 0d;
+                double totalPdp2 = 0d;
+                double totalPdp3 = 0d;
+                double totalPdp4 = 0d;
+                double totalPdp5 = 0d;
+
+                double totalTagihanBruto1 = 0d;
+                double totalTagihanBruto2 = 0d;
+                double totalTagihanBruto3 = 0d;
+                double totalTagihanBruto4 = 0d;
+                double totalTagihanBruto5 = 0d;
+                try {
+                    for (int i = 0; i < response.length(); i++) {
+                        JSONObject jsonObject = response.getJSONObject(i);
+                        totalPdp1 += jsonObject.getDouble("pdp_1");
+                        totalPdp2 += jsonObject.getDouble("pdp_2");
+                        totalPdp3 += jsonObject.getDouble("pdp_3");
+                        totalPdp4 += jsonObject.getDouble("pdp_4");
+                        totalPdp5 += jsonObject.getDouble("pdp_5");
+
+                        totalTagihanBruto1 += jsonObject.getDouble("tagihan_bruto_1");
+                        totalTagihanBruto2 += jsonObject.getDouble("tagihan_bruto_2");
+                        totalTagihanBruto3 += jsonObject.getDouble("tagihan_bruto_3");
+                        totalTagihanBruto4 += jsonObject.getDouble("tagihan_bruto_4");
+                        totalTagihanBruto5 += jsonObject.getDouble("tagihan_bruto_5");
+
+                    }
+                    firstDataEntries.add(new BarEntry(1, new Float(totalPdp1)));
+                    secondDataEntries.add(new BarEntry(1, new Float(totalPdp2)));
+                    thirdDataEntries.add(new BarEntry(1, new Float(totalPdp3)));
+                    fourthDataEntries.add(new BarEntry(1, new Float(totalPdp4)));
+                    fifthDataEntries.add(new BarEntry(1, new Float(totalPdp5)));
+
+                    firstDataEntries.add(new BarEntry(2, new Float(totalTagihanBruto1)));
+                    secondDataEntries.add(new BarEntry(2, new Float(totalTagihanBruto2)));
+                    thirdDataEntries.add(new BarEntry(2, new Float(totalTagihanBruto3)));
+                    fourthDataEntries.add(new BarEntry(2, new Float(totalTagihanBruto4)));
+                    fifthDataEntries.add(new BarEntry(2, new Float(totalTagihanBruto5)));
+                    drawChart(firstDataEntries, secondDataEntries, thirdDataEntries, fourthDataEntries, fifthDataEntries);
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+
+        };
+
+        restRequestService.getRequestForArray(url, UmurPiutangActivity.this.token, listener, getApplicationContext());
     }
 }

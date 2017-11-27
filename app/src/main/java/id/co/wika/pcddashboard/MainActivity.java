@@ -27,6 +27,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Locale;
 
+import id.co.wika.pcddashboard.activities.UmurPiutangActivity;
 import id.co.wika.pcddashboard.components.DashboardItemView;
 import id.co.wika.pcddashboard.components.DashboardRkap;
 import id.co.wika.pcddashboard.components.DashboardSisa;
@@ -212,6 +213,14 @@ public class MainActivity extends AppCompatActivity implements
             finish();
             Intent intent = new Intent(MainActivity.this, LoginActivity.class);
             startActivity(intent);
+            return true;
+        }else if (id == R.id.umur_piutang) {
+            Intent intent = new Intent(MainActivity.this, UmurPiutangActivity.class);
+            intent.putExtra("token", this.token);
+            intent.putExtra("selectedYear", this.selectedYear);
+            intent.putExtra("selectedMonth", this.selectedMonth);
+            startActivity(intent);
+
             return true;
         }
 
