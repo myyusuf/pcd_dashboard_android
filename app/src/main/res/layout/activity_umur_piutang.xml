@@ -70,28 +70,28 @@
                     android:orientation="vertical" >
 
                     <id.co.wika.pcddashboard.components.UmurPiutangItemView
-                        android:id="@+id/umur_piutang_item_view_2"
+                        android:id="@+id/umur_piutang_item_view_1"
                         app:title="PDP"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"/>
 
                     <id.co.wika.pcddashboard.components.UmurPiutangItemView
-                        android:id="@+id/dashboard_item_view_3"
+                        android:id="@+id/umur_piutang_item_view_2"
                         app:title="Tagihan Bruto"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"/>
 
                     <id.co.wika.pcddashboard.components.UmurPiutangItemView
-                        android:id="@+id/dashboard_item_view_4"
+                        android:id="@+id/umur_piutang_item_view_3"
                         app:title="Piutang Usaha"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"/>
 
                     <id.co.wika.pcddashboard.components.UmurPiutangItemView
-                        android:id="@+id/dashboard_item_view_5"
+                        android:id="@+id/umur_piutang_item_view_4"
                         app:title="Piutang Retensi"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"

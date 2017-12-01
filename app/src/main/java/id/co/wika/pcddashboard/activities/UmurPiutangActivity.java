@@ -42,9 +42,12 @@ import id.co.wika.pcddashboard.MainActivity;
 import id.co.wika.pcddashboard.Piutang2Activity;
 import id.co.wika.pcddashboard.R;
 import id.co.wika.pcddashboard.components.CustomMarkerView;
+import id.co.wika.pcddashboard.components.DashboardItemView;
 import id.co.wika.pcddashboard.components.SimpleDatePickerDialog;
 import id.co.wika.pcddashboard.components.SimpleDatePickerDialogFragment;
+import id.co.wika.pcddashboard.components.UmurPiutangItemView;
 import id.co.wika.pcddashboard.models.DashboardItem;
+import id.co.wika.pcddashboard.models.UmurPiutangItem;
 import id.co.wika.pcddashboard.services.RestRequestService;
 import id.co.wika.pcddashboard.utils.DateDisplayUtils;
 
@@ -58,6 +61,11 @@ public class UmurPiutangActivity extends AppCompatActivity implements
     List<BarEntry> thirdDataEntries = new ArrayList<BarEntry>();
     List<BarEntry> fourthDataEntries = new ArrayList<BarEntry>();
     List<BarEntry> fifthDataEntries = new ArrayList<BarEntry>();
+
+    private UmurPiutangItemView umurPiutangItemView1;
+    private UmurPiutangItemView umurPiutangItemView2;
+    private UmurPiutangItemView umurPiutangItemView3;
+    private UmurPiutangItemView umurPiutangItemView4;
 
     private BarChart mChart;
 
@@ -112,8 +120,16 @@ public class UmurPiutangActivity extends AppCompatActivity implements
         this.updateMonthLabel();
 
         mChart = (BarChart) findViewById(R.id.piutang2_chart);
+        initUmurPiutangItemViews();
 
         fetchData();
+    }
+
+    private void initUmurPiutangItemViews () {
+        umurPiutangItemView1 = (UmurPiutangItemView) findViewById(R.id.umur_piutang_item_view_1);
+        umurPiutangItemView2 = (UmurPiutangItemView) findViewById(R.id.umur_piutang_item_view_2);
+        umurPiutangItemView3 = (UmurPiutangItemView) findViewById(R.id.umur_piutang_item_view_3);
+        umurPiutangItemView4 = (UmurPiutangItemView) findViewById(R.id.umur_piutang_item_view_4);
     }
 
     @Override
@@ -404,6 +420,16 @@ public class UmurPiutangActivity extends AppCompatActivity implements
                     thirdDataEntries.add(new BarEntry(4, new Float(totalPiutangRetensi3)));
                     fourthDataEntries.add(new BarEntry(4, new Float(totalPiutangRetensi4)));
                     fifthDataEntries.add(new BarEntry(4, new Float(totalPiutangRetensi5)));
+
+                    UmurPiutangItem umurPiutangItem1 = new UmurPiutangItem();
+                    umurPiutangItem1.setTitle("PDP");
+                    umurPiutangItem1.setValue1(new BigDecimal(totalPdp1));
+                    umurPiutangItem1.setValue2(new BigDecimal(totalPdp2));
+                    umurPiutangItem1.setValue3(new BigDecimal(totalPdp3));
+                    umurPiutangItem1.setValue4(new BigDecimal(totalPdp4));
+                    umurPiutangItem1.setValue5(new BigDecimal(totalPdp5));
+
+                    umurPiutangItemView1.setItemValue(umurPiutangItem1);
                     drawChart(firstDataEntries, secondDataEntries, thirdDataEntries, fourthDataEntries, fifthDataEntries);
                 } catch (JSONException e) {
                     e.printStackTrace();

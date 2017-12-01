@@ -86,6 +86,7 @@
                 android:drawablePadding="5dp"
                 android:textColor="#ffffff"
                 android:textColorHighlight="#ffffff"
+                android:text="yusuf"
                 android:textColorHint="#f0f0f0"/>
 
             <EditText
@@ -106,6 +107,7 @@
                 android:drawablePadding="5dp"
                 android:textColor="#ffffff"
                 android:textColorHighlight="#ffffff"
+                android:text="admin"
                 android:textColorHint="#f0f0f0"/>
 
             <Button
