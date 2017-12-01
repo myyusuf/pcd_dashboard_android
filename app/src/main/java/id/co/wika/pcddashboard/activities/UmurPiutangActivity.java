@@ -429,7 +429,34 @@ public class UmurPiutangActivity extends AppCompatActivity implements
                     umurPiutangItem1.setValue4(new BigDecimal(totalPdp4));
                     umurPiutangItem1.setValue5(new BigDecimal(totalPdp5));
 
+                    UmurPiutangItem umurPiutangItem2 = new UmurPiutangItem();
+                    umurPiutangItem2.setTitle("Tagihan Bruto");
+                    umurPiutangItem2.setValue1(new BigDecimal(totalTagihanBruto1));
+                    umurPiutangItem2.setValue2(new BigDecimal(totalTagihanBruto2));
+                    umurPiutangItem2.setValue3(new BigDecimal(totalTagihanBruto3));
+                    umurPiutangItem2.setValue4(new BigDecimal(totalTagihanBruto4));
+                    umurPiutangItem2.setValue5(new BigDecimal(totalTagihanBruto5));
+
+                    UmurPiutangItem umurPiutangItem3 = new UmurPiutangItem();
+                    umurPiutangItem3.setTitle("Piutang Usaha");
+                    umurPiutangItem3.setValue1(new BigDecimal(totalPiutangUsaha1));
+                    umurPiutangItem3.setValue2(new BigDecimal(totalPiutangUsaha2));
+                    umurPiutangItem3.setValue3(new BigDecimal(totalPiutangUsaha3));
+                    umurPiutangItem3.setValue4(new BigDecimal(totalPiutangUsaha4));
+                    umurPiutangItem3.setValue5(new BigDecimal(totalPiutangUsaha5));
+
+                    UmurPiutangItem umurPiutangItem4 = new UmurPiutangItem();
+                    umurPiutangItem4.setTitle("Piutang Retensi");
+                    umurPiutangItem4.setValue1(new BigDecimal(totalPiutangRetensi1));
+                    umurPiutangItem4.setValue2(new BigDecimal(totalPiutangRetensi2));
+                    umurPiutangItem4.setValue3(new BigDecimal(totalPiutangRetensi3));
+                    umurPiutangItem4.setValue4(new BigDecimal(totalPiutangRetensi4));
+                    umurPiutangItem4.setValue5(new BigDecimal(totalPiutangRetensi5));
+
                     umurPiutangItemView1.setItemValue(umurPiutangItem1);
+                    umurPiutangItemView2.setItemValue(umurPiutangItem2);
+                    umurPiutangItemView3.setItemValue(umurPiutangItem3);
+                    umurPiutangItemView4.setItemValue(umurPiutangItem4);
                     drawChart(firstDataEntries, secondDataEntries, thirdDataEntries, fourthDataEntries, fifthDataEntries);
                 } catch (JSONException e) {
                     e.printStackTrace();
