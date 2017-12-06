@@ -13,20 +13,6 @@
         android:padding="5dp"
         android:background="@drawable/dashboard_item_container_bg">
 
-        <!--<TextView-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:paddingLeft="5dp"-->
-            <!--android:paddingRight="5dp"-->
-            <!--android:paddingTop="7dp"-->
-            <!--android:paddingBottom="7dp"-->
-            <!--android:text="New Text"-->
-            <!--android:textColor="#FFFFFF"-->
-            <!--android:textSize="17sp"-->
-            <!--android:background="@drawable/dashboard_item_title_bg"-->
-            <!--android:gravity="center"-->
-            <!--android:textAlignment="center"-->
-            <!--android:id="@+id/title_text_view" />-->
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -42,34 +28,21 @@
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceSmall"
                 android:text="Uraian"
-                android:id="@+id/dashboard_text1"
                 android:textColor="#fff"
-                android:layout_weight="4"
+                android:layout_weight="6"
                 android:textSize="19sp"
                 android:layout_marginRight="8dp"
-                android:gravity="center_horizontal" />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceSmall"
-                android:text="Ri Sep-17"
-                android:id="@+id/dashboard_text2"
-                android:textColor="#fff"
-                android:layout_weight="3"
-                android:textSize="19sp"
                 android:gravity="center_horizontal" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_weight="4"
+                android:gravity="center_horizontal"
+                android:text="Ri"
                 android:textAppearance="?android:attr/textAppearanceSmall"
-                android:text="Dec-17"
-                android:id="@+id/dashboard_text3"
                 android:textColor="#fff"
-                android:layout_weight="3"
-                android:textSize="19sp"
-                android:gravity="center_horizontal" />
-
+                android:textSize="19sp" />
 
         </LinearLayout>
 
@@ -86,43 +59,30 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:id="@+id/ok_text_view1"
-                android:text="-"
-                tools:text="349"
-                android:paddingLeft="8dp"
                 android:layout_marginRight="10dp"
+                android:layout_weight="6"
                 android:background="@drawable/dashboard_item_container_sub_bg_black"
-                android:textColor="#fff"
-                android:layout_weight="4"
                 android:gravity="center"
-                android:textSize="17sp"/>
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:text="PDP    "
+                android:textColor="#fff"
+                android:textSize="17sp"
+                tools:text="PDP" />
 
             <TextView
+                android:id="@+id/pdp_ri"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:textAppearance="?android:attr/textAppearanceSmall"
-                android:text="-"
-                tools:text="247"
-                android:id="@+id/ok_text_view2"
-                android:background="@drawable/dashboard_item_container_sub_bg_black"
-                android:textColor="#fff"
-                android:layout_weight="3"
-                android:textSize="17sp"
                 android:layout_marginRight="8dp"
-                android:gravity="center" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:textAppearance="?android:attr/textAppearanceSmall"
-                android:text="-"
-                tools:text="350"
-                android:id="@+id/ok_text_view3"
+                android:layout_weight="4"
                 android:background="@drawable/dashboard_item_container_sub_bg_black"
+                android:gravity="center"
+                android:text="-"
+                android:textAppearance="?android:attr/textAppearanceSmall"
                 android:textColor="#fff"
-                android:layout_weight="3"
                 android:textSize="17sp"
-                android:gravity="center" />
+                tools:text="247" />
 
         </LinearLayout>
 
@@ -139,43 +99,29 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:id="@+id/op_text_view1"
-                android:text="-"
-                tools:text="349"
-                android:paddingLeft="8dp"
                 android:layout_marginRight="10dp"
+                android:layout_weight="6"
                 android:background="@drawable/dashboard_item_container_sub_bg_black"
-                android:textColor="#fff"
-                android:layout_weight="4"
                 android:gravity="center"
-                android:textSize="17sp"/>
+                android:paddingLeft="0dp"
+                android:text="Tag. Bruto"
+                android:textColor="#fff"
+                android:textSize="17sp"
+                tools:text="Tag. Bruto" />
 
             <TextView
+                android:id="@+id/tag_bruto_ri"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:textAppearance="?android:attr/textAppearanceSmall"
-                android:text="-"
-                tools:text="247"
-                android:id="@+id/op_text_view2"
-                android:background="@drawable/dashboard_item_container_sub_bg_black"
-                android:textColor="#fff"
-                android:layout_weight="3"
-                android:textSize="17sp"
                 android:layout_marginRight="8dp"
-                android:gravity="center" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:textAppearance="?android:attr/textAppearanceSmall"
-                android:text="-"
-                tools:text="350"
-                android:id="@+id/op_text_view3"
+                android:layout_weight="4"
                 android:background="@drawable/dashboard_item_container_sub_bg_black"
+                android:gravity="center"
+                android:text="-"
+                android:textAppearance="?android:attr/textAppearanceSmall"
                 android:textColor="#fff"
-                android:layout_weight="3"
                 android:textSize="17sp"
-                android:gravity="center" />
+                tools:text="247" />
 
         </LinearLayout>
 
@@ -192,43 +138,29 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:id="@+id/lsp_text_view1"
-                android:text="-"
-                tools:text="349"
-                android:paddingLeft="8dp"
                 android:layout_marginRight="8dp"
+                android:layout_weight="6"
                 android:background="@drawable/dashboard_item_container_sub_bg_black"
-                android:textColor="#fff"
-                android:layout_weight="4"
                 android:gravity="center"
-                android:textSize="17sp"/>
+                android:paddingLeft="8dp"
+                android:text="P. Usaha"
+                android:textColor="#fff"
+                android:textSize="17sp"
+                tools:text="P. Usaha" />
 
             <TextView
+                android:id="@+id/p_usaha_ri"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:textAppearance="?android:attr/textAppearanceSmall"
-                android:text="-"
-                tools:text="247"
-                android:id="@+id/lsp_text_view2"
-                android:background="@drawable/dashboard_item_container_sub_bg_black"
-                android:textColor="#fff"
-                android:layout_weight="3"
-                android:textSize="17sp"
                 android:layout_marginRight="8dp"
-                android:gravity="center" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:textAppearance="?android:attr/textAppearanceSmall"
-                android:text="-"
-                tools:text="350"
-                android:id="@+id/lsp_text_view3"
+                android:layout_weight="4"
                 android:background="@drawable/dashboard_item_container_sub_bg_black"
+                android:gravity="center"
+                android:text="-"
+                android:textAppearance="?android:attr/textAppearanceSmall"
                 android:textColor="#fff"
-                android:layout_weight="3"
                 android:textSize="17sp"
-                android:gravity="center" />
+                tools:text="247" />
 
         </LinearLayout>
 
@@ -245,14 +177,52 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:id="@+id/lsp_text_view1b"
-                android:text="-"
-                tools:text="349"
-                android:paddingLeft="8dp"
                 android:layout_marginRight="8dp"
+                android:layout_weight="6"
                 android:background="@drawable/dashboard_item_container_sub_bg_black"
+                android:gravity="center"
+                android:paddingLeft="8dp"
+                android:text="P. Retensi"
                 android:textColor="#fff"
+                android:textSize="17sp"
+                tools:text="P. Retensi" />
+
+            <TextView
+                android:id="@+id/p_retensi_ri"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginRight="8dp"
                 android:layout_weight="4"
+                android:background="@drawable/dashboard_item_container_sub_bg_black"
+                android:gravity="center"
+                android:text="-"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:textColor="#fff"
+                android:textSize="17sp"
+                tools:text="247" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:orientation="horizontal"
+            android:weightSum="10"
+            android:background="@drawable/dashboard_item_container_sub_bg"
+            android:layout_marginTop="10dp"
+            android:padding="0dp"
+            android:gravity="center_vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="Total"
+                tools:text="Total"
+                android:paddingLeft="0dp"
+                android:layout_marginRight="8dp"
+                android:background="@drawable/dashboard_item_container_sub_bg_green"
+                android:textColor="#fff"
+                android:layout_weight="6"
                 android:gravity="center"
                 android:textSize="17sp"/>
 
@@ -262,25 +232,12 @@
                 android:textAppearance="?android:attr/textAppearanceSmall"
                 android:text="-"
                 tools:text="247"
-                android:id="@+id/lsp_text_view2b"
-                android:background="@drawable/dashboard_item_container_sub_bg_black"
+                android:id="@+id/total_ri"
+                android:background="@drawable/dashboard_item_container_sub_bg_green"
                 android:textColor="#fff"
-                android:layout_weight="3"
+                android:layout_weight="4"
                 android:textSize="17sp"
                 android:layout_marginRight="8dp"
-                android:gravity="center" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:textAppearance="?android:attr/textAppearanceSmall"
-                android:text="-"
-                tools:text="350"
-                android:id="@+id/lsp_text_view3b"
-                android:background="@drawable/dashboard_item_container_sub_bg_black"
-                android:textColor="#fff"
-                android:layout_weight="3"
-                android:textSize="17sp"
                 android:gravity="center" />
 
         </LinearLayout>

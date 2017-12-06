@@ -37,10 +37,19 @@
         <activity
             android:name=".Piutang2Activity"
             android:parentActivityName=".MainActivity" />
-        <activity android:name=".Piutang3Activity"
-            android:parentActivityName=".MainActivity"/>
-        <activity android:name=".Piutang4Activity"
-            android:parentActivityName=".MainActivity"></activity>
+        <activity
+            android:name=".Piutang3Activity"
+            android:parentActivityName=".MainActivity" />
+        <activity
+            android:name=".Piutang4Activity"
+            android:parentActivityName=".MainActivity" />
+        <activity
+            android:name=".activities.UmurPiutangActivity"
+            android:parentActivityName=".MainActivity" />
+
+        <activity
+            android:name=".activities.PrognosaPiutangActivity"
+            android:parentActivityName=".MainActivity" />
     </application>
 
 </manifest>
