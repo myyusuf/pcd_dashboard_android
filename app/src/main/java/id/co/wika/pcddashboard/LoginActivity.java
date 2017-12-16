@@ -94,7 +94,7 @@ public class LoginActivity extends AppCompatActivity {
             return;
         }
 
-        String baseURL = DashboardConstant.BASE_URL + "login";
+        String baseURL = DashboardConstant.BASE_URL + "security/signin";
 
         Response.Listener<String> listener = new Response.Listener<String>(){
 
@@ -104,7 +104,7 @@ public class LoginActivity extends AppCompatActivity {
                 try {
                     JSONObject loginObject = new JSONObject(response);
                     String token = loginObject.getString("token");
-//                    Log.v("Token", token);
+                    Log.v("Token", token);
                     if(token != null){
                         finish();
                         Intent intent = new Intent(LoginActivity.this, MainActivity.class);
