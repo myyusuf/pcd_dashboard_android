@@ -52,12 +52,11 @@
                     android:layout_width="match_parent"
                     android:layout_height="300dp" />
 
-                <id.co.wika.pcddashboard.components.PrognosaPiutang
-                    android:id="@+id/prognosa_piutang"
-                    app:title=""
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/recycler_view"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"/>
+                    android:scrollbars="vertical" />
 
             </LinearLayout>
         </ScrollView>

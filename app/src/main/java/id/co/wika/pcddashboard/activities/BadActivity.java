@@ -6,6 +6,9 @@ import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v4.app.NavUtils;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.DefaultItemAnimator;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
@@ -36,6 +39,8 @@ import java.util.List;
 
 import id.co.wika.pcddashboard.DashboardConstant;
 import id.co.wika.pcddashboard.R;
+import id.co.wika.pcddashboard.adapters.BadProject;
+import id.co.wika.pcddashboard.adapters.BadProjectAdapter;
 import id.co.wika.pcddashboard.components.CustomMarkerView;
 import id.co.wika.pcddashboard.components.PrognosaPiutang;
 import id.co.wika.pcddashboard.components.SimpleDatePickerDialog;
@@ -59,10 +64,14 @@ public class BadActivity extends AppCompatActivity implements SimpleDatePickerDi
     List<BarEntry> fifthDataEntries = new ArrayList<BarEntry>();
 
     private BarChart mChart;
+    private RecyclerView recyclerView;
+    private BadProjectAdapter badProjectAdapter;
 
     RestRequestService restRequestService = new RestRequestService();
 
     private PrognosaPiutang prognosaPiutang;
+
+    private List<BadProject> badProjectList = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -106,6 +115,13 @@ public class BadActivity extends AppCompatActivity implements SimpleDatePickerDi
         });
 
         mChart = (BarChart) findViewById(R.id.bad_chart);
+
+        recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
+        badProjectAdapter = new BadProjectAdapter(badProjectList);
+        RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext());
+        recyclerView.setLayoutManager(mLayoutManager);
+        recyclerView.setItemAnimator(new DefaultItemAnimator());
+        recyclerView.setAdapter(badProjectAdapter);
 
         this.updateData();
     }
@@ -164,6 +180,7 @@ public class BadActivity extends AppCompatActivity implements SimpleDatePickerDi
                 thirdDataEntries.clear();
                 fourthDataEntries.clear();
                 fifthDataEntries.clear();
+                badProjectList.clear();
                 String[] titles = new String[response.length()];
 
                 try {
@@ -182,8 +199,14 @@ public class BadActivity extends AppCompatActivity implements SimpleDatePickerDi
                         fifthDataEntries.add(new BarEntry((i + 1), new Float(bad)));
                         titles[i] = title;
 
+                        BadProject project = new BadProject(title);
+                        badProjectList.add(project);
+
                     }
+
+                    badProjectAdapter.notifyDataSetChanged();
                     drawChart(firstDataEntries, secondDataEntries, thirdDataEntries, fourthDataEntries, fifthDataEntries, titles);
+
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
