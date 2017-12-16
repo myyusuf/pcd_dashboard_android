@@ -50,6 +50,10 @@
         <activity
             android:name=".activities.PrognosaPiutangActivity"
             android:parentActivityName=".MainActivity" />
+
+        <activity
+            android:name=".activities.BadActivity"
+            android:parentActivityName=".MainActivity" />
     </application>
 
 </manifest>

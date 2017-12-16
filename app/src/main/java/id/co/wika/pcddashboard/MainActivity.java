@@ -27,6 +27,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Locale;
 
+import id.co.wika.pcddashboard.activities.BadActivity;
 import id.co.wika.pcddashboard.activities.PrognosaPiutangActivity;
 import id.co.wika.pcddashboard.activities.UmurPiutangActivity;
 import id.co.wika.pcddashboard.components.DashboardItemView;
@@ -225,6 +226,14 @@ public class MainActivity extends AppCompatActivity implements
             return true;
         } else if (id == R.id.prognosa_piutang) {
             Intent intent = new Intent(MainActivity.this, PrognosaPiutangActivity.class);
+            intent.putExtra("token", this.token);
+            intent.putExtra("selectedYear", this.selectedYear);
+            intent.putExtra("selectedMonth", this.selectedMonth);
+            startActivity(intent);
+
+            return true;
+        } else if (id == R.id.bad) {
+            Intent intent = new Intent(MainActivity.this, BadActivity.class);
             intent.putExtra("token", this.token);
             intent.putExtra("selectedYear", this.selectedYear);
             intent.putExtra("selectedMonth", this.selectedMonth);

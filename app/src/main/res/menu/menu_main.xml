@@ -12,7 +12,7 @@
         app:showAsAction="never" />
 
     <item
-        android:id="@+id/piutang"
+        android:id="@+id/bad"
         android:orderInCategory="100"
         android:title="Piutang &amp; BAD Department"
         app:showAsAction="never" />
