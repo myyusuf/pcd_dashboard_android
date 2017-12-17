@@ -54,6 +54,10 @@
         <activity
             android:name=".activities.BadActivity"
             android:parentActivityName=".MainActivity" />
+
+        <activity
+            android:name=".activities.CashFlowActivity"
+            android:parentActivityName=".MainActivity" />
     </application>
 
 </manifest>
