@@ -332,7 +332,7 @@ public class UmurPiutangActivity extends AppCompatActivity implements
     }
 
     private void fetchData() {
-        String url = DashboardConstant.BASE_URL + "piutang/piutang/" + selectedYear + "/" + (selectedMonth + 1);
+        String url = DashboardConstant.BASE_URL + "piutangs/piutang/" + selectedYear + "/" + (selectedMonth + 1);
 
         Log.v("URL", "URL : " + url);
 
@@ -372,29 +372,29 @@ public class UmurPiutangActivity extends AppCompatActivity implements
                 try {
                     for (int i = 0; i < response.length(); i++) {
                         JSONObject jsonObject = response.getJSONObject(i);
-                        totalPdp1 += jsonObject.getDouble("pdp_1");
-                        totalPdp2 += jsonObject.getDouble("pdp_2");
-                        totalPdp3 += jsonObject.getDouble("pdp_3");
-                        totalPdp4 += jsonObject.getDouble("pdp_4");
-                        totalPdp5 += jsonObject.getDouble("pdp_5");
+                        totalPdp1 += jsonObject.getDouble("pdp1");
+                        totalPdp2 += jsonObject.getDouble("pdp2");
+                        totalPdp3 += jsonObject.getDouble("pdp3");
+                        totalPdp4 += jsonObject.getDouble("pdp4");
+                        totalPdp5 += jsonObject.getDouble("pdp5");
 
-                        totalTagihanBruto1 += jsonObject.getDouble("tagihan_bruto_1");
-                        totalTagihanBruto2 += jsonObject.getDouble("tagihan_bruto_2");
-                        totalTagihanBruto3 += jsonObject.getDouble("tagihan_bruto_3");
-                        totalTagihanBruto4 += jsonObject.getDouble("tagihan_bruto_4");
-                        totalTagihanBruto5 += jsonObject.getDouble("tagihan_bruto_5");
+                        totalTagihanBruto1 += jsonObject.getDouble("tagihanBruto1");
+                        totalTagihanBruto2 += jsonObject.getDouble("tagihanBruto2");
+                        totalTagihanBruto3 += jsonObject.getDouble("tagihanBruto3");
+                        totalTagihanBruto4 += jsonObject.getDouble("tagihanBruto4");
+                        totalTagihanBruto5 += jsonObject.getDouble("tagihanBruto5");
 
-                        totalPiutangUsaha1 += jsonObject.getDouble("piutang_usaha_1");
-                        totalPiutangUsaha2 += jsonObject.getDouble("piutang_usaha_2");
-                        totalPiutangUsaha3 += jsonObject.getDouble("piutang_usaha_3");
-                        totalPiutangUsaha4 += jsonObject.getDouble("piutang_usaha_4");
-                        totalPiutangUsaha5 += jsonObject.getDouble("piutang_usaha_5");
+                        totalPiutangUsaha1 += jsonObject.getDouble("piutangUsaha1");
+                        totalPiutangUsaha2 += jsonObject.getDouble("piutangUsaha2");
+                        totalPiutangUsaha3 += jsonObject.getDouble("piutangUsaha3");
+                        totalPiutangUsaha4 += jsonObject.getDouble("piutangUsaha4");
+                        totalPiutangUsaha5 += jsonObject.getDouble("piutangUsaha5");
 
-                        totalPiutangRetensi1 += jsonObject.getDouble("piutang_retensi_1");
-                        totalPiutangRetensi2 += jsonObject.getDouble("piutang_retensi_2");
-                        totalPiutangRetensi3 += jsonObject.getDouble("piutang_retensi_3");
-                        totalPiutangRetensi4 += jsonObject.getDouble("piutang_retensi_4");
-                        totalPiutangRetensi5 += jsonObject.getDouble("piutang_retensi_5");
+                        totalPiutangRetensi1 += jsonObject.getDouble("piutangRetensi1");
+                        totalPiutangRetensi2 += jsonObject.getDouble("piutangRetensi2");
+                        totalPiutangRetensi3 += jsonObject.getDouble("piutangRetensi3");
+                        totalPiutangRetensi4 += jsonObject.getDouble("piutangRetensi4");
+                        totalPiutangRetensi5 += jsonObject.getDouble("piutangRetensi5");
 
                     }
                     firstDataEntries.add(new BarEntry(1, new Float(totalPdp1)));
