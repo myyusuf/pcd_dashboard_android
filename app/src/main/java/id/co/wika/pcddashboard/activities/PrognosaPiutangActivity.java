@@ -128,7 +128,7 @@ public class PrognosaPiutangActivity extends AppCompatActivity implements Simple
     }
 
     private void fetchData() {
-        String url = DashboardConstant.BASE_URL + "piutang/proyeksi/" + selectedYear + "/" + (selectedMonth + 1);
+        String url = DashboardConstant.BASE_URL + "projections/proyeksi/" + selectedYear + "/" + (selectedMonth + 1);
 
         Log.v("URL", "URL : " + url);
 
@@ -143,9 +143,9 @@ public class PrognosaPiutangActivity extends AppCompatActivity implements Simple
                         JSONObject jsonObject = response.getJSONObject(0);
                         PrognosaPiutangItem item = new PrognosaPiutangItem();
                         item.setValue1(new BigDecimal(jsonObject.getDouble("pdp")));
-                        item.setValue2(new BigDecimal(jsonObject.getDouble("tagihan_bruto")));
-                        item.setValue3(new BigDecimal(jsonObject.getDouble("piutang_usaha")));
-                        item.setValue4(new BigDecimal(jsonObject.getDouble("piutang_retensi")));
+                        item.setValue2(new BigDecimal(jsonObject.getDouble("tagihanBruto")));
+                        item.setValue3(new BigDecimal(jsonObject.getDouble("piutangUsaha")));
+                        item.setValue4(new BigDecimal(jsonObject.getDouble("piutangRetensi")));
                         prognosaPiutang.setItem(item);
                     } catch (JSONException e) {
                         e.printStackTrace();
