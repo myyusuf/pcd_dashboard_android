@@ -4,35 +4,94 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="?android:attr/selectableItemBackground"
+    android:background="@drawable/dashboard_item_container_sub_bg_black"
     android:clickable="true"
     android:focusable="true"
     android:orientation="vertical"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin">
+    android:padding="@dimen/activity_horizontal_margin"
+    android:layout_margin="10dp">
 
     <TextView
-        android:id="@+id/name"
+        android:id="@+id/title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:textSize="16dp"
         android:textStyle="bold"
-        android:textColor="#000"
-        tools:text="Project Name"/>
+        android:textColor="#FFF"
+        tools:text="Uraian"/>
 
     <TextView
-        android:id="@+id/genre"
+        android:id="@+id/caption1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/name"
-        tools:text="Description 1" />
+        android:layout_below="@id/title"
+        android:text="RKAP"
+        android:layout_marginTop="10dp"
+        android:textColor="#FFF" />
 
     <TextView
-        android:id="@+id/year"
+        android:id="@+id/rkap"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/caption1"
+        android:textColor="#FFF"
+        tools:text="1.009" />
+
+    <TextView
+        android:id="@+id/caption2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
-        tools:text="Description 2" />
+        android:textColor="#FFF"
+        android:layout_below="@id/title"
+        android:layout_marginTop="10dp"
+        android:text="Rencana" />
+
+    <TextView
+        android:id="@+id/rencana"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:textColor="#FFF"
+        android:layout_below="@id/caption2"
+        tools:text="1.234" />
+
+
+    <TextView
+        android:id="@+id/caption3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/rkap"
+        android:layout_marginTop="10dp"
+        android:text="Prognosa"
+        android:textColor="#FFF" />
+
+    <TextView
+        android:id="@+id/prognosa"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/caption3"
+        android:textColor="#FFF"
+        tools:text="1.009" />
+
+    <TextView
+        android:id="@+id/caption4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:textColor="#FFF"
+        android:layout_below="@id/rkap"
+        android:layout_marginTop="10dp"
+        android:text="Realisasi" />
+
+    <TextView
+        android:id="@+id/realisasi"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:textColor="#FFF"
+        android:layout_below="@id/caption4"
+        tools:text="1.234" />
 
 </RelativeLayout>

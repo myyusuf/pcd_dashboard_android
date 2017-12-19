@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import java.text.DecimalFormat;
 import java.util.List;
 
 import id.co.wika.pcddashboard.R;
@@ -17,12 +18,22 @@ import id.co.wika.pcddashboard.R;
 public class CashFlowAdapter extends RecyclerView.Adapter<CashFlowAdapter.MyViewHolder> {
     private List<CashFlow> cashFlowList;
 
+    DecimalFormat decimalFormat = new DecimalFormat("#,###,###.00");
+
     public class MyViewHolder extends RecyclerView.ViewHolder {
         public TextView title;
+        public TextView rkap;
+        public TextView rencana;
+        public TextView prognosa;
+        public TextView realisasi;
 
         public MyViewHolder(View view) {
             super(view);
-            title = (TextView) view.findViewById(R.id.name);
+            title = (TextView) view.findViewById(R.id.title);
+            rkap = (TextView) view.findViewById(R.id.rkap);
+            rencana = (TextView) view.findViewById(R.id.rencana);
+            prognosa = (TextView) view.findViewById(R.id.prognosa);
+            realisasi = (TextView) view.findViewById(R.id.realisasi);
         }
     }
 
@@ -42,6 +53,10 @@ public class CashFlowAdapter extends RecyclerView.Adapter<CashFlowAdapter.MyView
     public void onBindViewHolder(MyViewHolder holder, int position) {
         CashFlow cashFlow = cashFlowList.get(position);
         holder.title.setText(cashFlow.getName());
+        holder.rkap.setText(decimalFormat.format(cashFlow.getRkap() / 1000));
+        holder.rencana.setText(decimalFormat.format(cashFlow.getRencana() / 1000));
+        holder.prognosa.setText(decimalFormat.format(cashFlow.getPrognosa() / 1000));
+        holder.realisasi.setText(decimalFormat.format(cashFlow.getRealisasi() / 1000));
 
     }
 

@@ -196,8 +196,12 @@ public class CashFlowActivity extends AppCompatActivity implements SimpleDatePic
                                 break;
                         }
 
-                        CashFlow project = new CashFlow(name);
-                        cashFlowList.add(project);
+                        CashFlow cashFlow = new CashFlow(name);
+                        cashFlow.setRkap(jsonObject.getJSONObject("CashFlow").getDouble("rkap"));
+                        cashFlow.setRencana(jsonObject.getDouble("ra"));
+                        cashFlow.setPrognosa(jsonObject.getDouble("prog"));
+                        cashFlow.setRealisasi(jsonObject.getDouble("ri"));
+                        cashFlowList.add(cashFlow);
 
                     }
 
