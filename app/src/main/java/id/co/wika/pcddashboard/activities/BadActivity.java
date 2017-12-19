@@ -191,7 +191,7 @@ public class BadActivity extends AppCompatActivity implements SimpleDatePickerDi
                         double piutangRetensi = jsonObject.getDouble("piutangRetensi");
                         double pdp = jsonObject.getDouble("pdp");
                         double bad = jsonObject.getDouble("bad");
-                        String title = jsonObject.getJSONObject("Project").getString("code");
+                        String title = jsonObject.getJSONObject("Project").getString("name");
                         firstDataEntries.add(new BarEntry((i + 1), new Float(piutangUsaha)));
                         secondDataEntries.add(new BarEntry((i + 1), new Float(tagihanBruto)));
                         thirdDataEntries.add(new BarEntry((i + 1), new Float(piutangRetensi)));
@@ -345,8 +345,8 @@ public class BadActivity extends AppCompatActivity implements SimpleDatePickerDi
             set5.setColor(Color.parseColor("#2119FF"));
 
             ArrayList<IBarDataSet> dataSets = new ArrayList<IBarDataSet>();
-            dataSets.add(set2);
             dataSets.add(set1);
+            dataSets.add(set2);
             dataSets.add(set3);
             dataSets.add(set4);
             dataSets.add(set5);
