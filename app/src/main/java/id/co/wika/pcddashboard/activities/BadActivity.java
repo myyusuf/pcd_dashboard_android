@@ -200,10 +200,16 @@ public class BadActivity extends AppCompatActivity implements SimpleDatePickerDi
                         titles[i] = title;
 
                         BadProject project = new BadProject(title);
+                        project.setPiutangUsaha(piutangUsaha);
+                        project.setTagihanBruto(tagihanBruto);
+                        project.setPiutangRetensi(piutangRetensi);
+                        project.setPdp(pdp);
+                        project.setBad(bad);
                         badProjectList.add(project);
 
                     }
 
+                    mChart.clear();
                     badProjectAdapter.notifyDataSetChanged();
                     drawChart(firstDataEntries, secondDataEntries, thirdDataEntries, fourthDataEntries, fifthDataEntries, titles);
 
