@@ -24,6 +24,7 @@ import java.util.Calendar;
 import java.util.Locale;
 
 import id.co.wika.pcddashboard.DashboardConstant;
+import id.co.wika.pcddashboard.LoginActivity;
 import id.co.wika.pcddashboard.R;
 import id.co.wika.pcddashboard.components.PrognosaPiutang;
 import id.co.wika.pcddashboard.components.SimpleDatePickerDialog;
@@ -97,15 +98,50 @@ public class PrognosaPiutangActivity extends AppCompatActivity implements Simple
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            // Respond to the action bar's Up/Home button
-            case android.R.id.home:
-                NavUtils.navigateUpFromSameTask(this);
-                return true;
-            case R.id.dashboard:
-                NavUtils.navigateUpFromSameTask(this);
-                return true;
+        int id = item.getItemId();
+        if (id == R.id.action_logout) {
+            this.token = "";
+            finish();
+            Intent intent = new Intent(PrognosaPiutangActivity.this, LoginActivity.class);
+            startActivity(intent);
+            return true;
+        } else if (id == R.id.umur_piutang) {
+            Intent intent = new Intent(PrognosaPiutangActivity.this, UmurPiutangActivity.class);
+            intent.putExtra("token", this.token);
+            intent.putExtra("selectedYear", this.selectedYear);
+            intent.putExtra("selectedMonth", this.selectedMonth);
+            startActivity(intent);
+
+            return true;
+        } else if (id == R.id.prognosa_piutang) {
+            Intent intent = new Intent(PrognosaPiutangActivity.this, PrognosaPiutangActivity.class);
+            intent.putExtra("token", this.token);
+            intent.putExtra("selectedYear", this.selectedYear);
+            intent.putExtra("selectedMonth", this.selectedMonth);
+            startActivity(intent);
+
+            return true;
+        } else if (id == R.id.bad) {
+            Intent intent = new Intent(PrognosaPiutangActivity.this, BadActivity.class);
+            intent.putExtra("token", this.token);
+            intent.putExtra("selectedYear", this.selectedYear);
+            intent.putExtra("selectedMonth", this.selectedMonth);
+            startActivity(intent);
+
+            return true;
+        }  else if (id == R.id.cashflow) {
+            Intent intent = new Intent(PrognosaPiutangActivity.this, CashFlowActivity.class);
+            intent.putExtra("token", this.token);
+            intent.putExtra("selectedYear", this.selectedYear);
+            intent.putExtra("selectedMonth", this.selectedMonth);
+            startActivity(intent);
+
+            return true;
+        } else  if (id == R.id.dashboard) {
+            NavUtils.navigateUpFromSameTask(this);
+            return true;
         }
+
         return super.onOptionsItemSelected(item);
     }
 

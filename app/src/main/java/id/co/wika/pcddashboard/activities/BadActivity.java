@@ -38,6 +38,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import id.co.wika.pcddashboard.DashboardConstant;
+import id.co.wika.pcddashboard.LoginActivity;
+import id.co.wika.pcddashboard.MainActivity;
 import id.co.wika.pcddashboard.R;
 import id.co.wika.pcddashboard.adapters.BadProject;
 import id.co.wika.pcddashboard.adapters.BadProjectAdapter;
@@ -133,17 +135,66 @@ public class BadActivity extends AppCompatActivity implements SimpleDatePickerDi
         return true;
     }
 
+//    @Override
+//    public boolean onOptionsItemSelected(MenuItem item) {
+//        switch (item.getItemId()) {
+//            // Respond to the action bar's Up/Home button
+//            case android.R.id.home:
+//                NavUtils.navigateUpFromSameTask(this);
+//                return true;
+//            case R.id.dashboard:
+//                NavUtils.navigateUpFromSameTask(this);
+//                return true;
+//        }
+//        return super.onOptionsItemSelected(item);
+//    }
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            // Respond to the action bar's Up/Home button
-            case android.R.id.home:
-                NavUtils.navigateUpFromSameTask(this);
-                return true;
-            case R.id.dashboard:
-                NavUtils.navigateUpFromSameTask(this);
-                return true;
+        int id = item.getItemId();
+        if (id == R.id.action_logout) {
+            this.token = "";
+            finish();
+            Intent intent = new Intent(BadActivity.this, LoginActivity.class);
+            startActivity(intent);
+            return true;
+        } else if (id == R.id.umur_piutang) {
+            Intent intent = new Intent(BadActivity.this, UmurPiutangActivity.class);
+            intent.putExtra("token", this.token);
+            intent.putExtra("selectedYear", this.selectedYear);
+            intent.putExtra("selectedMonth", this.selectedMonth);
+            startActivity(intent);
+
+            return true;
+        } else if (id == R.id.prognosa_piutang) {
+            Intent intent = new Intent(BadActivity.this, PrognosaPiutangActivity.class);
+            intent.putExtra("token", this.token);
+            intent.putExtra("selectedYear", this.selectedYear);
+            intent.putExtra("selectedMonth", this.selectedMonth);
+            startActivity(intent);
+
+            return true;
+        } else if (id == R.id.bad) {
+            Intent intent = new Intent(BadActivity.this, BadActivity.class);
+            intent.putExtra("token", this.token);
+            intent.putExtra("selectedYear", this.selectedYear);
+            intent.putExtra("selectedMonth", this.selectedMonth);
+            startActivity(intent);
+
+            return true;
+        }  else if (id == R.id.cashflow) {
+            Intent intent = new Intent(BadActivity.this, CashFlowActivity.class);
+            intent.putExtra("token", this.token);
+            intent.putExtra("selectedYear", this.selectedYear);
+            intent.putExtra("selectedMonth", this.selectedMonth);
+            startActivity(intent);
+
+            return true;
+        } else  if (id == R.id.dashboard) {
+            NavUtils.navigateUpFromSameTask(this);
+            return true;
         }
+
         return super.onOptionsItemSelected(item);
     }
 
@@ -191,7 +242,7 @@ public class BadActivity extends AppCompatActivity implements SimpleDatePickerDi
                         double piutangRetensi = jsonObject.getDouble("piutangRetensi");
                         double pdp = jsonObject.getDouble("pdp");
                         double bad = jsonObject.getDouble("bad");
-                        String title = jsonObject.getJSONObject("Project").getString("name");
+                        String title = jsonObject.getJSONObject("Project").getString("code");
                         firstDataEntries.add(new BarEntry((i + 1), new Float(piutangUsaha)));
                         secondDataEntries.add(new BarEntry((i + 1), new Float(tagihanBruto)));
                         thirdDataEntries.add(new BarEntry((i + 1), new Float(piutangRetensi)));

@@ -334,21 +334,23 @@ public class LkFragment extends Fragment {
 
         LineDataSet dataSet = new LineDataSet(planDataEntries, "Plan");
         dataSet.setMode(LineDataSet.Mode.LINEAR);
+        dataSet.setLineWidth(6.0f);
         dataSet.setDrawCircles(false);
-        dataSet.setDrawFilled(true);
+//        dataSet.setDrawFilled(true);
         dataSet.setDrawValues(false);
         dataSet.setColor(Color.parseColor("#8CEAFF"));
-        dataSet.setFillColor(Color.parseColor("#8CEAFF"));
-        dataSet.setFillAlpha(200);
+//        dataSet.setFillColor(Color.parseColor("#8CEAFF"));
+//        dataSet.setFillAlpha(200);
 
         LineDataSet dataSet2 = new LineDataSet(actualDataEntries, "Actual");
         dataSet2.setMode(LineDataSet.Mode.LINEAR);
+        dataSet2.setLineWidth(6.0f);
         dataSet2.setDrawCircles(false);
-        dataSet2.setDrawFilled(true);
+//        dataSet2.setDrawFilled(true);
         dataSet2.setDrawValues(false);
         dataSet2.setColor(Color.parseColor("#F7E81C"));
-        dataSet2.setFillColor(Color.parseColor("#F7E81C"));
-        dataSet2.setFillAlpha(255);
+//        dataSet2.setFillColor(Color.parseColor("#F7E81C"));
+//        dataSet2.setFillAlpha(255);
 
         ArrayList<ILineDataSet> dataSets = new ArrayList<ILineDataSet>();
         dataSets.add(dataSet2);
